@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_033705) do
+ActiveRecord::Schema.define(version: 2018_11_29_162447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "background_job_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -207,6 +214,27 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.index ["ucrm_plan_service_id"], name: "index_plan_services_on_ucrm_plan_service_id", unique: true
   end
 
+  create_table "producers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_number"
+    t.string "name"
+    t.string "description"
+    t.string "type"
+    t.boolean "ac"
+    t.string "power_in"
+    t.string "power_out"
+    t.string "poe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "producer_id"
+    t.index ["producer_id"], name: "index_products_on_producer_id"
+  end
+
   create_table "provinces", force: :cascade do |t|
     t.integer "country_id"
     t.string "name"
@@ -353,4 +381,5 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "products", "producers"
 end
