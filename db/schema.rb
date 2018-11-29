@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.datetime "updated_at", null: false
     t.decimal "net_amount", precision: 17, scale: 4, default: "0.0", null: false
     t.decimal "iva_amount", precision: 17, scale: 4, default: "0.0", null: false
-    t.integer "concept_id", default: 902253, null: false
-    t.string "account_code", default: "", null: false
+    t.integer "concept_id", null: false
+    t.string "account_code", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
