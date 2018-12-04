@@ -59,4 +59,8 @@ Rails.application.routes.draw do
     resources :technicians, concerns: :paginatable, except: [:show]
     resources :work_types, concerns: :paginatable, except: [:show]
   end
+  
+  namespace :products do
+    resources :categories, concerns: :paginatable, except: [:show]
+  end
 end

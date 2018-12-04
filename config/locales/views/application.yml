@@ -12,6 +12,8 @@ es-AR:
         technicians: 'Técnicos'
         work_types: 'Tipos de trabajo'
       groups: 'Grupos y Permisos'
+      products: 
+        categories: 'Categorias'
       users: 'Usuarios'
   enumerize:
     account:
@@ -68,8 +70,11 @@ es-AR:
         billing_exports: 'Facturación'
         dashboard: 'Tablero'
         elements: 'Elementos'
+        inventory: 'Inventario'
+        products: 'Productos'
         services: 'Servicios'
         settings: 'Ajustes'
+        stock: 'Stock'
         system: 'Sistema'
         technical_services: 'Servicios Técnicos'
         users: 'Usuarios y Grupos'
