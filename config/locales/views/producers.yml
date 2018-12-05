@@ -1,0 +1,21 @@
+es-AR:
+  products:
+    producers:
+      edit:
+        header: 'Editar Productor'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Productores'
+        tooltip:
+          new: 'Nuevo productor'
+      new:
+        header: 'Nuevo productor'
+      producers_table:
+        delete_confirm: '¿Está seguro que desea eliminar este productor?'
+        tooltip:
+          edit: 'Editar'
+          delete: 'Eliminar'
