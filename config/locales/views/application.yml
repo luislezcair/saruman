@@ -14,7 +14,7 @@ es-AR:
       groups: 'Grupos y Permisos'
       products: 
         categories: 'Categorias'
-        producers: 'Productores'
+        producers: 'Fabricantes'
       users: 'Usuarios'
   enumerize:
     account:
