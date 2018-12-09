@@ -1,0 +1,38 @@
+<%= simple_form_for [:elements, @provider], wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+  <div class="card">
+    <div class="card-header"><%= header %></div>
+
+    <div class="card-body">
+      <legend class="form-section">
+        <i class="fa fa-user"></i> <%= t('.section.basic') %>
+      </legend>
+
+      <div class="form-group row string required">
+        <%= f.input :name, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+   
+      </div>
+ 
+
+    </div>
+
+<!--     <div class="card-body">
+
+     <%# f.fields_for :contacts do |contacts_form| %>
+        <%# render 'contact_fields', f: contacts_form %>
+      <%# end %>
+      <div data-controller="provider">
+      <%# link_to_add_fields 'Agregar Telefono <i class="fa fa-paperclip fa-1x" aria-hidden="true"></i>'.html_safe, f, :contacts ,  data: {
+              action: "click->provider#add"}%> 
+      </div>
+
+    </div> -->
+
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), elements_providers_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

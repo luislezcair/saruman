@@ -58,5 +58,6 @@ Rails.application.routes.draw do
     resources :corporate_cellphones, concerns: :paginatable, except: [:show]
     resources :technicians, concerns: :paginatable, except: [:show]
     resources :work_types, concerns: :paginatable, except: [:show]
+    resources :providers, concerns: :paginatable, except: [:show]
   end
 end

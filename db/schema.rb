@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_033705) do
+ActiveRecord::Schema.define(version: 2018_12_05_180441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "provider_id"
+    t.string "type_phone"
+    t.index ["provider_id"], name: "index_contacts_on_provider_id"
+  end
+
   create_table "corporate_cellphones", force: :cascade do |t|
     t.bigint "phone", null: false
     t.datetime "created_at", null: false
@@ -158,8 +168,8 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.datetime "updated_at", null: false
     t.decimal "net_amount", precision: 17, scale: 4, default: "0.0", null: false
     t.decimal "iva_amount", precision: 17, scale: 4, default: "0.0", null: false
-    t.integer "concept_id", default: 902253, null: false
-    t.string "account_code", default: "", null: false
+    t.integer "concept_id", null: false
+    t.string "account_code", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -205,6 +215,15 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_plan_services_on_name", unique: true
     t.index ["ucrm_plan_service_id"], name: "index_plan_services_on_ucrm_plan_service_id", unique: true
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "contact_name"
+    t.string "email"
+    t.string "website"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -353,4 +372,5 @@ ActiveRecord::Schema.define(version: 2018_10_26_033705) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "contacts", "providers"
 end

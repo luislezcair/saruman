@@ -11,6 +11,7 @@ es-AR:
         corporate_cellphones: 'Teléfonos Celulares'
         technicians: 'Técnicos'
         work_types: 'Tipos de trabajo'
+        providers: 'Proveedores'
       groups: 'Grupos y Permisos'
       users: 'Usuarios'
   enumerize:

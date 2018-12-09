@@ -1,0 +1,22 @@
+es-AR:
+  elements:
+    providers:
+      edit:
+        header: 'Editar Proveedor'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Proveedores'
+        tooltip:
+          new: 'Nuevo Proveedor'
+      new:
+        header: 'Nuevo Proveedor'
+      providers_table:
+        delete_confirm: '¿Está seguro que desea eliminar este proveedor?'
+        tooltip:
+          edit: 'Editar Proveedor'
+          delete: 'Eliminar Proveedor'
+ 
