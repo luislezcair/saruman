@@ -63,5 +63,6 @@ Rails.application.routes.draw do
   namespace :products do
     resources :categories, concerns: :paginatable, except: [:show]
     resources :producers, concerns: :paginatable, except: [:show]
+    resources :products, concerns: :paginatable, except: [:show]
   end
 end

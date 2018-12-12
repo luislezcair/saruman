@@ -15,6 +15,7 @@ es-AR:
       products: 
         categories: 'Categorias'
         producers: 'Fabricantes'
+        products: 'Productos'
       users: 'Usuarios'
   enumerize:
     account:

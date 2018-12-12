@@ -1,0 +1,21 @@
+es-AR:
+  products:
+    products:
+      edit:
+        header: 'Editar Producto'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Productos'
+        tooltip:
+          new: 'Nuevo producto'
+      new:
+        header: 'Nuevo producto'
+      producers_table:
+        delete_confirm: '¿Está seguro que desea eliminar este producto?'
+        tooltip:
+          edit: 'Editar'
+          delete: 'Eliminar'

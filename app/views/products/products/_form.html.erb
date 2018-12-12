@@ -1,0 +1,30 @@
+<%= simple_form_for [:products, @product], wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+  <div class="card">
+    <div class="card-header"><%= header %></div>
+
+    <div class="card-body">
+      <legend class="form-section">
+        <i class="fa fa-archive"></i> <%= t('.section.basic') %>
+      </legend>
+
+      <%= f.input :product_number %>
+      <%= f.input :name %>
+      <%= f.input :description, as: :text %>
+      <%= f.input :type %>
+      <%= f.input :category_ids %>
+      <%= f.input :producer_id %>
+      <%= f.input :ac %>
+      <%= f.input :power_in %>
+      <%= f.input :power_out %>
+      <%= f.input :poe %>
+
+    </div>
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), products_products_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
