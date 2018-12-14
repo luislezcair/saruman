@@ -5,8 +5,9 @@ es-AR:
         header: 'Editar Producto'
       form:
         cancel: 'Cancelar'
-        section:
-          basic: 'Información básica'
+        section: &form_sections
+          product: 'Datos del producto'
+          product_detail: 'Detalles del producto'
         submit: 'Guardar'
       index:
         header: 'Productos'

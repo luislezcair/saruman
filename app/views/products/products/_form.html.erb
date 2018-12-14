@@ -4,15 +4,17 @@
 
     <div class="card-body">
       <legend class="form-section">
-        <i class="fa fa-archive"></i> <%= t('.section.basic') %>
+        <i class="fa fa-archive"></i> <%= t('.section.product') %>
       </legend>
-
       <%= f.input :product_number %>
       <%= f.input :name %>
       <%= f.input :description, as: :text %>
       <%= f.input :type %>
       <%= f.input :category_ids %>
       <%= f.input :producer_id %>
+      <legend class="form-section">
+        <i class="fa fa-archive"></i> <%= t('.section.product_detail') %>
+      </legend>
       <%= f.input :ac %>
       <%= f.input :power_in %>
       <%= f.input :power_out %>

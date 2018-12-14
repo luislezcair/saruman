@@ -43,6 +43,16 @@ es-AR:
         quantity: 'Cantidad'
       plan_service:
         name: 'Servicio'
+      product:
+        product_number: 'Número de producto'
+        name: 'Nombre'
+        description: 'Descripción'
+        type: 'Tipo'
+        ac: 'Corriente alterna'
+        power_in: 'Potencia de entrada'
+        power_out: 'Potencia de salida'
+        poe: 'Energía sobre ethernet'
+        dbi: 'Potencia de antena'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
