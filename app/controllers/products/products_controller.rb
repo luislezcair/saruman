@@ -48,6 +48,6 @@ class Products::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_number, :name, :description, :type, :ac, :power_in, :power_out, :poe)
+    params.require(:product).permit(:product_number, :name, :description, :type, :ac, :power_in, :power_out, :poe, :dbi)
   end
 end

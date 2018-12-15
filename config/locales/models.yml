@@ -52,7 +52,9 @@ es-AR:
         power_in: 'Potencia de entrada'
         power_out: 'Potencia de salida'
         poe: 'Energía sobre ethernet'
-        dbi: 'Potencia de antena'
+        dbi: 'Potencia de antena (DBI)'
+        category: 'Categoría'
+        producer: 'Fabricante'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
