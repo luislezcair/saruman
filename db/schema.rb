@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_124459) do
+ActiveRecord::Schema.define(version: 2018_12_15_014129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -240,6 +240,8 @@ ActiveRecord::Schema.define(version: 2018_12_14_124459) do
     t.datetime "updated_at", null: false
     t.bigint "producer_id"
     t.string "dbi"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
   end
 
@@ -389,5 +391,6 @@ ActiveRecord::Schema.define(version: 2018_12_14_124459) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "producers"
 end

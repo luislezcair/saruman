@@ -7,11 +7,13 @@
         <i class="fa fa-archive"></i> <%= t('.section.product') %>
       </legend>
       <%= f.input :product_number %>
-      <%= f.input :name %>
-      <%= f.input :description, as: :text %>
-      <%= f.input :category_ids %>
-       <div class="form-group row string required">
+      <div class="form-group row string required">
+        <%= f.input :name, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }  %>
         <%= f.input :type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+      <%= f.input :description, as: :text %>
+       <div class="form-group row string required">
+        <%= f.association :category, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
         <%= f.association :producer, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
       <legend class="form-section">
