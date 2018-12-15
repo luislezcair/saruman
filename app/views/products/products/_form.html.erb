@@ -9,9 +9,11 @@
       <%= f.input :product_number %>
       <%= f.input :name %>
       <%= f.input :description, as: :text %>
-      <%= f.input :type %>
       <%= f.input :category_ids %>
-      <%= f.input :producer_id %>
+       <div class="form-group row string required">
+        <%= f.input :type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :producer, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
       <legend class="form-section">
         <i class="fa fa-archive"></i> <%= t('.section.product_detail') %>
       </legend>

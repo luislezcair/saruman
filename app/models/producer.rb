@@ -1,4 +1,4 @@
 class Producer < ApplicationRecord
-  has_one :product
+  has_many :products, dependent: :restrict_with_error
   validates :name, presence: :true
 end
