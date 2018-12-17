@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_15_014129) do
+ActiveRecord::Schema.define(version: 2018_12_17_223337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,16 @@ ActiveRecord::Schema.define(version: 2018_12_15_014129) do
     t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "provider_id"
+    t.string "type_phone"
+    t.index ["provider_id"], name: "index_contacts_on_provider_id"
+  end
+
   create_table "corporate_cellphones", force: :cascade do |t|
     t.bigint "phone", null: false
     t.datetime "created_at", null: false
@@ -125,6 +135,14 @@ ActiveRecord::Schema.define(version: 2018_12_15_014129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_countries_on_name", unique: true
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "devices", force: :cascade do |t|
@@ -243,6 +261,15 @@ ActiveRecord::Schema.define(version: 2018_12_15_014129) do
     t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "contact_name"
+    t.string "email"
+    t.string "website"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -391,6 +418,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_014129) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "contacts", "providers"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "producers"
 end
