@@ -16,6 +16,10 @@ es-AR:
       corporate_cellphone:
         phone: 'Teléfono'
         technical_service_corporate_cellphones: 'Servicios Técnicos'
+      deposit:
+        name: 'Nombre'
+        description: 'Descripción'
+        type: 'Tipo'
       group:
         name: 'Nombre'
         organization: 'Organización'
