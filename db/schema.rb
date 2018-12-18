@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_223337) do
+ActiveRecord::Schema.define(version: 2018_12_18_130621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,14 @@ ActiveRecord::Schema.define(version: 2018_12_17_223337) do
     t.integer "ucrm_device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.bigint "producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_families_on_producer_id"
   end
 
   create_table "ground_wire_setup_types", force: :cascade do |t|
@@ -419,6 +427,7 @@ ActiveRecord::Schema.define(version: 2018_12_17_223337) do
   end
 
   add_foreign_key "contacts", "providers"
+  add_foreign_key "families", "producers"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "producers"
 end

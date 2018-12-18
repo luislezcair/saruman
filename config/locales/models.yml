@@ -20,6 +20,9 @@ es-AR:
         name: 'Nombre'
         description: 'Descripción'
         type: 'Tipo'
+      family:
+        name: 'Nombre'
+        producer_id: 'Fabricante'
       group:
         name: 'Nombre'
         organization: 'Organización'
@@ -174,6 +177,9 @@ es-AR:
       deposit:
         one: 'Depósito'
         other: 'Depósitos'
+      family:
+        one: 'Familia'
+        other: 'Familias'
       group:
         one: 'Grupo'
         other: 'Grupos'

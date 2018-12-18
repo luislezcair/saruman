@@ -2,8 +2,8 @@
   <nav class="nav nav-pills flex-column flex-sm-row">
     <%= link_to t('common.nav.products.categories'), products_categories_path, class: 'flex-sm-fill text-sm-center nav-link' %>
     <%= link_to t('common.nav.products.producers'), products_producers_path, class: 'flex-sm-fill text-sm-center nav-link' %>
-    <%= link_to t('common.nav.products.families'), products_families_path, class: 'flex-sm-fill text-sm-center nav-link' %>
-    <%= link_to t('common.nav.products.products'), products_products_path, class: 'flex-sm-fill text-sm-center nav-link active' %>
+    <%= link_to t('common.nav.products.families'), products_families_path, class: 'flex-sm-fill text-sm-center nav-link active' %>
+    <%= link_to t('common.nav.products.products'), products_products_path, class: 'flex-sm-fill text-sm-center nav-link' %>
   </nav>
 <% end %>
 
@@ -12,8 +12,8 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
-      <% if can? :create, Product %>
-        <%= link_to new_products_product_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
+      <% if can? :create, Family %>
+        <%= link_to new_products_family_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>
         <% end %>
       <% end %>
@@ -21,8 +21,8 @@
   </div>
 
   <div class="card-body">
-    <div id="products-table-container">
-      <%= render 'products_table' %>
+    <div id="families-table-container">
+      <%= render 'families_table' %>
     </div>
   </div>
 </div>

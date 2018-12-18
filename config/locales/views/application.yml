@@ -15,6 +15,7 @@ es-AR:
       groups: 'Grupos y Permisos'
       products: 
         categories: 'Categorias'
+        families: 'Familias'
         producers: 'Fabricantes'
         products: 'Productos'
       users: 'Usuarios'
