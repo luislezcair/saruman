@@ -12,7 +12,7 @@ class Elements::DepositsController < ApplicationController
 
   # GET /elements/deposits/new
   def new
-    @deposits= Deposit.new
+    @deposit = Deposit.new
   end
 
   def edit; end

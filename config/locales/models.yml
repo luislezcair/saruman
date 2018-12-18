@@ -162,18 +162,30 @@ es-AR:
           delete_success: 'Se ha eliminado el tipo de trabajo'
 
     models:
+      category:
+        one: 'Categoría'
+        other: 'Categorías'
       client:
         one: 'Cliente'
         other: 'Clientes'
       corporate_cellphone:
         one: 'Celular'
         other: 'Celulares'
+      deposit:
+        one: 'Depósito'
+        other: 'Depósitos'
       group:
         one: 'Grupo'
         other: 'Grupos'
       invoice:
         one: 'Comprobante'
         other: 'Comprobantes'
+      product:
+        one: 'Producto'
+        other: 'Productos'
+      producer:
+        one: 'Fabricante'
+        other: 'Fabricantes'
       technical_service:
         one: 'Servicio Técnico'
         other: 'Servicios Técnicos'
