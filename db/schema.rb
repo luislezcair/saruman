@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_144250) do
+ActiveRecord::Schema.define(version: 2018_12_18_213715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,18 +23,6 @@ ActiveRecord::Schema.define(version: 2018_12_20_144250) do
     t.string "names_depth_cache", default: "", null: false
     t.string "nature", default: "patrimonial", null: false
     t.index ["ancestry"], name: "index_accounts_on_ancestry"
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "address"
-    t.bigint "city_id"
-    t.bigint "province_id"
-    t.bigint "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_addresses_on_city_id"
-    t.index ["country_id"], name: "index_addresses_on_country_id"
-    t.index ["province_id"], name: "index_addresses_on_province_id"
   end
 
   create_table "auth_tokens", force: :cascade do |t|
@@ -440,9 +428,6 @@ ActiveRecord::Schema.define(version: 2018_12_20_144250) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
-  add_foreign_key "addresses", "cities"
-  add_foreign_key "addresses", "countries"
-  add_foreign_key "addresses", "provinces"
   add_foreign_key "contacts", "providers"
   add_foreign_key "families", "producers"
   add_foreign_key "products", "categories"
