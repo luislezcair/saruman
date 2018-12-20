@@ -48,6 +48,6 @@ class Elements::DepositsController < ApplicationController
   end
 
   def deposit_params
-    params.require(:deposit).permit(:name, :description, :type)
+    params.require(:deposit).permit(:name, :description, :type, :address, :city_id, :province_id, :country_id)
   end
 end

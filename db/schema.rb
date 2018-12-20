@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_213715) do
+ActiveRecord::Schema.define(version: 2018_12_20_150940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,13 @@ ActiveRecord::Schema.define(version: 2018_12_18_213715) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.bigint "city_id"
+    t.bigint "province_id"
+    t.bigint "country_id"
+    t.index ["city_id"], name: "index_deposits_on_city_id"
+    t.index ["country_id"], name: "index_deposits_on_country_id"
+    t.index ["province_id"], name: "index_deposits_on_province_id"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -429,6 +436,9 @@ ActiveRecord::Schema.define(version: 2018_12_18_213715) do
   end
 
   add_foreign_key "contacts", "providers"
+  add_foreign_key "deposits", "cities"
+  add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "provinces"
   add_foreign_key "families", "producers"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"

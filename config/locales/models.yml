@@ -20,6 +20,10 @@ es-AR:
         name: 'Nombre'
         description: 'Descripción'
         type: 'Tipo'
+        address: 'Dirección'
+        country: 'País'
+        province: 'Provincia'
+        city: 'Ciudad'
       family:
         name: 'Nombre'
         producer_id: 'Fabricante'
