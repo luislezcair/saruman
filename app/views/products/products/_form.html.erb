@@ -16,6 +16,7 @@
         <%= f.association :category, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
         <%= f.association :producer, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
+      <%= f.association :family %>
       
       <legend class="form-section">
         <i class="fa fa-archive"></i> <%= t('.section.product_detail') %>
