@@ -6,5 +6,7 @@ class Product < ApplicationRecord
   belongs_to :family, optional: true
   validates :product_number, :name, :type, presence: :true
 
-  enumerize :type, in: [:accessory, :product, :service]
+  enumerize :type,  in: { accesorio: 0, producto: 1, servicio: 2 }, 
+                    default: :producto, 
+                    predicates: true
 end
