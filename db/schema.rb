@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_150940) do
+ActiveRecord::Schema.define(version: 2018_12_22_153038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,18 @@ ActiveRecord::Schema.define(version: 2018_12_20_150940) do
     t.boolean "admin", default: false, null: false
     t.integer "organization_id"
     t.index ["name"], name: "index_groups_on_name", unique: true
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "deposit_id"
+    t.string "firmware_version"
+    t.string "serial_number"
+    t.string "mac_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
+    t.index ["product_id"], name: "index_inventories_on_product_id"
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -440,6 +452,8 @@ ActiveRecord::Schema.define(version: 2018_12_20_150940) do
   add_foreign_key "deposits", "countries"
   add_foreign_key "deposits", "provinces"
   add_foreign_key "families", "producers"
+  add_foreign_key "inventories", "deposits"
+  add_foreign_key "inventories", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"
