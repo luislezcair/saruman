@@ -19,4 +19,5 @@ es-AR:
         tooltip:
           edit: 'Editar Proveedor'
           delete: 'Eliminar Proveedor'
+      contact_fields:
  

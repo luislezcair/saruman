@@ -1,4 +1,4 @@
 class Contact < ApplicationRecord
-	belongs_to :provider
+	belongs_to :provider, optional: true
 end
  

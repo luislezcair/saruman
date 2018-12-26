@@ -2,7 +2,7 @@ class Elements::ProvidersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_provider, only: [:edit, :update, :destroy]
   authorize_resource
-
+ 
   # GET /elements/technicians
   def index
     @q = Provider.ransack(params[:q])
@@ -49,6 +49,6 @@ class Elements::ProvidersController < ApplicationController
   end
 
   def provider_params
-    params.require(:provider).permit(:name, contacts_attributes:[:name, :phone, :type_phone, :_destroy])
+    params.require(:provider).permit(:name, contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy])
   end
 end
