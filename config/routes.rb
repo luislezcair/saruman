@@ -67,4 +67,6 @@ Rails.application.routes.draw do
     resources :products, concerns: :paginatable, except: [:show]
     resources :families, concerns: :paginatable, except: [:show]
   end
+
+  resources :inventories, concerns: :paginatable, except: [:show]
 end
