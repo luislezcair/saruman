@@ -32,6 +32,13 @@ es-AR:
         organization: 'Organización'
         permissions: 'Permisos'
         users: 'Usuarios'
+      inventory:
+        product: 'Producto'
+        firmware_version: 'Versión de firmware'
+        serial_number: 'Número de serie'
+        mac_address: 'Dirección MAC'
+        deposit: 'Depósito'
+        exist: 'En existencia'
       invoice:
         client: 'Cliente'
         contabilium: 'Contabilium'
@@ -187,6 +194,9 @@ es-AR:
       group:
         one: 'Grupo'
         other: 'Grupos'
+      inventory:
+        one: 'Inventario'
+        other: 'Inventarios'
       invoice:
         one: 'Comprobante'
         other: 'Comprobantes'
