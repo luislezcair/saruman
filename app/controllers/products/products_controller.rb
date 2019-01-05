@@ -3,6 +3,14 @@ class Products::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
   authorize_resource
 
+  # GET /product/products/search
+  def search
+    setup_search
+
+    @products = @products.where('1=0') unless search_params? && valid_params?
+    @identification_cont = params.dig(:q, :identification_cont)
+  end
+
   # GET /product/products
   def index 
     @q = Product.ransack(params[:q])
@@ -42,6 +50,19 @@ class Products::ProductsController < ApplicationController
   end
 
   private
+
+  def setup_search
+    @q = Product.ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @products = @q.result.page(params[:page]).per(10)
+  end
+
+  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
+  # cantidad de resultados.
+  def valid_params?
+    id = params.dig(:q, :identification_cont)
+    id && id.size > 2
+  end
 
   def set_product
     @product = Product.find(params[:id])

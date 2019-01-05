@@ -15,8 +15,16 @@ es-AR:
           new: 'Nuevo producto'
       new:
         header: 'Nuevo producto'
-      producers_table:
+      products_table:
         delete_confirm: '¿Está seguro que desea eliminar este producto?'
         tooltip:
           edit: 'Editar'
           delete: 'Eliminar'
+      search:
+        find_product: 'Buscar'
+        modal:
+          close: 'Cerrar'
+          title: 'Buscar producto'
+        placeholder: 'Número de producto o nombre...'
+        tooltip:
+          select: 'Seleccionar'

@@ -1,2 +1,15 @@
 es-AR:
   inventories:
+    form:
+      cancel: 'Cancelar'
+      section: &form_sections
+        product: 'Datos del producto'
+      submit: 'Guardar'
+      find_product: 'Buscar producto'
+    index:
+      header: 'Inventario'
+      tooltip:
+        new: 'Nuevo Registro'
+    new:
+      form:
+        new_header: 'Registrar Producto'
