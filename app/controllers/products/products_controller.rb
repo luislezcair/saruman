@@ -1,0 +1,74 @@
+class Products::ProductsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_product, only: [:edit, :update, :destroy]
+  authorize_resource
+
+  # GET /product/products/search
+  def search
+    setup_search
+
+    @products = @products.where('1=0') unless search_params? && valid_params?
+    @identification_cont = params.dig(:q, :identification_cont)
+  end
+
+  # GET /product/products
+  def index 
+    @q = Product.ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @products = @q.result.page(params[:page])
+  end
+
+  # GET /product/products/new
+  def new
+    @product = Product.new
+  end
+
+  def edit; end
+
+  # POST /product/products
+  def create
+    @product = Product.new(product_params)
+    if @product.save 
+      redirect_to products_products_path
+    else
+      render :new, alert: :error
+    end
+  end
+
+  # PUT/PATCH /products/products/1
+  def update
+    if @product.update(product_params)
+      redirect_to products_products_path
+    else
+      render :edit, alert: :error 
+    end
+  end
+
+  # DELETE /products/products/1
+  def destroy 
+    destroy_model(@product)
+  end
+
+  private
+
+  def setup_search
+    @q = Product.ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @products = @q.result.page(params[:page]).per(10)
+  end
+
+  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
+  # cantidad de resultados.
+  def valid_params?
+    id = params.dig(:q, :identification_cont)
+    id && id.size > 2
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:product_number, :name, :description, :type, :ac, :power_in, :power_out, :poe, :dbi, :category_id, :producer_id, :family_id)
+  end
+end

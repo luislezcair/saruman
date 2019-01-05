@@ -1,0 +1,21 @@
+es-AR:
+  elements:
+    deposits:
+      edit:
+        header: 'Editar Depósito'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Depósitos'
+        tooltip:
+          new: 'Nuevo depósito'
+      new:
+        header: 'Nuevo Depósito'
+      technicians_table:
+        delete_confirm: '¿Está seguro que desea eliminar este depósito?'
+        tooltip:
+          edit: 'Editar depósito'
+          delete: 'Eliminar depósito'

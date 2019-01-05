@@ -16,11 +16,29 @@ es-AR:
       corporate_cellphone:
         phone: 'Teléfono'
         technical_service_corporate_cellphones: 'Servicios Técnicos'
+      deposit:
+        name: 'Nombre'
+        description: 'Descripción'
+        type: 'Tipo'
+        address: 'Dirección'
+        country: 'País'
+        province: 'Provincia'
+        city: 'Ciudad'
+      family:
+        name: 'Nombre'
+        producer_id: 'Fabricante'
       group:
         name: 'Nombre'
         organization: 'Organización'
         permissions: 'Permisos'
         users: 'Usuarios'
+      inventory:
+        product: 'Producto'
+        firmware_version: 'Versión de firmware'
+        serial_number: 'Número de serie'
+        mac_address: 'Dirección MAC'
+        deposit: 'Depósito'
+        exist: 'En existencia'
       invoice:
         client: 'Cliente'
         contabilium: 'Contabilium'
@@ -43,6 +61,18 @@ es-AR:
         quantity: 'Cantidad'
       plan_service:
         name: 'Servicio'
+      product:
+        product_number: 'Número de producto'
+        name: 'Nombre'
+        description: 'Descripción'
+        type: 'Tipo'
+        ac: 'Corriente alterna'
+        power_in: 'Potencia de entrada'
+        power_out: 'Potencia de salida'
+        poe: 'Energía sobre ethernet'
+        dbi: 'Potencia de antena (DBI)'
+        category: 'Categoría'
+        producer: 'Fabricante'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
@@ -146,18 +176,36 @@ es-AR:
           delete_success: 'Se ha eliminado el tipo de trabajo'
 
     models:
+      category:
+        one: 'Categoría'
+        other: 'Categorías'
       client:
         one: 'Cliente'
         other: 'Clientes'
       corporate_cellphone:
         one: 'Celular'
         other: 'Celulares'
+      deposit:
+        one: 'Depósito'
+        other: 'Depósitos'
+      family:
+        one: 'Familia'
+        other: 'Familias'
       group:
         one: 'Grupo'
         other: 'Grupos'
+      inventory:
+        one: 'Inventario'
+        other: 'Inventarios'
       invoice:
         one: 'Comprobante'
         other: 'Comprobantes'
+      product:
+        one: 'Producto'
+        other: 'Productos'
+      producer:
+        one: 'Fabricante'
+        other: 'Fabricantes'
       technical_service:
         one: 'Servicio Técnico'
         other: 'Servicios Técnicos'

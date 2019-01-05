@@ -1,0 +1,21 @@
+es-AR:
+  products:
+    producers:
+      edit:
+        header: 'Editar Fabricante'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Fabricantes'
+        tooltip:
+          new: 'Nuevo fabricante'
+      new:
+        header: 'Nuevo fabricante'
+      producers_table:
+        delete_confirm: '¿Está seguro que desea eliminar este fabricante?'
+        tooltip:
+          edit: 'Editar'
+          delete: 'Eliminar'

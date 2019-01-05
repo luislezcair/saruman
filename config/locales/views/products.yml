@@ -1,0 +1,30 @@
+es-AR:
+  products:
+    products:
+      edit:
+        header: 'Editar Producto'
+      form:
+        cancel: 'Cancelar'
+        section: &form_sections
+          product: 'Datos del producto'
+          product_detail: 'Detalles del producto'
+        submit: 'Guardar'
+      index:
+        header: 'Productos'
+        tooltip:
+          new: 'Nuevo producto'
+      new:
+        header: 'Nuevo producto'
+      products_table:
+        delete_confirm: '¿Está seguro que desea eliminar este producto?'
+        tooltip:
+          edit: 'Editar'
+          delete: 'Eliminar'
+      search:
+        find_product: 'Buscar'
+        modal:
+          close: 'Cerrar'
+          title: 'Buscar producto'
+        placeholder: 'Número de producto o nombre...'
+        tooltip:
+          select: 'Seleccionar'
