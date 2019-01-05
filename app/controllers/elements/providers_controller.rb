@@ -48,10 +48,10 @@ class Elements::ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
   end
 
-  def provider_params
+  def provider_params 
     params.require(:provider).permit(
-                                    :name,:email, :website, 
-                                    contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy],
+                                    :name,:email, :website, :tax_category_number, :identification_number, 
+                                    contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
                                     addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy])
 
 

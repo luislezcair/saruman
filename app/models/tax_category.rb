@@ -1,0 +1,3 @@
+class TaxCategory < ApplicationRecord
+end
+ 

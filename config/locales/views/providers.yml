@@ -9,6 +9,7 @@ es-AR:
           basic: 'Información básica'
           phone: 'Teléfono del Proveedor'
           address: 'Direcciones del Proveedor'
+          taxs: 'Impuestos'
         action:
           addPhone: 'Agregar Teléfono'
           addAddress: 'Agregar Dirección'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_173334) do
+ActiveRecord::Schema.define(version: 2019_01_05_174034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -312,6 +312,8 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.string "contact_name"
     t.string "email"
     t.string "website"
+    t.string "tax_category_number"
+    t.string "identification_number"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -344,6 +346,13 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_system_configurations_on_name", unique: true
+  end
+
+  create_table "tax_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "technical_service_corporate_cellphones", force: :cascade do |t|
@@ -451,6 +460,13 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "withholding_taxes", force: :cascade do |t|
+    t.string "withholding"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "work_types", force: :cascade do |t|
