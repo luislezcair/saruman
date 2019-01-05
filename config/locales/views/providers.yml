@@ -7,6 +7,11 @@ es-AR:
         cancel: 'Cancelar'
         section:
           basic: 'Información básica'
+          phone: 'Teléfono del Proveedor'
+          address: 'Direcciones del Proveedor'
+        action:
+          addPhone: 'Agregar Teléfono'
+          addAddress: 'Agregar Dirección'
         submit: 'Guardar'
       index:
         header: 'Proveedores'
@@ -20,4 +25,7 @@ es-AR:
           edit: 'Editar Proveedor'
           delete: 'Eliminar Proveedor'
       contact_fields:
- 
+        deletePhone: 'Eliminar Teléfono'
+      address_fields:
+        deleteAddress: 'Eliminar Dirección'
+  

@@ -4,10 +4,10 @@ import { Controller } from 'stimulus'
  
 export default class extends Controller {
 
-	static targets = [ "fields", "form", "link", "contact_name" ]
+	// static targets = [ "fields", "form", "link", "contact_name" ]
 	
 
-	addContact(event) {
+	addAddress(event) {
 
 		console.log(event.target);
 		var time = new Date().getTime()
@@ -18,7 +18,7 @@ export default class extends Controller {
 		event.preventDefault()
 	  }
 
-	deleteContact(event){
+	deleteAddress(event){
 		
 		$(event.target).prev('input[type=hidden]').val('1')
 		$(event.target).closest('fieldset').hide()
