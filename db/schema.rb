@@ -74,6 +74,20 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.integer "background_job_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_products", id: false, force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "product_id"
+    t.index ["category_id"], name: "index_categories_products_on_category_id"
+    t.index ["product_id"], name: "index_categories_products_on_product_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -136,6 +150,21 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "deposits", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+    t.bigint "city_id"
+    t.bigint "province_id"
+    t.bigint "country_id"
+    t.index ["city_id"], name: "index_deposits_on_city_id"
+    t.index ["country_id"], name: "index_deposits_on_country_id"
+    t.index ["province_id"], name: "index_deposits_on_province_id"
+  end
+
   create_table "devices", force: :cascade do |t|
     t.inet "ip_address"
     t.string "model", default: "", null: false
@@ -143,6 +172,14 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.integer "ucrm_device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.bigint "producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_families_on_producer_id"
   end
 
   create_table "ground_wire_setup_types", force: :cascade do |t|
@@ -166,6 +203,18 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.boolean "admin", default: false, null: false
     t.integer "organization_id"
     t.index ["name"], name: "index_groups_on_name", unique: true
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "deposit_id"
+    t.string "firmware_version"
+    t.string "serial_number"
+    t.string "mac_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
+    t.index ["product_id"], name: "index_inventories_on_product_id"
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -228,6 +277,32 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_plan_services_on_name", unique: true
     t.index ["ucrm_plan_service_id"], name: "index_plan_services_on_ucrm_plan_service_id", unique: true
+  end
+
+  create_table "producers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_number"
+    t.string "name"
+    t.string "description"
+    t.string "type"
+    t.boolean "ac"
+    t.string "power_in"
+    t.string "power_out"
+    t.string "poe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "producer_id"
+    t.string "dbi"
+    t.bigint "category_id"
+    t.bigint "family_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["family_id"], name: "index_products_on_family_id"
+    t.index ["producer_id"], name: "index_products_on_producer_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -387,4 +462,13 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
 
   add_foreign_key "addresses", "providers"
   add_foreign_key "contacts", "providers"
+  add_foreign_key "deposits", "cities"
+  add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "provinces"
+  add_foreign_key "families", "producers"
+  add_foreign_key "inventories", "deposits"
+  add_foreign_key "inventories", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "families"
+  add_foreign_key "products", "producers"
 end
