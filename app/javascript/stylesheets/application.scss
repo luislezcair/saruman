@@ -295,3 +295,10 @@ input[readonly].form-control.normal {
     color: $color-gray-account;
   }
 }
+
+
+// form provider
+.btn-add-contact{
+  background-color: transparent!important;
+  border: none;
+}

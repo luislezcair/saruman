@@ -1,0 +1,31 @@
+es-AR:
+  elements:
+    providers:
+      edit:
+        header: 'Editar Proveedor'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+          phone: 'Teléfono del Proveedor'
+          address: 'Direcciones del Proveedor'
+        action:
+          addPhone: 'Agregar Teléfono'
+          addAddress: 'Agregar Dirección'
+        submit: 'Guardar'
+      index:
+        header: 'Proveedores'
+        tooltip:
+          new: 'Nuevo Proveedor'
+      new:
+        header: 'Nuevo Proveedor'
+      providers_table:
+        delete_confirm: '¿Está seguro que desea eliminar este proveedor?'
+        tooltip:
+          edit: 'Editar Proveedor'
+          delete: 'Eliminar Proveedor'
+      contact_fields:
+        deletePhone: 'Eliminar Teléfono'
+      address_fields:
+        deleteAddress: 'Eliminar Dirección'
+  

@@ -7,12 +7,23 @@ es-AR:
         name: 'Nombre'
         nature: 'Naturaleza'
         parent_id: 'Cuenta madre'
+      address:
+        street: 'Calle o Avenida'
+        house_number: 'Nro. Casa'
+        neighborhood: 'Barrio'
+        block: 'Manzana'
+        floor: 'Piso'
+        number_department: 'Número de departamento'
       city:
         name: 'Ciudad'
       client:
         document_number: 'DNI / CUIT'
         name: 'Cliente'
         number: 'Número'
+      contact:
+        name: 'Nombre de contacto'
+        phone: 'Teléfono'
+        type_phone: 'Tipo de Teléfono'
       corporate_cellphone:
         phone: 'Teléfono'
         technical_service_corporate_cellphones: 'Servicios Técnicos'
@@ -73,6 +84,10 @@ es-AR:
         dbi: 'Potencia de antena (DBI)'
         category: 'Categoría'
         producer: 'Fabricante'
+      provider:
+        name: 'Nombre del Proveedor'
+        email: 'Correo Electronico'
+        website: 'Página Web'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
@@ -124,7 +139,7 @@ es-AR:
         technician: 'Técnico'
         username: 'Nombre de usuario'
       work_type:
-        name: 'Nombre'
+        name: 'Nombre' 
 
 
     errors:

@@ -12,6 +12,7 @@ es-AR:
         technicians: 'Técnicos'
         work_types: 'Tipos de trabajo'
         deposits: 'Depósitos'
+        providers: 'Proveedores'
       groups: 'Grupos y Permisos'
       products: 
         categories: 'Categorias'
