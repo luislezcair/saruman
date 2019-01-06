@@ -10,10 +10,10 @@ class Elements::ProvidersController < ApplicationController
     @providers = @q.result.page(params[:page])
   end
 
-  # GET /elements/technicians/new
+  # GET /elements/technicians/new 
   def new
     @provider = Provider.new
-    @provider.contacts.build #edit
+    # @provider.contacts.build #edit
   end
 
   def edit; end
@@ -52,7 +52,8 @@ class Elements::ProvidersController < ApplicationController
     params.require(:provider).permit(
                                     :name,:email, :website, :tax_category_number, :identification_number, 
                                     contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
-                                    addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy])
+                                    addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy],
+                                    withholding_tax_ids: [])
 
 
   end

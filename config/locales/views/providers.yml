@@ -10,6 +10,7 @@ es-AR:
           phone: 'Teléfono del Proveedor'
           address: 'Direcciones del Proveedor'
           taxs: 'Impuestos'
+          withholding: 'Retenciónes'
         action:
           addPhone: 'Agregar Teléfono'
           addAddress: 'Agregar Dirección'

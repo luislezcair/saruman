@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_174034) do
+ActiveRecord::Schema.define(version: 2019_01_06_202057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -469,6 +469,15 @@ ActiveRecord::Schema.define(version: 2019_01_05_174034) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "withholdings", force: :cascade do |t|
+    t.bigint "provider_id"
+    t.bigint "withholding_tax_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_withholdings_on_provider_id"
+    t.index ["withholding_tax_id"], name: "index_withholdings_on_withholding_tax_id"
+  end
+
   create_table "work_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -487,4 +496,6 @@ ActiveRecord::Schema.define(version: 2019_01_05_174034) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"
+  add_foreign_key "withholdings", "providers"
+  add_foreign_key "withholdings", "withholding_taxes"
 end
