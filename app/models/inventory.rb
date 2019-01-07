@@ -1,6 +1,8 @@
 class Inventory < ApplicationRecord
   belongs_to :product
   belongs_to :deposit
+  belongs_to :provider
+  
 
   attribute :product_quantity
 

@@ -5,9 +5,11 @@ es-AR:
       section: &form_sections
         product: 'Datos del producto'
         deposit: 'Lugar en el que se encuentra'
+        provider: 'Proveedor'
       submit: 'Guardar'
       find_product: 'Buscar producto'
       find_deposit: 'Buscar depósito'
+      find_provider: 'Buscar proveedor'
     index:
       header: 'Inventario'
       tooltip:

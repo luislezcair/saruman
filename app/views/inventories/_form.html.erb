@@ -52,6 +52,23 @@
         </div>
       <% end %>
 
+      <legend class="form-section">
+        <i class=""></i> <%= t('.section.provider') %>
+      </legend>
+
+      <%= f.input :provider do %>
+        <div data-controller="provider-search" data-provider-search-url="<%= search_elements_providers_path %>" class="input-group">
+          <%= f.input_field :provider, class: 'form-control normal', readonly: true, value: provider_label(f.object.provider), name: '' %>
+          <%= f.hidden_field :provider_id %>
+          <div>
+            <button class="btn btn-primary" type="button" data-action="provider-search#show" data-togle="tooltip" data-trigger="hover" title="<%= t('.find_provider') %>">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <%= f.full_error :provider, class: 'invalid-feedback' %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 <% end %>
