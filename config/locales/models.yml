@@ -89,6 +89,14 @@ es-AR:
         name: 'Nombre del Proveedor'
         email: 'Correo Electronico'
         website: 'Página Web'
+        tax_category_number: 'CUIT'
+        identification_number: 'DNI'
+      tax_category:
+        name: 'Nombre de la categoría'
+        comment: 'Comentario'
+      withholding_tax:
+        withholding: 'Nombre de la Retención'
+        comment: 'Comentario'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
@@ -221,6 +229,9 @@ es-AR:
       product:
         one: 'Producto'
         other: 'Productos'
+      providerr:
+        one: 'Proveedor'
+        other: 'Proveedores'
       producer:
         one: 'Fabricante'
         other: 'Fabricantes'

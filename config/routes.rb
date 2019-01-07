@@ -76,6 +76,15 @@ Rails.application.routes.draw do
     end
     resources :families, concerns: :paginatable, except: [:show]
   end
+  namespace :taxes do
+    resources :withholding_taxes, concerns: :paginatable, except: [:show]
+    resources :tax_categories, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'search'
+      end
+    end
+
+  end
 
   resources :inventories, concerns: :paginatable, except: [:show]
 end

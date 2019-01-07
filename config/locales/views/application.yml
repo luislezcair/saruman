@@ -19,6 +19,9 @@ es-AR:
         families: 'Familias'
         producers: 'Fabricantes'
         products: 'Productos'
+      taxes:
+        tax_categories: 'Categoría ante el IVA'
+        withholding_taxes: 'Retenciones'
       users: 'Usuarios'
   enumerize:
     account:
@@ -77,6 +80,7 @@ es-AR:
         elements: 'Elementos'
         inventory: 'Inventario'
         products: 'Productos'
+        taxes: 'Impuestos'
         services: 'Servicios'
         settings: 'Ajustes'
         stock: 'Stock'

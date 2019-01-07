@@ -20,18 +20,17 @@
         <%# <div class="col-sm-12 col-md-12"> %>
         <%# -- seccion numero contacto --- %>
           <div class="card">
-            <div class="card-header">
-              <i class="fa fa-phone"></i> <%= t('.section.phone') %>
-             </div>
+      
             <div class="card-body">
+            <legend class="form-section">
+              <i class="fa fa-phone"></i> <%= t('.section.phone') %>
+            </legend>
                 <%#  %>
                  <div data-controller="provider">
                     <div class="field" data-target="field">
                       <%= f.fields_for :contacts do |builder| %>
                        <%= render 'contact_fields', f: builder %>
                       <% end %>
-
-
                       <div data-action="click->provider#addContact">
                        <%= link_to_add_fields( t('.action.addPhone'), f,:contacts, class: 'btn btn-primary')  %>
                       </div>
@@ -45,33 +44,51 @@
         <%# </div> %>
  
         <%# -- seccion direccion -- %>
-        <div class="card">
-            <div class="card-header">
-              <i class="fa fa-home"></i> <%= t('.section.address') %>
-             </div>
+          <div class="card">
+
             <div class="card-body">
-                <%#  %>
+            <legend class="form-section">
+              <i class="fa fa-home"></i> <%= t('.section.address') %>
+            </legend>
                  <div data-controller="address">
                     <div class="field" data-target="field">
                       <%= f.fields_for :addresses do |builder| %>
                        <%= render 'address_fields', f: builder %>
                       <% end %>
-
-
                       <div data-action="click->address#addAddress">
                        <%= link_to_add_fields( t('.action.addAddress'), f,:addresses)  %>
                       </div>
-
-                      
-
                     </div>
                  </div>
             </div>
           </div>
 
+<%# impuestos %>
+          <div class="card">
+            <div class="card-body">
 
 
+                    <legend class="form-section">
+                      <i class="fa fa-home"></i> <%= t('.section.taxs') %>
+                    </legend>
+                    <div class="form-group row string required">
+                      <%= f.input :identification_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+                      <%= f.input :tax_category_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+                    </div>
 
+                    <hr>
+
+                    <legend class="form-section">
+                      <i class="fa fa-home"></i> <%= t('.section.withholding') %>
+                    </legend>
+                    <% for w in WithholdingTax.all %>
+                      <%= check_box_tag "provider[withholding_tax_ids][]", w.id, @provider.withholding_taxes.include?(w) %>
+                      <%=h w.withholding %><br />
+                    <% end %>
+            </div>
+          </div>
+
+ 
 
  
         <div class="card-footer">
@@ -81,4 +98,5 @@
           </div>
         </div>
   
+
 <% end %>

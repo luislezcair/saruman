@@ -314,6 +314,8 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.string "contact_name"
     t.string "email"
     t.string "website"
+    t.string "tax_category_number"
+    t.string "identification_number"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -346,6 +348,13 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_system_configurations_on_name", unique: true
+  end
+
+  create_table "tax_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "technical_service_corporate_cellphones", force: :cascade do |t|
@@ -455,6 +464,22 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "withholding_taxes", force: :cascade do |t|
+    t.string "withholding"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "withholdings", force: :cascade do |t|
+    t.bigint "provider_id"
+    t.bigint "withholding_tax_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_withholdings_on_provider_id"
+    t.index ["withholding_tax_id"], name: "index_withholdings_on_withholding_tax_id"
+  end
+
   create_table "work_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -462,16 +487,4 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
-  add_foreign_key "addresses", "providers"
-  add_foreign_key "contacts", "providers"
-  add_foreign_key "deposits", "cities"
-  add_foreign_key "deposits", "countries"
-  add_foreign_key "deposits", "provinces"
-  add_foreign_key "families", "producers"
-  add_foreign_key "inventories", "deposits"
-  add_foreign_key "inventories", "products"
-  add_foreign_key "inventories", "providers"
-  add_foreign_key "products", "categories"
-  add_foreign_key "products", "families"
-  add_foreign_key "products", "producers"
 end

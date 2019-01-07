@@ -125,3 +125,4 @@ class TechnicalServicesController < ApplicationController
     params.require(:technical_service).permit(attrs)
   end
 end
+ 

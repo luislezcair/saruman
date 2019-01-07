@@ -194,6 +194,12 @@
                 </li>
 
                 <li class="nav-item">
+                  <%= link_to taxes_tax_categories_path, class: 'nav-link' do %>
+                    <i class="nav-icon fa fa-archive"></i> <%= t('.nav.taxes') %>
+                  <% end %>
+                </li>
+
+                <li class="nav-item">
                   <%= link_to system_users_path, class: 'nav-link' do %>
                     <i class="nav-icon fa fa-users"></i> <%= t('.nav.users') %>
                   <% end %>
