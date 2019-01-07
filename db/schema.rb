@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_173334) do
+ActiveRecord::Schema.define(version: 2019_01_05_205951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,13 +153,13 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
   create_table "deposits", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
+    t.string "deposit_type"
     t.index ["city_id"], name: "index_deposits_on_city_id"
     t.index ["country_id"], name: "index_deposits_on_country_id"
     t.index ["province_id"], name: "index_deposits_on_province_id"
@@ -460,4 +460,15 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "addresses", "providers"
+  add_foreign_key "contacts", "providers"
+  add_foreign_key "deposits", "cities"
+  add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "provinces"
+  add_foreign_key "families", "producers"
+  add_foreign_key "inventories", "deposits"
+  add_foreign_key "inventories", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "families"
+  add_foreign_key "products", "producers"
 end

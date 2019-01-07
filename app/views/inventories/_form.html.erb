@@ -25,6 +25,33 @@
           <%= f.full_error :product, class: 'invalid-feedback' %>
         </div>
       <% end %>
+
+      <div class="form-group row string required">
+        <%= f.input :product_quantity, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric' } %>
+        <div>
+            <button class="btn btn-primary" type="button">
+              <i class="fa fa-arrow-right"></i>
+            </button>
+        </div>
+      </div>
+
+      <legend class="form-section">
+        <i class=""></i> <%= t('.section.deposit') %>
+      </legend>
+
+      <%= f.input :deposit do %>
+        <div data-controller="deposit-search" data-deposit-search-url="<%= search_elements_deposits_path %>" class="input-group">
+          <%= f.input_field :deposit, class: 'form-control normal', readonly: true, value: deposit_label(f.object.deposit), name: '' %>
+          <%= f.hidden_field :deposit_id %>
+          <div>
+            <button class="btn btn-primary" type="button" data-action="deposit-search#show" data-togle="tooltip" data-trigger="hover" title="<%= t('.find_deposit') %>">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <%= f.full_error :deposit, class: 'invalid-feedback' %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 <% end %>
@@ -34,3 +61,9 @@
 
 <input id="product-search-id-target" type="hidden" value="inventory_product_id">
 <input id="product-search-label-target" type="hidden" value="inventory_product">
+
+<div id="deposit-search-modal" class="modal" tabindex="-1" role="dialog">
+</div>
+
+<input id="deposit-search-id-target" type="hidden" value="inventory_deposit_id">
+<input id="deposit-search-label-target" type="hidden" value="inventory_deposit">

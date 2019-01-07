@@ -30,7 +30,7 @@ es-AR:
       deposit:
         name: 'Nombre'
         description: 'Descripción'
-        type: 'Tipo'
+        deposit_type: 'Tipo'
         address: 'Dirección'
         country: 'País'
         province: 'Provincia'
@@ -45,6 +45,7 @@ es-AR:
         users: 'Usuarios'
       inventory:
         product: 'Producto'
+        product_quantity: 'Cantidad de productos'
         firmware_version: 'Versión de firmware'
         serial_number: 'Número de serie'
         mac_address: 'Dirección MAC'
@@ -163,6 +164,8 @@ es-AR:
         corporate_cellphone:
           delete_error: 'No se puede eliminar este teléfono'
           delete_success: 'Se ha eliminado el teléfono'
+        deposit:
+          delete_success: 'Se ha eliminado el depósito'
         group:
           delete_error: 'No se pudo eliminar este grupo'
           delete_success: 'Se ha eliminado el grupo'
