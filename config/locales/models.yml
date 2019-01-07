@@ -78,7 +78,7 @@ es-AR:
         product_number: 'Número de producto'
         name: 'Producto'
         description: 'Descripción'
-        type: 'Tipo'
+        product_type: 'Tipo'
         ac: 'Corriente alterna'
         power_in: 'Potencia de entrada'
         power_out: 'Potencia de salida'

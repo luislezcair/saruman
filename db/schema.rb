@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_07_122313) do
+ActiveRecord::Schema.define(version: 2019_01_07_230909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -291,7 +291,6 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.string "product_number"
     t.string "name"
     t.string "description"
-    t.string "type"
     t.boolean "ac"
     t.string "power_in"
     t.string "power_out"
@@ -302,6 +301,7 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.string "dbi"
     t.bigint "category_id"
     t.bigint "family_id"
+    t.string "product_type"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
