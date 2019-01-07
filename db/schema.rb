@@ -487,4 +487,18 @@ ActiveRecord::Schema.define(version: 2019_01_07_122313) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "addresses", "providers"
+  add_foreign_key "contacts", "providers"
+  add_foreign_key "deposits", "cities"
+  add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "provinces"
+  add_foreign_key "families", "producers"
+  add_foreign_key "inventories", "deposits"
+  add_foreign_key "inventories", "products"
+  add_foreign_key "inventories", "providers"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "families"
+  add_foreign_key "products", "producers"
+  add_foreign_key "withholdings", "providers"
+  add_foreign_key "withholdings", "withholding_taxes"
 end
