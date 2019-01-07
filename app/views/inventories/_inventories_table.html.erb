@@ -10,6 +10,10 @@
   <thead>
     <tr>
       <th>#</th>
+      <th><%= sort_link(@q, :product_name, {}, remote: true) %></th>
+      <th>Cantidad</th>
+      <th><%= sort_link(@q, :provider_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :deposit_name, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
   </thead>
@@ -20,7 +24,7 @@
 
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="7"></td>
+      <td class="page-entries-info" colspan="6"></td>
     </tr>
   </tfoot>
 </table>

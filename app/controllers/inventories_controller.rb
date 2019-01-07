@@ -5,7 +5,9 @@ class InventoriesController < ApplicationController
 
   # GET /inventories
   def index
-    @inventories = Inventory.ransack(params[:q])
+    @q = Inventory.ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @inventories = @q.result.page(params[:page])
   end
 
   # GET /inventories/new
@@ -46,6 +48,6 @@ class InventoriesController < ApplicationController
   end
 
   def inventory_params
-    params.require(:inventory).permit(:product_id, :deposit_id, :firmware_version, :serial_number, :mac_address)
+    params.require(:inventory).permit(:product_id, :deposit_id, :provider_id, :firmware_version, :serial_number, :mac_address)
   end
 end

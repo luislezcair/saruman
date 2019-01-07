@@ -30,4 +30,12 @@ es-AR:
         deletePhone: 'Eliminar Teléfono'
       address_fields:
         deleteAddress: 'Eliminar Dirección'
+      search:
+        find_provider: 'Buscar'
+        modal:
+          close: 'Cerrar'
+          title: 'Buscar proveedor'
+        placeholder: 'Nombre del proveedor'
+        tooltip:
+          select: 'Seleccionar'
   

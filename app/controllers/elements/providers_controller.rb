@@ -2,7 +2,15 @@ class Elements::ProvidersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_provider, only: [:edit, :update, :destroy]
   authorize_resource
- 
+  
+  # GET /element/providers/search
+  def search
+    setup_search
+
+    @providers = @providers.where('1=0') unless search_params? && valid_params?
+    @name_cont = params.dig(:q, :name_cont)
+  end
+
   # GET /elements/technicians
   def index
     @q = Provider.ransack(params[:q])
@@ -44,6 +52,19 @@ class Elements::ProvidersController < ApplicationController
 
   private
 
+  def setup_search
+    @q = Provider.accessible_by(current_ability).ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @providers = @q.result.page(params[:page]).per(10)
+  end
+
+  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
+  # cantidad de resultados.
+  def valid_params?
+    id = params.dig(:q, :name_cont)
+    id && id.size > 2
+  end
+
   def set_provider
     @provider = Provider.find(params[:id])
   end
@@ -54,7 +75,5 @@ class Elements::ProvidersController < ApplicationController
                                     contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
                                     addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy],
                                     withholding_tax_ids: [])
-
-
   end
 end

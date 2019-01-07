@@ -35,6 +35,43 @@
         </div>
       </div>
 
+      <%= f.input :provider do %>
+        <div data-controller="provider-search" data-provider-search-url="<%= search_elements_providers_path %>" class="input-group">
+          <%= f.input_field :provider, class: 'form-control normal', readonly: true, value: provider_label(f.object.provider), name: '' %>
+          <%= f.hidden_field :provider_id %>
+          <div>
+            <button class="btn btn-primary" type="button" data-action="provider-search#show" data-togle="tooltip" data-trigger="hover" title="<%= t('.find_provider') %>">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <%= f.full_error :provider, class: 'invalid-feedback' %>
+        </div>
+      <% end %>
+
+      <div class="form-group row string required">
+        <%= f.input :mac_address, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
+          <div class="input-group">
+            <%= f.input_field :mac_address, as: :string, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :serial_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
+          <div class="input-group">
+            <%= f.input_field :serial_number, as: :string, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :firmware_version, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
+          <div class="input-group">
+            <%= f.input_field :firmware_version, as: :string, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+
       <legend class="form-section">
         <i class=""></i> <%= t('.section.deposit') %>
       </legend>
@@ -52,33 +89,33 @@
         </div>
       <% end %>
 
-      <legend class="form-section">
-        <i class=""></i> <%= t('.section.provider') %>
-      </legend>
-
-      <%= f.input :provider do %>
-        <div data-controller="provider-search" data-provider-search-url="<%= search_elements_providers_path %>" class="input-group">
-          <%= f.input_field :provider, class: 'form-control normal', readonly: true, value: provider_label(f.object.provider), name: '' %>
-          <%= f.hidden_field :provider_id %>
-          <div>
-            <button class="btn btn-primary" type="button" data-action="provider-search#show" data-togle="tooltip" data-trigger="hover" title="<%= t('.find_provider') %>">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-          <%= f.full_error :provider, class: 'invalid-feedback' %>
-        </div>
-      <% end %>
-
     </div>
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), inventories_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+
   </div>
 <% end %>
 
+<%# Modal Producto %>
 <div id="product-search-modal" class="modal" tabindex="-1" role="dialog">
 </div>
 
 <input id="product-search-id-target" type="hidden" value="inventory_product_id">
 <input id="product-search-label-target" type="hidden" value="inventory_product">
 
+<%# Modal Proveedor %>
+<div id="provider-search-modal" class="modal" tabindex="-1" role="dialog">
+</div>
+
+<input id="provider-search-id-target" type="hidden" value="inventory_provider_id">
+<input id="provider-search-label-target" type="hidden" value="inventory_provider">
+
+<%# Modal Depósito %>
 <div id="deposit-search-modal" class="modal" tabindex="-1" role="dialog">
 </div>
 

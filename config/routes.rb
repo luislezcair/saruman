@@ -63,7 +63,11 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-    resources :providers, concerns: :paginatable, except: [:show]
+    resources :providers, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'search'
+      end
+    end
   end
   
   namespace :products do
