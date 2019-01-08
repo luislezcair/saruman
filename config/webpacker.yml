@@ -63,7 +63,6 @@ test:
   public_output_path: packs-test
 
 production:
-  check_yarn_integrity: false
   <<: *default
 
   # Production depends on precompilation of packs prior to booting for performance.
