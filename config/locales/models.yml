@@ -75,16 +75,17 @@ es-AR:
       plan_service:
         name: 'Servicio'
       product:
-        product_number: 'Número de producto'
-        name: 'Producto'
-        description: 'Descripción'
-        product_type: 'Tipo'
         ac: 'Corriente alterna'
+        category: 'Categoría'
+        description: 'Descripción'
+        dbi: 'Potencia de antena (DBI)'
+        family: 'Familia'
+        name: 'Producto'
+        product_number: 'Número de producto'
+        product_type: 'Tipo'
         power_in: 'Potencia de entrada'
         power_out: 'Potencia de salida'
         poe: 'Energía sobre ethernet'
-        dbi: 'Potencia de antena (DBI)'
-        category: 'Categoría'
         producer: 'Fabricante'
       provider:
         name: 'Proveedor'
