@@ -50,7 +50,7 @@ class Elements::ProvidersController < ApplicationController
 
   def provider_params 
     params.require(:provider).permit(
-                                    :name,:email, :website, :tax_category_number, :identification_number, 
+                                    :name,:email, :website, :tax_category_number, :identification_number, :withholdingstatus, :tax_category_id,
                                     contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
                                     addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy],
                                     withholding_tax_ids: [])

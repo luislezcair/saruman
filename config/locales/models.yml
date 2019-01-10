@@ -90,6 +90,8 @@ es-AR:
         website: 'Página Web'
         tax_category_number: 'CUIT'
         identification_number: 'DNI'
+        withholdingstatus: 'Agente de retención'
+        tax_category: 'Categoría ante el IVA'
       tax_category:
         name: 'Nombre de la categoría'
         comment: 'Comentario'

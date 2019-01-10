@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_202057) do
+ActiveRecord::Schema.define(version: 2019_01_09_124243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,13 +153,13 @@ ActiveRecord::Schema.define(version: 2019_01_06_202057) do
   create_table "deposits", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
+    t.string "deposit_type"
     t.index ["city_id"], name: "index_deposits_on_city_id"
     t.index ["country_id"], name: "index_deposits_on_country_id"
     t.index ["province_id"], name: "index_deposits_on_province_id"
@@ -213,8 +213,10 @@ ActiveRecord::Schema.define(version: 2019_01_06_202057) do
     t.string "mac_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "provider_id"
     t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
     t.index ["product_id"], name: "index_inventories_on_product_id"
+    t.index ["provider_id"], name: "index_inventories_on_provider_id"
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -289,7 +291,6 @@ ActiveRecord::Schema.define(version: 2019_01_06_202057) do
     t.string "product_number"
     t.string "name"
     t.string "description"
-    t.string "type"
     t.boolean "ac"
     t.string "power_in"
     t.string "power_out"
@@ -300,6 +301,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_202057) do
     t.string "dbi"
     t.bigint "category_id"
     t.bigint "family_id"
+    t.string "product_type"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
@@ -314,6 +316,9 @@ ActiveRecord::Schema.define(version: 2019_01_06_202057) do
     t.string "website"
     t.string "tax_category_number"
     t.string "identification_number"
+    t.boolean "withholdingstatus", default: false
+    t.bigint "tax_category_id"
+    t.index ["tax_category_id"], name: "index_providers_on_tax_category_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -493,9 +498,11 @@ ActiveRecord::Schema.define(version: 2019_01_06_202057) do
   add_foreign_key "families", "producers"
   add_foreign_key "inventories", "deposits"
   add_foreign_key "inventories", "products"
+  add_foreign_key "inventories", "providers"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"
+  add_foreign_key "providers", "tax_categories"
   add_foreign_key "withholdings", "providers"
   add_foreign_key "withholdings", "withholding_taxes"
 end

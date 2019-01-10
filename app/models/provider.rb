@@ -4,6 +4,7 @@ class Provider < ApplicationRecord
 	# has_many :withholding_taxes
 	has_many :withholdings
 	has_many :withholding_taxes, through: :withholdings
+	belongs_to :tax_category
 
 	accepts_nested_attributes_for :contacts, allow_destroy: true
 	accepts_nested_attributes_for :addresses, allow_destroy: true
