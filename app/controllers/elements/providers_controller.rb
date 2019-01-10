@@ -5,8 +5,7 @@ class Elements::ProvidersController < ApplicationController
  
   # GET /elements/technicians
   def index
-    @q = Provider.ransack(params[:q])
-    @q.sorts = 'name asc' if @q.sorts.empty?
+     setup_search
     @providers = @q.result.page(params[:page])
   end
 
@@ -42,7 +41,40 @@ class Elements::ProvidersController < ApplicationController
     destroy_model(@provider)
   end
 
+  # GET /technical_services/download
+  def download
+    puts 'into'
+    setup_search
+    @providers = @q.result
+
+    exp = ProviderExporter.new(@providers)
+
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: ProviderExporter::EXCEL_MIME_TYPE
+  end
+
   private
+
+
+  # Configura los parámetros de búsqueda para Ransack. El campo tipo de costo
+  # es especial y se tiene que trasformar a una condicón == 0 o >= 0.
+  # Las fechas vienen en formato dd/mm/yyyy. Para utilizarlas en la consulta a
+  # la BD hay que agregarles la hora de principio del día y fin del día.
+  #
+  def setup_search
+    # if search_params?
+    #   name if name_present?
+    # end
+    @q = Provider.ransack(params[:q])
+    # @q = Provider.accessible_by(current_ability).ransack(params[:q])
+    # @q.sorts = ['date desc', 'client_name asc'] if @q.sorts.empty?
+  end
+
+  def name_present?
+    q = params[:q]
+    q[:datetime_gteq].present? && q[:datetime_lteq].present?
+  end
 
   def set_provider
     @provider = Provider.find(params[:id])
@@ -58,3 +90,4 @@ class Elements::ProvidersController < ApplicationController
 
   end
 end
+ 

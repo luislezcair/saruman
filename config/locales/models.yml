@@ -228,7 +228,7 @@ es-AR:
       product:
         one: 'Producto'
         other: 'Productos'
-      providerr:
+      provider:
         one: 'Proveedor'
         other: 'Proveedores'
       producer:

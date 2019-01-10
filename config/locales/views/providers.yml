@@ -19,6 +19,11 @@ es-AR:
         header: 'Proveedores'
         tooltip:
           new: 'Nuevo Proveedor'
+          export: 'Exportar a Excel'
+        search_form:
+          provider_name: 'Nombre Proveedor'
+          tooltip:
+            submit: 'Buscar'
       new:
         header: 'Nuevo Proveedor'
       providers_table:
