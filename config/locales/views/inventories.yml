@@ -3,8 +3,9 @@ es-AR:
     form:
       cancel: 'Cancelar'
       section: &form_sections
-        product: 'Datos del producto'
         deposit: 'Lugar en el que se encuentra'
+        particular_product: 'Datos del producto en particular'
+        product: 'Datos del producto'
         provider: 'Proveedor'
       submit: 'Guardar'
       find_product: 'Buscar producto'
@@ -17,3 +18,10 @@ es-AR:
     new:
       form:
         new_header: 'Registrar Producto'
+    inventories_table:
+      tooltip:
+        delete: 'Eliminar'
+        edit: 'Editar servicio'
+        show: 'Ver detalles'
+    deposit_stock:
+      header: 'Detalle Inventario'

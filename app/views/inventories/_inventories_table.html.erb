@@ -10,21 +10,37 @@
   <thead>
     <tr>
       <th>#</th>
+      <th><%= sort_link(@q, :product_number, {}, remote: true) %></th>
       <th><%= sort_link(@q, :product_name, {}, remote: true) %></th>
-      <th>Cantidad</th>
-      <th><%= sort_link(@q, :provider_name, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :deposit_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :family_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :producer_name, {}, remote: true) %></th>
+      <th>Stock</th>
       <th class="action-column"></th>
     </tr>
   </thead>
 
   <tbody>
-  
+    <% @inventories.each_with_index do |inv, index| %>
+      <tr>
+        <td><%= @inventories.offset_value + index + 1 %></td>
+        <td><%= inv.product.product_number %></td>
+        <td><%= inv.product.name %></td>
+        <td><%= inv.product.family.name %></td>
+        <td><%= inv.product.producer.name %></td>
+        <td><%= inv.stock_count(inv) %></td>
+
+        <td class="action-buttons">
+          <%= link_to deposit_stock_inventories_path(product_id: inv.product_id), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="6"></td>
+      <td class="page-entries-info" colspan="7"></td>
     </tr>
   </tfoot>
 </table>

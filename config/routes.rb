@@ -90,5 +90,9 @@ Rails.application.routes.draw do
 
   end
 
-  resources :inventories, concerns: :paginatable, except: [:show]
+  resources :inventories, concerns: :paginatable do
+    collection do 
+      get 'deposit_stock'
+    end
+  end
 end

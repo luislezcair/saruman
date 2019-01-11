@@ -1,0 +1,32 @@
+<div id="alert-message">
+  <% if flash[:alert] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Depósito</th>
+      <th>Tipo</th>
+      <th>Manager</th>
+      <th>Domicilio</th>
+      <th>Stock</th>
+      <th>Última Entrada</th>
+      <th>Última Salida</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="8"></td>
+    </tr>
+  </tfoot>
+</table>

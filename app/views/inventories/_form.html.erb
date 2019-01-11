@@ -27,11 +27,11 @@
       <% end %>
 
       <div class="form-group row string required">
-        <%= f.input :product_quantity, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric' } %>
+        <%= f.input :product_quantity, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 1 } %>
         <div>
-            <button class="btn btn-primary" type="button">
+            <%# <button class="btn btn-primary" type="button">
               <i class="fa fa-arrow-right"></i>
-            </button>
+            </button> %>
         </div>
       </div>
 
@@ -47,6 +47,27 @@
           <%= f.full_error :provider, class: 'invalid-feedback' %>
         </div>
       <% end %>
+
+      <legend class="form-section">
+        <i class=""></i> <%= t('.section.deposit') %>
+      </legend>
+
+      <%= f.input :deposit do %>
+        <div data-controller="deposit-search" data-deposit-search-url="<%= search_elements_deposits_path %>" class="input-group">
+          <%= f.input_field :deposit, class: 'form-control normal', readonly: true, value: deposit_label(f.object.deposit), name: '' %>
+          <%= f.hidden_field :deposit_id %>
+          <div>
+            <button class="btn btn-primary" type="button" data-action="deposit-search#show" data-togle="tooltip" data-trigger="hover" title="<%= t('.find_deposit') %>">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <%= f.full_error :deposit, class: 'invalid-feedback' %>
+        </div>
+      <% end %>
+
+      <legend class="form-section">
+        <i class=""></i> <%= t('.section.particular_product') %>
+      </legend>
 
       <div class="form-group row string required">
         <%= f.input :mac_address, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
@@ -71,23 +92,6 @@
           </div>
         <% end %>
       </div>
-
-      <legend class="form-section">
-        <i class=""></i> <%= t('.section.deposit') %>
-      </legend>
-
-      <%= f.input :deposit do %>
-        <div data-controller="deposit-search" data-deposit-search-url="<%= search_elements_deposits_path %>" class="input-group">
-          <%= f.input_field :deposit, class: 'form-control normal', readonly: true, value: deposit_label(f.object.deposit), name: '' %>
-          <%= f.hidden_field :deposit_id %>
-          <div>
-            <button class="btn btn-primary" type="button" data-action="deposit-search#show" data-togle="tooltip" data-trigger="hover" title="<%= t('.find_deposit') %>">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-          <%= f.full_error :deposit, class: 'invalid-feedback' %>
-        </div>
-      <% end %>
 
     </div>
 
