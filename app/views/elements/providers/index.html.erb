@@ -39,15 +39,14 @@
     <div class="title"><%= t('.header') %></div>
     <div>
       <% if can? :download, Provider %>
-        <%# <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export')  %>
-          <%# <i class="fa fa-table"></i> %>
-        <%# </button> %>
-            <%= link_to download_elements_providers_url, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
-             <i class="fa fa-table"></i>
-           <% end %>
-
-
+        <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
+          <i class="fa fa-table"></i>
+        </button>
       <% end %>
+        
+
+
+     
       <% if can? :create, Provider %>
         <%= link_to new_elements_provider_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>

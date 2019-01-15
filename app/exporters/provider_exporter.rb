@@ -9,6 +9,8 @@ class ProviderExporter
   
     def initialize(providers)
       @providers = providers
+      puts "initializer"
+      puts @providers
     end
    
     # Devuelve un arreglo con los nombres de los atributos para una fila de
@@ -16,7 +18,7 @@ class ProviderExporter
     #
 
     def attributes
-      attrs = %w[name contact_name email tax_category_number identification_number]
+      attrs = %w[name contact_name email website tax_category_number identification_number]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.provider.#{a}")
@@ -28,6 +30,8 @@ class ProviderExporter
     # a string concatenando los valores que correspondan.
     #
     def values
+      puts " def values exporters provider"
+      puts @providers
       @providers.map do |p|
         [
         p.name,

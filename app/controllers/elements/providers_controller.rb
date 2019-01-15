@@ -26,7 +26,7 @@ class Elements::ProvidersController < ApplicationController
       render :new, alert: :error
     end
   end
-
+ 
   # PUT/PATCH /elements/technicians/1
   def update
     if @provider.update(provider_params)
@@ -43,12 +43,11 @@ class Elements::ProvidersController < ApplicationController
 
   # GET /technical_services/download
   def download
-    puts 'into'
     setup_search
     @providers = @q.result
-
     exp = ProviderExporter.new(@providers)
-
+    puts "---exp -------"
+    puts exp
     send_data exp.to_excel_workbook.read,
               filename: "#{exp.filename}.xlsx",
               type: ProviderExporter::EXCEL_MIME_TYPE
@@ -63,12 +62,8 @@ class Elements::ProvidersController < ApplicationController
   # la BD hay que agregarles la hora de principio del día y fin del día.
   #
   def setup_search
-    # if search_params?
-    #   name if name_present?
-    # end
     @q = Provider.ransack(params[:q])
-    # @q = Provider.accessible_by(current_ability).ransack(params[:q])
-    # @q.sorts = ['date desc', 'client_name asc'] if @q.sorts.empty?
+    @q.sorts = ['name asc'] if @q.sorts.empty?
   end
 
   def name_present?
