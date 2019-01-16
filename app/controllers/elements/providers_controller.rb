@@ -2,7 +2,15 @@ class Elements::ProvidersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_provider, only: [:edit, :update, :destroy]
   authorize_resource
- 
+  
+  # GET /element/providers/search
+  def search
+    setup_search
+
+    @providers = @providers.where('1=0') unless search_params? && valid_params?
+    @name_cont = params.dig(:q, :name_cont)
+  end
+
   # GET /elements/technicians
   def index
      setup_search
@@ -79,8 +87,6 @@ class Elements::ProvidersController < ApplicationController
                                     contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
                                     addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy],
                                     withholding_tax_ids: [])
-
-
   end
 end
  

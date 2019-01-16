@@ -32,7 +32,7 @@
             <th>#</th>
             <th><%= sort_link(@q, :product_number, {}, remote: true) %></th>
             <th><%= sort_link(@q, :name, {}, remote: true) %></th>
-            <th><%= sort_link(@q, :type, {}, remote: true) %></th>
+            <th><%= sort_link(@q, :product_type, {}, remote: true) %></th>
           </tr>
         </thead>
 
@@ -42,7 +42,7 @@
               <td><%= index + 1 %></td>
               <td><%= c.product_number %></td>
               <td><%= c.name %></td>
-              <td><%= c.type %></td>
+              <td><%= c.product_type %></td>
             </tr>
           <% end %>
         </tbody>

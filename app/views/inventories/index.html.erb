@@ -8,6 +8,7 @@
     </div>
 
     <div>
+      <button type="button" class="btn btn-sm btn-primary">Movimiento entre depósitos</button>
       <% if can? :create, Inventory %>
         <%= link_to new_inventory_path, id: 'button_new', class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', trigger: 'hover', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>

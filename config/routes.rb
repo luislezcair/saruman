@@ -58,7 +58,11 @@ Rails.application.routes.draw do
     resources :corporate_cellphones, concerns: :paginatable, except: [:show]
     resources :technicians, concerns: :paginatable, except: [:show]
     resources :work_types, concerns: :paginatable, except: [:show]
-    resources :deposits, concerns: :paginatable, except: [:show]
+    resources :deposits, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'search'
+      end
+    end
     resources :providers, concerns: :paginatable, except: [:show] do
       collection do
         get 'download'
@@ -72,6 +76,7 @@ Rails.application.routes.draw do
     resources :products, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
+        get 'download'
       end
     end
     resources :families, concerns: :paginatable, except: [:show]
@@ -86,5 +91,9 @@ Rails.application.routes.draw do
 
   end
 
-  resources :inventories, concerns: :paginatable, except: [:show]
+  resources :inventories, concerns: :paginatable do
+    collection do 
+      get 'deposit_stock'
+    end
+  end
 end

@@ -13,7 +13,7 @@
       <th><%= sort_link(@q, :product_number, {}, remote: true) %></th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :description, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :type, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :product_type, {}, remote: true) %></th>
       <th><%# sort_link(@q, :category, {}, remote: true) %></th>
       <th><%# sort_link(@q, :producer, {}, remote: true) %></th>
       <th class="action-column"></th>
@@ -27,7 +27,7 @@
         <td><%= c.product_number %></td>
         <td><%= c.name %></td>
         <td><%= c.description %></td>
-        <td><%= c.type %></td>
+        <td><%= c.product_type %></td>
         <td><%# c.category %></td>
         <td><%# c.producer %></td>
 
@@ -62,3 +62,6 @@
     <% end %>
   </tfoot>
 </table>
+  <%= search_form_for @q, url: download_products_products_path, id: 'export_form' do |f| %>
+
+<% end %>

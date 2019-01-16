@@ -42,11 +42,20 @@ class Products::ProductsController < ApplicationController
     else
       render :edit, alert: :error 
     end
-  end
+  end 
 
   # DELETE /products/products/1
   def destroy 
     destroy_model(@product)
+  end
+
+  def download
+    setup_search
+    @products = @q.result
+    exp = ProductExporter.new(@products)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: ProductExporter::EXCEL_MIME_TYPE
   end
 
   private
@@ -69,6 +78,6 @@ class Products::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_number, :name, :description, :type, :ac, :power_in, :power_out, :poe, :dbi, :category_id, :producer_id, :family_id)
+    params.require(:product).permit(:product_number, :name, :description, :product_type, :ac, :power_in, :power_out, :poe, :dbi, :category_id, :producer_id, :family_id)
   end
 end

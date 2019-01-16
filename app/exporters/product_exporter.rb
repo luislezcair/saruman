@@ -16,7 +16,7 @@ class ProductExporter
     #
 
     def attributes
-      attrs = %w[product_number name description]
+      attrs = %w[product_number name description product_type category family producer]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.product.#{a}")
@@ -28,12 +28,18 @@ class ProductExporter
     # a string concatenando los valores que correspondan.
     #
     def values
-      @providers.map do |pr|
-
+      @products.map do |pr|
+        category = pr.category.name
+        family = pr.family.name
+        producer = pr.producer.name
         [
             pr.product_number,
             pr.name,
-            pr.description
+            pr.description,
+            pr.product_type,
+            category,
+            family,
+            producer
         ] 
       end
     end
@@ -44,6 +50,10 @@ class ProductExporter
     #
     def formats
       [
+        nil,
+        nil,
+        nil,
+        nil,
         nil,
         nil,
         nil

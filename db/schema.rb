@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 2019_01_09_124243) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
+    t.boolean "product_exist"
     t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
     t.index ["product_id"], name: "index_inventories_on_product_id"
     t.index ["provider_id"], name: "index_inventories_on_provider_id"
@@ -251,6 +252,31 @@ ActiveRecord::Schema.define(version: 2019_01_09_124243) do
     t.datetime "updated_at", null: false
     t.integer "mode", default: 0, null: false
     t.decimal "total_amount", precision: 15, scale: 2, default: "0.0", null: false
+  end
+
+  create_table "move_details", force: :cascade do |t|
+    t.bigint "inventory_id"
+    t.bigint "move_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inventory_id"], name: "index_move_details_on_inventory_id"
+    t.index ["move_id"], name: "index_move_details_on_move_id"
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.bigint "site_from_id"
+    t.bigint "site_to_id"
+    t.datetime "move_date"
+    t.bigint "user_register_id"
+    t.bigint "user_take_id"
+    t.string "ticket_type"
+    t.string "ticket_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_from_id"], name: "index_moves_on_site_from_id"
+    t.index ["site_to_id"], name: "index_moves_on_site_to_id"
+    t.index ["user_register_id"], name: "index_moves_on_user_register_id"
+    t.index ["user_take_id"], name: "index_moves_on_user_take_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -499,6 +525,12 @@ ActiveRecord::Schema.define(version: 2019_01_09_124243) do
   add_foreign_key "inventories", "deposits"
   add_foreign_key "inventories", "products"
   add_foreign_key "inventories", "providers"
+  add_foreign_key "move_details", "inventories"
+  add_foreign_key "move_details", "moves"
+  add_foreign_key "moves", "deposits", column: "site_from_id"
+  add_foreign_key "moves", "deposits", column: "site_to_id"
+  add_foreign_key "moves", "users", column: "user_register_id"
+  add_foreign_key "moves", "users", column: "user_take_id"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"
