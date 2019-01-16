@@ -46,8 +46,6 @@ class Elements::ProvidersController < ApplicationController
     setup_search
     @providers = @q.result
     exp = ProviderExporter.new(@providers)
-    puts "---exp -------"
-    puts exp
     send_data exp.to_excel_workbook.read,
               filename: "#{exp.filename}.xlsx",
               type: ProviderExporter::EXCEL_MIME_TYPE

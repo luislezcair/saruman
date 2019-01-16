@@ -3,12 +3,12 @@
 # Clase para exportar Providers a archivos como Excel, ajustando los
 # atributos y las relaciones has_many para acomodarlos en una sola fila.
 #
-class ProviderExporter
+class ProductExporter
     EXCEL_MIME_TYPE =
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   
-    def initialize(providers)
-      @providers = providers
+    def initialize(products)
+      @products = products
     end
    
     # Devuelve un arreglo con los nombres de los atributos para una fila de
@@ -16,10 +16,10 @@ class ProviderExporter
     #
 
     def attributes
-      attrs = %w[name  email website tax_category_number identification_number tax_category contacts address]
+      attrs = %w[product_number name description]
   
       attrs.map do |a|
-        I18n.t(".activerecord.attributes.provider.#{a}")
+        I18n.t(".activerecord.attributes.product.#{a}")
       end
     end
   
@@ -29,18 +29,11 @@ class ProviderExporter
     #
     def values
       @providers.map do |pr|
-        tax_category = pr.tax_category.name
-        contacts = pr.contacts.limit(1).pluck(:name, :phone).join('; ')  
-        address = pr.addresses.limit(1).pluck(:house_number, :street, :block, :floor, :number_department, :neighborhood).join('; ')
+
         [
-        pr.name,
-        pr.email,
-        pr.website,
-        pr.tax_category_number,
-        pr.identification_number,
-        tax_category,
-        contacts,
-        address
+            pr.product_number,
+            pr.name,
+            pr.description
         ] 
       end
     end
@@ -53,17 +46,12 @@ class ProviderExporter
       [
         nil,
         nil,
-        nil, 
-        nil, 
-        nil,
-        nil,
-        nil,
         nil
       ]
     end
   
     def model_name 
-      I18n.t('activerecord.models.provider', count: 2)
+      I18n.t('activerecord.models.product', count: 2)
     end
   
     def filename

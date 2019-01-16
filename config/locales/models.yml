@@ -91,7 +91,9 @@ es-AR:
         tax_category_number: 'CUIT'
         identification_number: 'DNI'
         withholdingstatus: 'Agente de retención'
-        tax_category: 'Categoría ante el IVA'
+        tax_category: 'Categoría ante el IVA' 
+        contacts: 'Telefono del Proveedor'
+        address: 'Dirección del proveedor'
       tax_category:
         name: 'Nombre de la categoría'
         comment: 'Comentario'

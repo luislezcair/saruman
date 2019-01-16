@@ -113,7 +113,7 @@ class TechnicalServiceExporter
         sheet.add_row v, style: styles
       end
 
-      sheet.auto_filter = 'A1:AD1'
+      sheet.auto_filter = 'A1:D1'
     end
 
     p.to_stream
