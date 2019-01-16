@@ -4,7 +4,7 @@ class Elements::DepositsController < ApplicationController
   authorize_resource
   
   # GET /element/deposits/search
-  def search
+  def search 
     setup_search
 
     @deposits = @deposits.where('1=0') unless search_params? && valid_params?
@@ -48,7 +48,16 @@ class Elements::DepositsController < ApplicationController
   def destroy
     destroy_model(@deposit)
   end
-
+ 
+  def download
+    setup_search
+    @deposits = @q.result
+    exp = DepositExporter.new(@deposits)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: DepositExporter::EXCEL_MIME_TYPE
+  end
+  
   private
 
   def setup_search

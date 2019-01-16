@@ -29,7 +29,7 @@ es-AR:
         technical_service_corporate_cellphones: 'Servicios Técnicos'
       deposit:
         name: 'Depósito'
-        description: 'Descripción'
+        description: 'Descripción' 
         deposit_type: 'Tipo'
         address: 'Dirección'
         country: 'País'
@@ -74,6 +74,8 @@ es-AR:
         quantity: 'Cantidad'
       plan_service:
         name: 'Servicio'
+      producer:
+          name: 'Fabricante'
       product:
         ac: 'Corriente alterna'
         category: 'Categoría'

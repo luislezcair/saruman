@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resources :deposits, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
+        get 'download'
       end
     end
     resources :providers, concerns: :paginatable, except: [:show] do
@@ -72,7 +73,11 @@ Rails.application.routes.draw do
   
   namespace :products do
     resources :categories, concerns: :paginatable, except: [:show]
-    resources :producers, concerns: :paginatable, except: [:show]
+    resources :producers, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'download'
+      end
+    end
     resources :products, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
