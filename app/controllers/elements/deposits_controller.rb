@@ -2,8 +2,20 @@ class Elements::DepositsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_deposit, only: [:edit, :update, :destroy]
   authorize_resource
-  
-  # GET /element/deposits/search
+
+  #  GET /elements/deposits/move
+  def move
+    #@inventories = Inventory.where(id: params[:q], product_exist: true)
+    #@inventories = Inventory.find(params[:q])
+    id = params[:q].split(",").map { |s| s.to_i }
+    @inventories = Inventory.find(id)
+    p "Parametros"
+    p id
+    p @inventories
+    @inventory = @inventories.first  
+  end
+
+  # GET /elements/deposits/search
   def search
     setup_search
 

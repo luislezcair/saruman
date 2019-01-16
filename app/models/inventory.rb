@@ -15,11 +15,16 @@ class Inventory < ApplicationRecord
 
   def default_values
     self.product_exist ||= true
+    self.serial_number ||= 'empty'
   end
   
   # Método que devuelve la cantidad de stock existente para un producto dentro del inventario, 
   # indistinto del depósito donde se encuentre.
   def stock_count(inv)
     count = Inventory.where(product_id: inv.product_id, product_exist: true).count
+  end
+
+  def stock_count_per_deposit(inv)
+    count = Inventory.where(product_id: inv.product_id, product_exist: true, deposit_id: inv.deposit_id).count
   end
 end

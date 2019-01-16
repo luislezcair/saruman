@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resources :deposits, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
+        get 'move'
       end
     end
     resources :providers, concerns: :paginatable, except: [:show] do

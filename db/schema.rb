@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_143034) do
+ActiveRecord::Schema.define(version: 2019_01_16_160553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -259,13 +259,13 @@ ActiveRecord::Schema.define(version: 2019_01_08_143034) do
     t.bigint "move_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "site_from_id"
+    t.bigint "site_to_id"
     t.index ["inventory_id"], name: "index_move_details_on_inventory_id"
     t.index ["move_id"], name: "index_move_details_on_move_id"
   end
 
   create_table "moves", force: :cascade do |t|
-    t.bigint "site_from_id"
-    t.bigint "site_to_id"
     t.datetime "move_date"
     t.bigint "user_register_id"
     t.bigint "user_take_id"
@@ -273,8 +273,6 @@ ActiveRecord::Schema.define(version: 2019_01_08_143034) do
     t.string "ticket_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["site_from_id"], name: "index_moves_on_site_from_id"
-    t.index ["site_to_id"], name: "index_moves_on_site_to_id"
     t.index ["user_register_id"], name: "index_moves_on_user_register_id"
     t.index ["user_take_id"], name: "index_moves_on_user_take_id"
   end
@@ -522,10 +520,10 @@ ActiveRecord::Schema.define(version: 2019_01_08_143034) do
   add_foreign_key "inventories", "deposits"
   add_foreign_key "inventories", "products"
   add_foreign_key "inventories", "providers"
+  add_foreign_key "move_details", "deposits", column: "site_from_id"
+  add_foreign_key "move_details", "deposits", column: "site_to_id"
   add_foreign_key "move_details", "inventories"
   add_foreign_key "move_details", "moves"
-  add_foreign_key "moves", "deposits", column: "site_from_id"
-  add_foreign_key "moves", "deposits", column: "site_to_id"
   add_foreign_key "moves", "users", column: "user_register_id"
   add_foreign_key "moves", "users", column: "user_take_id"
   add_foreign_key "products", "categories"

@@ -8,8 +8,8 @@ class InventoriesController < ApplicationController
     @q = Inventory.ransack(params[:q])
     @q.sorts = 'product.name asc' if @q.sorts.empty?
     @inventories = @q.result
-                    .select('inventories.product_id, inventories.deposit_id')
-                    .group('inventories.product_id, inventories.deposit_id')
+                    .select('inventories.product_id')
+                    .group('inventories.product_id')
                     .page(params[:page])
   end
 
@@ -19,8 +19,9 @@ class InventoriesController < ApplicationController
   end
 
   def deposit_stock
-    @inventories = Inventory.where(product_id: params[:product_id])
-    @inventory = @inventories.take    
+    @inventories = Inventory.where(product_id: params[:product_id], product_exist: true)
+    @inventory = @inventories.take   
+    @inventories = @inventories.group_by {|i| i.deposit}
   end
 
   def edit; end

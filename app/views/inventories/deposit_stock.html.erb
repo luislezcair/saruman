@@ -6,6 +6,9 @@
         <sub> (<%= current_user.group.organization.name %>)</sub>
       <% end %>
     </div>
+    <div data-controller="deposit-move">
+      <button type="button" class="btn btn-sm btn-primary" data-action="deposit-move#move" data-togle="tooltip" data-trigger="hover">Movimiento entre depósitos</button>
+    </div>
   </div>
 
   <div class="card-body text-white bg-dark">
@@ -20,3 +23,10 @@
     </div>
   </div>
 </div>
+
+<%# Modal Movimiento de Depósito %>
+<div id="deposit-move-modal" class="modal" tabindex="-1" role="dialog">
+</div>
+
+<input id="deposit-move-id-target" type="hidden" value="deposit_move_id">
+<input id="deposit-move-label-target" type="hidden" value="deposit_move">

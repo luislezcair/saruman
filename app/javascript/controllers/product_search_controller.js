@@ -8,7 +8,6 @@ export default class extends Controller {
   // Evento cuando se hace click en Buscar producto
   show() {
     const url = this.data.get('url');
-
     Rails.ajax({
       type: 'GET',
       dataType: 'script',
