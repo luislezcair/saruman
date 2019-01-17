@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_160553) do
+ActiveRecord::Schema.define(version: 2019_01_17_113435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -263,6 +263,8 @@ ActiveRecord::Schema.define(version: 2019_01_16_160553) do
     t.bigint "site_to_id"
     t.index ["inventory_id"], name: "index_move_details_on_inventory_id"
     t.index ["move_id"], name: "index_move_details_on_move_id"
+    t.index ["site_from_id"], name: "index_move_details_on_site_from_id"
+    t.index ["site_to_id"], name: "index_move_details_on_site_to_id"
   end
 
   create_table "moves", force: :cascade do |t|

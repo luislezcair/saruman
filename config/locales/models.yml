@@ -72,6 +72,15 @@ es-AR:
         iva_amount: 'IVA'
         net_amount: 'Neto'
         quantity: 'Cantidad'
+      move:
+        move_date: 'Fecha del movimiento'
+        user_register: 'Usuario emisor'
+        user_take: 'Usuario receptor'
+        ticket_type: 'Tipo de ticket'
+        ticket_number: 'Número de ticket'
+      move_detail:
+        site_from: 'Depósito origen'
+        site_to: 'Depósito destino'
       plan_service:
         name: 'Servicio'
       product:

@@ -5,14 +5,27 @@ class Elements::DepositsController < ApplicationController
 
   #  GET /elements/deposits/move
   def move
-    #@inventories = Inventory.where(id: params[:q], product_exist: true)
-    #@inventories = Inventory.find(params[:q])
     id = params[:q].split(",").map { |s| s.to_i }
     @inventories = Inventory.find(id)
-    p "Parametros"
-    p id
-    p @inventories
-    @inventory = @inventories.first  
+    @@product_moves = @inventories
+    @inventory = @inventories.first
+    @move = Move.new  
+    @move.move_details.build
+  end
+
+  def create_move
+    @move = Move.new(move_params)
+    if @move.save
+      site_to_id = params.dig(:move, :move_details_attributes, "0", :site_to_id).to_i
+      @@product_moves.each do |inv|
+        @move_detail = MoveDetail.new(site_to_id: site_to_id, site_from_id: inv.deposit.id, inventory_id: inv.id, move_id: @move.id)
+        inv.deposit_id = site_to_id
+        inv.product_quantity = 0
+        inv.save!
+        @move_detail.save
+      end
+      redirect_to inventories_path
+    end
   end
 
   # GET /elements/deposits/search
@@ -78,6 +91,10 @@ class Elements::DepositsController < ApplicationController
 
   def set_deposit
     @deposit = Deposit.find(params[:id])
+  end
+
+  def move_params
+    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :ticket_type, :ticket_number, move_details_attributes: [:site_to_id, :site_from_id])
   end
 
   def deposit_params

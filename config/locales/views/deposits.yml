@@ -31,3 +31,4 @@ es-AR:
         modal:
           close: 'Cerrar'
           title: 'Movimiento de Depósito'
+          submit: 'Guardar'

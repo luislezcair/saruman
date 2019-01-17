@@ -10,5 +10,4 @@ class Deposit < ApplicationRecord
               in: { oficina: 0, vehiculo: 1 }, 
               default: :oficina, 
               predicates: true
-                    
 end

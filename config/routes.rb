@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       collection do
         get 'search'
         get 'move'
+        post 'create_move'
       end
     end
     resources :providers, concerns: :paginatable, except: [:show] do

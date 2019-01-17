@@ -28,6 +28,8 @@ export default class extends Controller {
       productsArray.push($(this).val());
     });
 
+    console.log(productsArray.length)
+
     const url = '/elements/deposits/move';
 
     Rails.ajax({
