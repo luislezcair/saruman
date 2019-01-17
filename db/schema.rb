@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
+    t.string "country"
+    t.string "city"
+    t.string "state"
     t.index ["provider_id"], name: "index_addresses_on_provider_id"
   end
 
