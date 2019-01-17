@@ -12,6 +12,11 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
+          <% if can? :download, Producer %>
+        <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
+          <i class="fa fa-table"></i>
+        </button>
+      <% end %>
       <% if can? :create, Producer %>
         <%= link_to new_products_producer_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>
@@ -25,4 +30,4 @@
       <%= render 'producers_table' %>
     </div>
   </div>
-</div>
+</div> 

@@ -42,11 +42,20 @@ class Products::ProductsController < ApplicationController
     else
       render :edit, alert: :error 
     end
-  end
+  end 
 
   # DELETE /products/products/1
   def destroy 
     destroy_model(@product)
+  end
+
+  def download
+    setup_search
+    @products = @q.result
+    exp = ProductExporter.new(@products)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: ProductExporter::EXCEL_MIME_TYPE
   end
 
   private

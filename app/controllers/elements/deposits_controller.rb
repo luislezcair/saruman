@@ -73,7 +73,16 @@ class Elements::DepositsController < ApplicationController
   def destroy
     destroy_model(@deposit)
   end
-
+ 
+  def download
+    setup_search
+    @deposits = @q.result
+    exp = DepositExporter.new(@deposits)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: DepositExporter::EXCEL_MIME_TYPE
+  end
+  
   private
 
   def setup_search

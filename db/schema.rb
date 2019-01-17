@@ -342,6 +342,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.string "website"
     t.string "tax_category_number"
     t.string "identification_number"
+    t.boolean "withholdingstatus", default: false
+    t.bigint "tax_category_id"
+    t.index ["tax_category_id"], name: "index_providers_on_tax_category_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -531,6 +534,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"
+  add_foreign_key "providers", "tax_categories"
   add_foreign_key "withholdings", "providers"
   add_foreign_key "withholdings", "withholding_taxes"
 end

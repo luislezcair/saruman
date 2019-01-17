@@ -13,8 +13,7 @@ class Elements::ProvidersController < ApplicationController
 
   # GET /elements/technicians
   def index
-    @q = Provider.ransack(params[:q])
-    @q.sorts = 'name asc' if @q.sorts.empty?
+     setup_search
     @providers = @q.result.page(params[:page])
   end
 
@@ -35,7 +34,7 @@ class Elements::ProvidersController < ApplicationController
       render :new, alert: :error
     end
   end
-
+ 
   # PUT/PATCH /elements/technicians/1
   def update
     if @provider.update(provider_params)
@@ -50,19 +49,32 @@ class Elements::ProvidersController < ApplicationController
     destroy_model(@provider)
   end
 
-  private
-
-  def setup_search
-    @q = Provider.accessible_by(current_ability).ransack(params[:q])
-    @q.sorts = 'name asc' if @q.sorts.empty?
-    @providers = @q.result.page(params[:page]).per(10)
+  # GET /technical_services/download
+  def download
+    setup_search
+    @providers = @q.result
+    exp = ProviderExporter.new(@providers)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: ProviderExporter::EXCEL_MIME_TYPE
   end
 
-  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
-  # cantidad de resultados.
-  def valid_params?
-    id = params.dig(:q, :name_cont)
-    id && id.size > 2
+  private
+
+
+  # Configura los parámetros de búsqueda para Ransack. El campo tipo de costo
+  # es especial y se tiene que trasformar a una condicón == 0 o >= 0.
+  # Las fechas vienen en formato dd/mm/yyyy. Para utilizarlas en la consulta a
+  # la BD hay que agregarles la hora de principio del día y fin del día.
+  #
+  def setup_search
+    @q = Provider.ransack(params[:q])
+    @q.sorts = ['name asc'] if @q.sorts.empty?
+  end
+
+  def name_present?
+    q = params[:q]
+    q[:datetime_gteq].present? && q[:datetime_lteq].present?
   end
 
   def set_provider
@@ -71,9 +83,10 @@ class Elements::ProvidersController < ApplicationController
 
   def provider_params 
     params.require(:provider).permit(
-                                    :name,:email, :website, :tax_category_number, :identification_number, 
+                                    :name,:email, :website, :tax_category_number, :identification_number, :withholdingstatus, :tax_category_id,
                                     contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
                                     addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy],
                                     withholding_tax_ids: [])
   end
 end
+ 

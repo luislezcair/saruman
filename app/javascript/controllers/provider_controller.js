@@ -4,7 +4,7 @@ import { Controller } from 'stimulus'
  
 export default class extends Controller {
 
-	static targets = [ "fields", "form", "link", "contact_name" ]
+	static targets = [ "fields", "form", "link", "contact_name", "withholdingstatus", "retenciones" ]
 	
 
 	addContact(event) {
@@ -23,6 +23,18 @@ export default class extends Controller {
 		$(event.target).prev('input[type=hidden]').val('1')
 		$(event.target).closest('fieldset').hide()
 		event.preventDefault()
+	}
+
+	retencion(e){
+		console.log('into');
+		console.log(e);
+		console.log(e.target.checked);
+
+		if(e.target.checked == true){
+			this.retencionesTarget.setAttribute("style", "display: block;");
+		}else{
+			this.retencionesTarget.setAttribute("style", "display: none;");
+		}
 	}
 
 

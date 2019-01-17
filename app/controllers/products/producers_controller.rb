@@ -41,7 +41,21 @@ class Products::ProducersController < ApplicationController
     destroy_model(@producer)
   end
 
+  def download
+    setup_search
+    @producers = @q.result
+    exp = ProducerExporter.new(@producers)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: ProducerExporter::EXCEL_MIME_TYPE
+  end
+
   private
+  def setup_search
+    @q = Producer.ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @producers = @q.result.page(params[:page]).per(10)
+  end
 
   def set_producer
     @producer = Producer.find(params[:id])
