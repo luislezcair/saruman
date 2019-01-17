@@ -77,6 +77,7 @@ es-AR:
         accounts_chart: 'Plan de Cuentas'
         billing_exports: 'Facturación'
         dashboard: 'Tablero'
+        deposit_moves: 'Mov. por Depósito'
         elements: 'Elementos'
         inventory: 'Inventario'
         products: 'Productos'

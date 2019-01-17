@@ -71,6 +71,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'moves/index'
   
   namespace :products do
     resources :categories, concerns: :paginatable, except: [:show]
