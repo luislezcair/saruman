@@ -9,6 +9,8 @@ es-AR:
           basic: 'Información básica'
           phone: 'Teléfono del Proveedor'
           address: 'Direcciones del Proveedor'
+          taxs: 'Impuestos'
+          withholding: 'Retenciónes'
         action:
           addPhone: 'Agregar Teléfono'
           addAddress: 'Agregar Dirección'
@@ -17,6 +19,11 @@ es-AR:
         header: 'Proveedores'
         tooltip:
           new: 'Nuevo Proveedor'
+          export: 'Exportar a Excel'
+        search_form:
+          provider_name: 'Nombre Proveedor'
+          tooltip:
+            submit: 'Buscar'
       new:
         header: 'Nuevo Proveedor'
       providers_table:
@@ -28,4 +35,12 @@ es-AR:
         deletePhone: 'Eliminar Teléfono'
       address_fields:
         deleteAddress: 'Eliminar Dirección'
+      search:
+        find_provider: 'Buscar'
+        modal:
+          close: 'Cerrar'
+          title: 'Buscar proveedor'
+        placeholder: 'Nombre del proveedor'
+        tooltip:
+          select: 'Seleccionar'
   

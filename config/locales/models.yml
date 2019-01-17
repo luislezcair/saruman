@@ -28,9 +28,9 @@ es-AR:
         phone: 'Teléfono'
         technical_service_corporate_cellphones: 'Servicios Técnicos'
       deposit:
-        name: 'Nombre'
-        description: 'Descripción'
-        type: 'Tipo'
+        name: 'Depósito'
+        description: 'Descripción' 
+        deposit_type: 'Tipo'
         address: 'Dirección'
         country: 'País'
         province: 'Provincia'
@@ -44,12 +44,14 @@ es-AR:
         permissions: 'Permisos'
         users: 'Usuarios'
       inventory:
-        product: 'Producto'
-        firmware_version: 'Versión de firmware'
-        serial_number: 'Número de serie'
-        mac_address: 'Dirección MAC'
         deposit: 'Depósito'
         exist: 'En existencia'
+        firmware_version: 'Versión de firmware'
+        mac_address: 'Dirección MAC'
+        product: 'Producto'
+        product_quantity: 'Cantidad de productos'
+        provider: 'Proveedor'
+        serial_number: 'Número de serie'
       invoice:
         client: 'Cliente'
         contabilium: 'Contabilium'
@@ -70,24 +72,48 @@ es-AR:
         iva_amount: 'IVA'
         net_amount: 'Neto'
         quantity: 'Cantidad'
+      move:
+        move_date: 'Fecha del movimiento'
+        user_register: 'Usuario emisor'
+        user_take: 'Usuario receptor'
+        ticket_type: 'Tipo de ticket'
+        ticket_number: 'Número de ticket'
+      move_detail:
+        site_from: 'Depósito origen'
+        site_to: 'Depósito destino'
       plan_service:
         name: 'Servicio'
+      producer:
+          name: 'Fabricante'
       product:
-        product_number: 'Número de producto'
-        name: 'Nombre'
-        description: 'Descripción'
-        type: 'Tipo'
         ac: 'Corriente alterna'
+        category: 'Categoría'
+        description: 'Descripción'
+        dbi: 'Potencia de antena (DBI)'
+        family: 'Familia'
+        name: 'Producto'
+        product_number: 'Número de producto'
+        product_type: 'Tipo'
         power_in: 'Potencia de entrada'
         power_out: 'Potencia de salida'
         poe: 'Energía sobre ethernet'
-        dbi: 'Potencia de antena (DBI)'
-        category: 'Categoría'
         producer: 'Fabricante'
       provider:
-        name: 'Nombre del Proveedor'
+        name: 'Proveedor'
         email: 'Correo Electronico'
         website: 'Página Web'
+        tax_category_number: 'CUIT'
+        identification_number: 'DNI'
+        withholdingstatus: 'Agente de retención'
+        tax_category: 'Categoría ante el IVA' 
+        contacts: 'Telefono del Proveedor'
+        address: 'Dirección del proveedor'
+      tax_category:
+        name: 'Nombre de la categoría'
+        comment: 'Comentario'
+      withholding_tax:
+        withholding: 'Nombre de la Retención'
+        comment: 'Comentario'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
@@ -163,6 +189,8 @@ es-AR:
         corporate_cellphone:
           delete_error: 'No se puede eliminar este teléfono'
           delete_success: 'Se ha eliminado el teléfono'
+        deposit:
+          delete_success: 'Se ha eliminado el depósito'
         group:
           delete_error: 'No se pudo eliminar este grupo'
           delete_success: 'Se ha eliminado el grupo'
@@ -218,6 +246,9 @@ es-AR:
       product:
         one: 'Producto'
         other: 'Productos'
+      provider:
+        one: 'Proveedor'
+        other: 'Proveedores'
       producer:
         one: 'Fabricante'
         other: 'Fabricantes'

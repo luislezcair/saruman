@@ -1,0 +1,66 @@
+<div id="alert-message">
+  <% if flash[:alert] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data" style="border-collapse:collapse;">
+  <thead>
+      <tr>
+        <th>Depósito</th>
+        <th>Tipo</th>
+        <th>Manager</th>
+        <th>Domicilio</th>
+        <th>Stock</th>
+        <th>Última Entrada</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @inventories.each do |inv, indexes| %>
+      <tr data-toggle="collapse" data-target="#deposito<%=inv.id%>, #head<%=inv.id%>" class="accordion-toggle">
+        <td><%= inv.name %></td>
+        <td><%= inv.deposit_type %></td>
+        <td></td>
+        <td><%= inv.address %></td>
+        <td><%= indexes.length %></td>
+        <td><%= indexes.last.created_at.to_date.to_s(:long) %></td>
+      </tr>
+      <thead class="accordian-body collapse" id="head<%=inv.id%>" style="text-align: right !important; background-color: white;">
+        <tr>
+          <th><span class="cui-arrow-right" aria-hidden="true"></span></i></th>
+          <th>Selección</th>
+          <th>Número Serial</th>
+          <th>Proveedor</th>
+          <th colspan="3">Acciones</th>
+        </tr>
+      </thead>
+      <% for index in indexes %>
+        <tr class="accordian-body collapse" id="deposito<%= inv.id %>" style="text-align: right !important; background-color: white;">
+          <td></td>
+          <td>
+            <div data-controller="deposit-move">
+              <%# <input type="checkbox" data-action="deposit-move#catchProducts" data-target="deposit-move.input" data-id="<%= index.id %>
+              <input type="checkbox" value="<%= index.id %>" class="catchProducts">
+            </div>
+          </td>
+          <td>
+            <b class="text-info"><%= index.serial_number.blank? ? 'empty' : index.serial_number %></b>
+          </td>
+          <td>
+            <b class="text-info"><%= index.provider.name.blank? ? 'empty' : index.provider.name %></b>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+      <% end %> 
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="6"></td>
+    </tr>
+  </tfoot>
+</table>

@@ -58,20 +58,51 @@ Rails.application.routes.draw do
     resources :corporate_cellphones, concerns: :paginatable, except: [:show]
     resources :technicians, concerns: :paginatable, except: [:show]
     resources :work_types, concerns: :paginatable, except: [:show]
-    resources :deposits, concerns: :paginatable, except: [:show]
-    resources :providers, concerns: :paginatable, except: [:show]
+    resources :deposits, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'search'
+        get 'download'
+        get 'move'
+        post 'create_move'
+      end
+    end
+    resources :providers, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'download'
+      end
+    end
   end
+
+  get 'moves/index'
   
   namespace :products do
     resources :categories, concerns: :paginatable, except: [:show]
-    resources :producers, concerns: :paginatable, except: [:show]
+    resources :producers, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'download'
+      end
+    end
     resources :products, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
+        get 'download'
       end
     end
     resources :families, concerns: :paginatable, except: [:show]
   end
+  namespace :taxes do
+    resources :withholding_taxes, concerns: :paginatable, except: [:show]
+    resources :tax_categories, concerns: :paginatable, except: [:show] do
+      collection do
+        get 'search'
+      end
+    end
 
-  resources :inventories, concerns: :paginatable, except: [:show]
+  end
+
+  resources :inventories, concerns: :paginatable do
+    collection do 
+      get 'deposit_stock'
+    end
+  end
 end

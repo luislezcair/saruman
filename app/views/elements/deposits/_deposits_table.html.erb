@@ -11,7 +11,7 @@
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :type, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :deposit_type, {}, remote: true) %></th>
       <th><%= sort_link(@q, :description, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
@@ -22,12 +22,12 @@
       <tr>
         <td><%= @deposits.offset_value + index + 1 %></td>
         <td><%= t.name %></td>
-        <td><%= t.type %></td>
+        <td><%= t.deposit_type %></td>
         <td><%= t.description %></td>
 
         <td class="action-buttons">
           <% if can? :update, t %>
-            <%= link_to edit_elements_deposits_path(t), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+            <%= link_to edit_elements_deposit_path(t), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
               <i class="fa fa-pencil"></i>
             <% end %>
           <% end %>
@@ -56,3 +56,6 @@
     <% end %>
   </tfoot>
 </table>
+<%= search_form_for @q, url: download_elements_deposits_path, id: 'export_form' do |f| %>
+
+<% end %>

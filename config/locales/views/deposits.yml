@@ -12,10 +12,24 @@ es-AR:
         header: 'Depósitos'
         tooltip:
           new: 'Nuevo depósito'
+          export: 'Exportar a Excel'
       new:
         header: 'Nuevo Depósito'
-      technicians_table:
+      deposits_table:
         delete_confirm: '¿Está seguro que desea eliminar este depósito?'
         tooltip:
           edit: 'Editar depósito'
           delete: 'Eliminar depósito'
+      search:
+        find_deposit: 'Buscar'
+        modal:
+          close: 'Cerrar'
+          title: 'Buscar depósito'
+        placeholder: 'Nombre del depósito, tipo o dirección...'
+        tooltip:
+          select: 'Seleccionar'
+      move:
+        modal:
+          close: 'Cerrar'
+          title: 'Movimiento de Depósito'
+          submit: 'Guardar'

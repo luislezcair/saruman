@@ -3,6 +3,39 @@ class Elements::DepositsController < ApplicationController
   before_action :set_deposit, only: [:edit, :update, :destroy]
   authorize_resource
 
+  #  GET /elements/deposits/move
+  def move
+    id = params[:q].split(",").map { |s| s.to_i }
+    @inventories = Inventory.find(id)
+    @@product_moves = @inventories
+    @inventory = @inventories.first
+    @move = Move.new  
+    @move.move_details.build
+  end
+
+  def create_move
+    @move = Move.new(move_params)
+    if @move.save
+      site_to_id = params.dig(:move, :move_details_attributes, "0", :site_to_id).to_i
+      @@product_moves.each do |inv|
+        @move_detail = MoveDetail.new(site_to_id: site_to_id, site_from_id: inv.deposit.id, inventory_id: inv.id, move_id: @move.id)
+        inv.deposit_id = site_to_id
+        inv.product_quantity = 0
+        inv.save!
+        @move_detail.save
+      end
+      redirect_to inventories_path
+    end
+  end
+
+  # GET /elements/deposits/search
+  def search
+    setup_search
+
+    @deposits = @deposits.where('1=0') unless search_params? && valid_params?
+    @name_cont = params.dig(:q, :name_cont)
+  end
+
   # GET /elements/deposits
   def index
     @q = Deposit.ransack(params[:q])
@@ -21,7 +54,7 @@ class Elements::DepositsController < ApplicationController
   def create
     @deposit = Deposit.new(deposit_params)
     if @deposit.save
-      redirect_to elements_deposit_path
+      redirect_to elements_deposits_path
     else
       render :new, alert: :error
     end
@@ -40,14 +73,40 @@ class Elements::DepositsController < ApplicationController
   def destroy
     destroy_model(@deposit)
   end
-
+ 
+  def download
+    setup_search
+    @deposits = @q.result
+    exp = DepositExporter.new(@deposits)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: DepositExporter::EXCEL_MIME_TYPE
+  end
+  
   private
+
+  def setup_search
+    @q = Deposit.accessible_by(current_ability).ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @deposits = @q.result.page(params[:page]).per(10)
+  end
+
+  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
+  # cantidad de resultados.
+  def valid_params?
+    id = params.dig(:q, :name_cont)
+    id && id.size > 2
+  end
 
   def set_deposit
     @deposit = Deposit.find(params[:id])
   end
 
+  def move_params
+    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :ticket_type, :ticket_number, move_details_attributes: [:site_to_id, :site_from_id])
+  end
+
   def deposit_params
-    params.require(:deposit).permit(:name, :description, :type, :address, :city_id, :province_id, :country_id)
+    params.require(:deposit).permit(:name, :description, :deposit_type, :address, :city_id, :province_id, :country_id)
   end
 end

@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   def index
     setup_search
-    @invoices = @q.result.page(params[:page])
+    @invoices = @q.result.page(params[:page]) 
   end
 
   # GET /invoices/1
@@ -37,7 +37,8 @@ class InvoicesController < ApplicationController
     @invoices = @q.result
 
     exporter = InvoiceExporter.new(@invoices)
-
+    puts "invoice ------"
+    puts exporter
     send_data exporter.to_excel_workbook.read,
               filename: "#{exporter.filename}.xlsx",
               type: InvoiceExporter::EXCEL_MIME_TYPE

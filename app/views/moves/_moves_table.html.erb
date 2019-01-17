@@ -1,0 +1,34 @@
+<div id="alert-message">
+  <% if flash[:alert] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Depósito Destino</th>
+      <th>N° de Ticket</th>  
+      <th>Fecha</th>
+      <th>Usuario Emisor</th>  
+      <th>Usuario Receptor</th>  
+      <th class="action-column"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @moves.each do |move| %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= "#{move.ticket_number} (#{move.ticket_type})" %></td>
+        <td><%= move.move_date %></td>
+         <td><%= "#{move.user_register.firstname}, #{move.user_register.lastname}" %></td>
+        <td><%= "#{move.user_take.firstname}, #{move.user_take.lastname}" %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

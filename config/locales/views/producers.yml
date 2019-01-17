@@ -12,6 +12,7 @@ es-AR:
         header: 'Fabricantes'
         tooltip:
           new: 'Nuevo fabricante'
+          export: 'Exportar a Excel'
       new:
         header: 'Nuevo fabricante'
       producers_table:

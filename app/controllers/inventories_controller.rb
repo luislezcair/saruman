@@ -1,11 +1,16 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_inventory, only: [:show, :edit, :update, :destroy]
+  before_action :set_inventory, only: [:edit, :update, :destroy]
   authorize_resource
 
   # GET /inventories
   def index
-    @inventories = Inventory.ransack(params[:q])
+    @q = Inventory.ransack(params[:q])
+    @q.sorts = 'product.name asc' if @q.sorts.empty?
+    @inventories = @q.result
+                    .select('inventories.product_id')
+                    .group('inventories.product_id')
+                    .page(params[:page])
   end
 
   # GET /inventories/new
@@ -13,16 +18,25 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new
   end
 
+  def deposit_stock
+    @inventories = Inventory.where(product_id: params[:product_id], product_exist: true)
+    @inventory = @inventories.take   
+    @inventories = @inventories.group_by {|i| i.deposit}
+  end
+
   def edit; end
 
   # POST /inventories
   def create
-    @inventory = Inventory.new(inventory_params)
-    if @inventory.save
+    inventory_params[:product_quantity].to_i.times do |i|
+      @inventory = Inventory.new(inventory_params)
+      @inventory.save
+    end 
+    #if @inventory.save
       redirect_to inventories_path
-    else
-      render :new, alert: :error
-    end
+    #else
+    #  render :new, alert: :error
+    #end
   end
 
   # PUT/PATCH /inventories/1
@@ -46,6 +60,6 @@ class InventoriesController < ApplicationController
   end
 
   def inventory_params
-    params.require(:inventory).permit(:product_id, :deposit_id, :firmware_version, :serial_number, :mac_address)
+    params.require(:inventory).permit(:product_id, :deposit_id, :provider_id, :firmware_version, :serial_number, :mac_address, :product_exist, :product_quantity)
   end
 end

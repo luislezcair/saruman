@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title">
+      <%= t('.header') %>
+      <% if current_user.group.organization %>
+        <sub> (<%= current_user.group.organization.name %>)</sub>
+      <% end %>
+    </div>
+    <div data-controller="deposit-move">
+      <button type="button" class="btn btn-sm btn-primary" data-action="deposit-move#move" data-togle="tooltip" data-trigger="hover" id="#deposit-move-button">Movimiento entre depósitos</button>
+    </div>
+  </div>
+
+  <div class="card-body text-white bg-dark">
+    <h5><%= "#{@inventory.product.producer.name} (#{@inventory.product.family.name})"%></h5>
+    <h6><%= @inventory.product.name.upcase %></h6>
+    <h6><%= @inventory.product.description %></h6>
+  </div>
+
+  <div class="card-body">
+    <div id="inventories-table-container">
+      <%= render 'inventories_detail_table' %>
+    </div>
+  </div>
+</div>
+
+<%# Modal Movimiento de Depósito %>
+<div id="deposit-move-modal" class="modal" tabindex="-1" role="dialog">
+</div>
+
+<input id="deposit-move-id-target" type="hidden" value="deposit_move_id">
+<input id="deposit-move-label-target" type="hidden" value="deposit_move">

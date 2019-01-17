@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_173334) do
+ActiveRecord::Schema.define(version: 2019_01_17_113435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,13 +153,13 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
   create_table "deposits", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
+    t.string "deposit_type"
     t.index ["city_id"], name: "index_deposits_on_city_id"
     t.index ["country_id"], name: "index_deposits_on_country_id"
     t.index ["province_id"], name: "index_deposits_on_province_id"
@@ -213,8 +213,11 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.string "mac_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "provider_id"
+    t.boolean "product_exist"
     t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
     t.index ["product_id"], name: "index_inventories_on_product_id"
+    t.index ["provider_id"], name: "index_inventories_on_provider_id"
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -249,6 +252,31 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.datetime "updated_at", null: false
     t.integer "mode", default: 0, null: false
     t.decimal "total_amount", precision: 15, scale: 2, default: "0.0", null: false
+  end
+
+  create_table "move_details", force: :cascade do |t|
+    t.bigint "inventory_id"
+    t.bigint "move_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "site_from_id"
+    t.bigint "site_to_id"
+    t.index ["inventory_id"], name: "index_move_details_on_inventory_id"
+    t.index ["move_id"], name: "index_move_details_on_move_id"
+    t.index ["site_from_id"], name: "index_move_details_on_site_from_id"
+    t.index ["site_to_id"], name: "index_move_details_on_site_to_id"
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.datetime "move_date"
+    t.bigint "user_register_id"
+    t.bigint "user_take_id"
+    t.string "ticket_type"
+    t.string "ticket_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_register_id"], name: "index_moves_on_user_register_id"
+    t.index ["user_take_id"], name: "index_moves_on_user_take_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -289,7 +317,6 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.string "product_number"
     t.string "name"
     t.string "description"
-    t.string "type"
     t.boolean "ac"
     t.string "power_in"
     t.string "power_out"
@@ -300,6 +327,7 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.string "dbi"
     t.bigint "category_id"
     t.bigint "family_id"
+    t.string "product_type"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
@@ -312,6 +340,11 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.string "contact_name"
     t.string "email"
     t.string "website"
+    t.string "tax_category_number"
+    t.string "identification_number"
+    t.boolean "withholdingstatus", default: false
+    t.bigint "tax_category_id"
+    t.index ["tax_category_id"], name: "index_providers_on_tax_category_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -344,6 +377,13 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_system_configurations_on_name", unique: true
+  end
+
+  create_table "tax_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "technical_service_corporate_cellphones", force: :cascade do |t|
@@ -453,6 +493,22 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "withholding_taxes", force: :cascade do |t|
+    t.string "withholding"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "withholdings", force: :cascade do |t|
+    t.bigint "provider_id"
+    t.bigint "withholding_tax_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_withholdings_on_provider_id"
+    t.index ["withholding_tax_id"], name: "index_withholdings_on_withholding_tax_id"
+  end
+
   create_table "work_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -460,4 +516,25 @@ ActiveRecord::Schema.define(version: 2019_01_04_173334) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "addresses", "providers"
+  add_foreign_key "contacts", "providers"
+  add_foreign_key "deposits", "cities"
+  add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "provinces"
+  add_foreign_key "families", "producers"
+  add_foreign_key "inventories", "deposits"
+  add_foreign_key "inventories", "products"
+  add_foreign_key "inventories", "providers"
+  add_foreign_key "move_details", "deposits", column: "site_from_id"
+  add_foreign_key "move_details", "deposits", column: "site_to_id"
+  add_foreign_key "move_details", "inventories"
+  add_foreign_key "move_details", "moves"
+  add_foreign_key "moves", "users", column: "user_register_id"
+  add_foreign_key "moves", "users", column: "user_take_id"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "families"
+  add_foreign_key "products", "producers"
+  add_foreign_key "providers", "tax_categories"
+  add_foreign_key "withholdings", "providers"
+  add_foreign_key "withholdings", "withholding_taxes"
 end

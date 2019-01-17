@@ -9,6 +9,14 @@ module ProviderHelper
 		fields = f.fields_for(association, new_object, child_index: id) do |document|
 			render(association.to_s.singularize + "_fields", f: document)
 		end
-	link_to(name, '', class: "add_fields btn btn-primary", data: { id: id, fields: fields.gsub("\n", "")})
-end
+		link_to(name, '', class: "add_fields btn btn-primary", data: { id: id, fields: fields.gsub("\n", "")})
+	end
+
+	# Devuelve una descripción del proveedor que incluye Nombre.
+  def provider_label(prov)
+    return unless prov
+    "(#{prov.name})"
+  end
+
+  module_function :provider_label
 end   

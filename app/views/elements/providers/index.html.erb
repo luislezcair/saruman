@@ -7,11 +7,46 @@
     <%= link_to t('common.nav.elements.deposits'), elements_deposits_path, class: 'flex-sm-fill text-sm-center nav-link' %>
   </nav>
 <% end %>
+
+
+<div class="card">
+  <div class="card-body">
+    <%= search_form_for @q, url: elements_providers_path, remote: true do |f| %>
+      <div class="row">
+
+        <div class="col-sm-3">
+          <%= f.input :name_cont, label: t('.search_form.provider_name') do %>
+            <div class="input-group">
+              <%= f.input_field :name_cont, as: :string, class: 'form-control' %>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+
+
 <div class="card">
   <div class="card-header data-header">
     <div class="title"><%= t('.header') %></div>
-
     <div>
+      <% if can? :download, Provider %>
+        <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
+          <i class="fa fa-table"></i>
+        </button>
+      <% end %>
+        
+
+
+     
       <% if can? :create, Provider %>
         <%= link_to new_elements_provider_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>
@@ -19,10 +54,9 @@
       <% end %>
     </div>
   </div>
-
   <div class="card-body">
     <div id="providers-table-container">
       <%= render 'providers_table' %>
     </div>
-  </div>
+  </div> 
 </div>
