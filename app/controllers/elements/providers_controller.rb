@@ -7,13 +7,13 @@ class Elements::ProvidersController < ApplicationController
   def search
     setup_search
 
-    @providers = @providers.where('1=0') unless search_params? && valid_params?
+    @providers = @providers.all unless search_params? && valid_params?
     @name_cont = params.dig(:q, :name_cont)
   end
 
   # GET /elements/technicians
   def index
-     setup_search
+    setup_search
     @providers = @q.result.page(params[:page])
   end
 
@@ -62,14 +62,18 @@ class Elements::ProvidersController < ApplicationController
   private
 
 
-  # Configura los parámetros de búsqueda para Ransack. El campo tipo de costo
-  # es especial y se tiene que trasformar a una condicón == 0 o >= 0.
-  # Las fechas vienen en formato dd/mm/yyyy. Para utilizarlas en la consulta a
-  # la BD hay que agregarles la hora de principio del día y fin del día.
-  #
+  # Configura los parámetros de búsqueda para Ransack. 
   def setup_search
     @q = Provider.ransack(params[:q])
-    @q.sorts = ['name asc'] if @q.sorts.empty?
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @providers = @q.result.page(params[:page]).per(10)
+  end
+
+  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
+  # cantidad de resultados.
+  def valid_params?
+    id = params.dig(:q, :identification_cont)
+    id && id.size > 2
   end
 
   def name_present?

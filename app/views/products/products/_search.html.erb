@@ -14,9 +14,9 @@
 
     <div class="modal-body">
       <%= search_form_for @q, url: search_products_products_path, remote: true do |f| %>
-        <%= f.input :identification_cont, label: false do %>
+        <%= f.input :name_or_product_number_cont, label: false do %>
           <div class="input-group" data-controller="product-search">
-            <%= f.input_field :identification_cont, class: 'form-control', placeholder: t('.placeholder'), value: @identification_cont, data: { target: 'product-search.input', action: 'input->product-search#change' } %>
+            <%= f.input_field :name_or_product_number_cont, class: 'form-control', placeholder: t('.placeholder'), value: @name_or_product_number_cont, data: { target: 'product-search.input', action: 'input->product-search#change' } %>
             <div class="input-group-append">
               <button class="btn btn-primary" type="submit" disabled="disabled" data-target="product-search.button" data-toggle="tooltip" data-trigger="hover" title="<%= t('.find_product') %>">
                 <i class="fa fa-search"></i>
