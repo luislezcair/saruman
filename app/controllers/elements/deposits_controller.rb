@@ -32,7 +32,7 @@ class Elements::DepositsController < ApplicationController
   def search
     setup_search
 
-    @deposits = @deposits.where('1=0') unless search_params? && valid_params?
+    @deposits = @deposits.all unless search_params? && valid_params?
     @name_cont = params.dig(:q, :name_cont)
   end
 
