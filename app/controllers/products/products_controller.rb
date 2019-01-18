@@ -7,7 +7,7 @@ class Products::ProductsController < ApplicationController
   def search
     setup_search
 
-    @products = @products.where('1=0') unless search_params? && valid_params?
+    @products = @products.all unless search_params? && valid_params?
     @identification_cont = params.dig(:q, :identification_cont)
   end
 

@@ -85,7 +85,7 @@ class ProviderExporter
           sheet.add_row v, style: styles
         end
   
-        sheet.auto_filter = 'A1:G1'
+        sheet.auto_filter = 'A1:H1'
       end
   
       p.to_stream
