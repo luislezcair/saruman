@@ -35,6 +35,9 @@ es-AR:
         country: 'País'
         province: 'Provincia'
         city: 'Ciudad'
+      deposit_type:
+        deposit_type: 'Tipo de Deposito'
+        description: 'Descripción'
       family:
         name: 'Nombre'
         producer_id: 'Fabricante'
@@ -99,7 +102,8 @@ es-AR:
         poe: 'Energía sobre ethernet'
         producer: 'Fabricante'
       provider:
-        name: 'Proveedor'
+        contact_name: "Razón Social del Proveedor"
+        name: 'Nombre del Proveedor'
         email: 'Correo Electronico'
         website: 'Página Web'
         tax_category_number: 'CUIT'

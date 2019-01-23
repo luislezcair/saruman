@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_113435) do
+ActiveRecord::Schema.define(version: 2019_01_23_145316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,13 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "deposit_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "deposit_type"
+  end
+
   create_table "deposits", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -162,9 +169,10 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
-    t.string "deposit_type"
+    t.bigint "deposit_type_id"
     t.index ["city_id"], name: "index_deposits_on_city_id"
     t.index ["country_id"], name: "index_deposits_on_country_id"
+    t.index ["deposit_type_id"], name: "index_deposits_on_deposit_type_id"
     t.index ["province_id"], name: "index_deposits_on_province_id"
   end
 
@@ -523,6 +531,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
   add_foreign_key "contacts", "providers"
   add_foreign_key "deposits", "cities"
   add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "deposit_types"
   add_foreign_key "deposits", "provinces"
   add_foreign_key "families", "producers"
   add_foreign_key "inventories", "deposits"
