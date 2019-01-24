@@ -36,3 +36,5 @@ Session.vim
 
 .yardoc/
 doc/
+
+dump\.rdb

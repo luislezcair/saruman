@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_113435) do
+ActiveRecord::Schema.define(version: 2019_01_24_095534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,6 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
-    t.string "country"
-    t.string "city"
-    t.string "state"
     t.index ["provider_id"], name: "index_addresses_on_provider_id"
   end
 
@@ -218,6 +215,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
     t.boolean "product_exist"
+    t.string "status"
     t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
     t.index ["product_id"], name: "index_inventories_on_product_id"
     t.index ["provider_id"], name: "index_inventories_on_provider_id"
@@ -274,10 +272,11 @@ ActiveRecord::Schema.define(version: 2019_01_17_113435) do
     t.datetime "move_date"
     t.bigint "user_register_id"
     t.bigint "user_take_id"
-    t.string "ticket_type"
-    t.string "ticket_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.string "voucher_type"
+    t.string "voucher_number"
     t.index ["user_register_id"], name: "index_moves_on_user_register_id"
     t.index ["user_take_id"], name: "index_moves_on_user_take_id"
   end
