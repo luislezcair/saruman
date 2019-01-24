@@ -11,7 +11,7 @@
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :deposit_type, {}, remote: true) %></th>
+      
       <th><%= sort_link(@q, :description, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
@@ -22,7 +22,7 @@
       <tr>
         <td><%= @deposits.offset_value + index + 1 %></td>
         <td><%= t.name %></td>
-        <td><%= t.deposit_type %></td>
+       
         <td><%= t.description %></td>
 
         <td class="action-buttons">
