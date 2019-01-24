@@ -8,5 +8,12 @@ class Move < ApplicationRecord
 
   attribute :move_date, :datetime, default: -> { Time.current }
 
-  validates_presence_of :ticket_number
+  validates_presence_of :voucher_number
+
+  extend Enumerize
+
+  enumerize :status,  
+              in: { en_carga: 0, en_transito: 1, retrasado: 2, recibido: 3, en_espera: 4, eliminado: 5 }, 
+              default: :en_carga, 
+              predicates: true
 end
