@@ -15,14 +15,14 @@ class Elements::DepositsController < ApplicationController
 
   def create_move
     @move = Move.new(move_params)
-    if @move.save
+    if @move.save!
       site_to_id = params.dig(:move, :move_details_attributes, "0", :site_to_id).to_i
       @@product_moves.each do |inv|
         @move_detail = MoveDetail.new(site_to_id: site_to_id, site_from_id: inv.deposit.id, inventory_id: inv.id, move_id: @move.id)
         inv.deposit_id = site_to_id
         inv.product_quantity = 0
         inv.save!
-        @move_detail.save
+        @move_detail.save!
       end
       redirect_to inventories_path
     end
@@ -103,7 +103,7 @@ class Elements::DepositsController < ApplicationController
   end
 
   def move_params
-    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :voucher_type, :voucher_number, :deposit_type_id, move_details_attributes: [:site_to_id, :site_from_id])
+    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :voucher_type, :voucher_number, move_details_attributes: [:site_to_id, :site_from_id])
   end
 
   def deposit_params
