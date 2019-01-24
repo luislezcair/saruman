@@ -1,7 +1,6 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_inventory, only: [:edit, :update, :destroy]
-  before_action :default_values, only: [:create, :update]
   authorize_resource
 
   # GET /inventories
@@ -55,12 +54,6 @@ class InventoriesController < ApplicationController
   end
 
   private
-
-  def default_values
-    self.product_exist ||= true
-    self.serial_number ||= 'empty'
-    self.product_quantity ||= 1
-  end
 
   def set_inventory
     @inventory = Inventory.find(params[:id])
