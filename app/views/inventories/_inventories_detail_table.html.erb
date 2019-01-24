@@ -42,14 +42,16 @@
           <td>
             <div data-controller="deposit-move">
               <%# <input type="checkbox" data-action="deposit-move#catchProducts" data-target="deposit-move.input" data-id="<%= index.id %>
-              <input type="checkbox" value="<%= index.id %>" class="catchProducts">
+              <% if(index.status == :disponible) %>
+                <input type="checkbox" value="<%= index.id %>" class="catchProducts">
+              <% end %>
             </div>
           </td>
           <td>
-            <b class="text-info"><%= index.serial_number.blank? ? 'empty' : index.serial_number %></b>
+            <b class="text-info"><%= index.serial_number.blank? ? 'vacio' : index.serial_number %></b>
           </td>
           <td>
-            <b class="text-info"><%= index.provider.name.blank? ? 'empty' : index.provider.name %></b>
+            <b class="text-info"><%= index.provider.name.blank? ? 'vacio' : index.provider.name %></b>
           </td>
           <td>
 

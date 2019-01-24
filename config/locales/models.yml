@@ -52,6 +52,7 @@ es-AR:
         product_quantity: 'Cantidad de productos'
         provider: 'Proveedor'
         serial_number: 'Número de serie'
+        status: 'Estado'
       invoice:
         client: 'Cliente'
         contabilium: 'Contabilium'
@@ -74,10 +75,11 @@ es-AR:
         quantity: 'Cantidad'
       move:
         move_date: 'Fecha del movimiento'
+        status: 'Estado'
         user_register: 'Usuario emisor'
         user_take: 'Usuario receptor'
-        ticket_type: 'Tipo de ticket'
-        ticket_number: 'Número de ticket'
+        voucher_type: 'Tipo de comprobante'
+        voucher_number: 'Número de comprobante'
       move_detail:
         site_from: 'Depósito origen'
         site_to: 'Depósito destino'
