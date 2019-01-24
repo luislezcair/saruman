@@ -11,7 +11,6 @@
       <tr>
         <th>Depósito</th>
         <th>Tipo</th>
-        <th>Manager</th>
         <th>Domicilio</th>
         <th>Stock</th>
         <th>Última Entrada</th>
@@ -21,9 +20,8 @@
     <% @inventories.each do |inv, indexes| %>
       <tr data-toggle="collapse" data-target="#deposito<%=inv.id%>, #head<%=inv.id%>" class="accordion-toggle">
         <td><%= inv.name %></td>
-        <td><%= inv.deposit_type %></td>
-        <td></td>
-        <td><%= inv.address %></td>
+        <td><%= inv.deposit_type.deposit_type %></td>
+        <td><%= "#{inv.address} - (#{inv.city.name}, #{inv.province.name})" %></td>
         <td><%= indexes.length %></td>
         <td><%= indexes.last.created_at.to_date.to_s(:long) %></td>
       </tr>
