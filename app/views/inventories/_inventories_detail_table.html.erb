@@ -33,6 +33,7 @@
           <th>Selección</th>
           <th>Número Serial</th>
           <th>Proveedor</th>
+          <th>Estado</th>
           <th colspan="3">Acciones</th>
         </tr>
       </thead>
@@ -44,6 +45,8 @@
               <%# <input type="checkbox" data-action="deposit-move#catchProducts" data-target="deposit-move.input" data-id="<%= index.id %>
               <% if(index.status == :disponible) %>
                 <input type="checkbox" value="<%= index.id %>" class="catchProducts">
+              <% else %>
+                <input type="checkbox" value="<%= index.id %>" class="catchProducts" disabled>
               <% end %>
             </div>
           </td>
@@ -52,6 +55,9 @@
           </td>
           <td>
             <b class="text-info"><%= index.provider.name.blank? ? 'vacio' : index.provider.name %></b>
+          </td>
+          <td>
+            <b class="text-info"><%= index.status %></b>
           </td>
           <td>
 
