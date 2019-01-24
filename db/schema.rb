@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_095534) do
+ActiveRecord::Schema.define(version: 2019_01_24_111330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,11 @@ ActiveRecord::Schema.define(version: 2019_01_24_095534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
+    t.string "country"
+    t.string "city"
+    t.string "state"
     t.index ["provider_id"], name: "index_addresses_on_provider_id"
+    t.index ["province_id"], name: "index_addresses_on_province_id"
   end
 
   create_table "auth_tokens", force: :cascade do |t|
@@ -526,7 +530,10 @@ ActiveRecord::Schema.define(version: 2019_01_24_095534) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "countries"
   add_foreign_key "addresses", "providers"
+  add_foreign_key "addresses", "provinces"
   add_foreign_key "contacts", "providers"
   add_foreign_key "deposits", "cities"
   add_foreign_key "deposits", "countries"

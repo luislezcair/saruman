@@ -1,5 +1,6 @@
 
 <fieldset>
+    <div class="container">
         <div class="form-group row string required">
             <%= f.input :street, wrapper: false, grid_wrapper_html: { class: 'col-sm-6' }%>
         </div>
@@ -14,6 +15,14 @@
         <div class="form-group row string required">
             <%= f.input :neighborhood, wrapper: false, grid_wrapper_html: { class: 'col-sm-6' }%>
         </div>
+        <div class="form-group row string required">
+            <%= f.association :country, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+            <%= f.association :province, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        </div>
+
+        <div class="form-group row string required">
+          <%= f.association :city, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        </div>
         
 
         <div class="row">
@@ -25,6 +34,7 @@
         </div>
         <hr>
 
+    </div>
 </fieldset>
 
 

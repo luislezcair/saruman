@@ -13,6 +13,9 @@ es-AR:
         neighborhood: 'Barrio'
         block: 'Manzana'
         floor: 'Piso'
+        country: 'País'
+        province: 'Provincia'
+        city: 'Ciudad'
         number_department: 'Número de departamento'
       city:
         name: 'Ciudad'
