@@ -4,12 +4,12 @@ class Elements::ProvidersController < ApplicationController
   authorize_resource
   
   # GET /element/providers/search
-  def search
-    setup_search
+  # def search
+  #   setup_search
 
-    @providers = @providers.all unless search_params? && valid_params?
-    @name_cont = params.dig(:q, :name_cont)
-  end
+  #   @providers = @providers.all unless search_params? && valid_params?
+  #   @name_cont = params.dig(:q, :name_cont)
+  # end
 
   # GET /elements/technicians
   def index
@@ -51,7 +51,10 @@ class Elements::ProvidersController < ApplicationController
 
   # GET /technical_services/download
   def download
+    puts "setup search -----------------------------"
+    puts params[:q]
     setup_search
+    @q = Provider.ransack(params[:q])
     @providers = @q.result
     exp = ProviderExporter.new(@providers)
     send_data exp.to_excel_workbook.read,
@@ -62,7 +65,7 @@ class Elements::ProvidersController < ApplicationController
   private
 
 
-  # Configura los parámetros de búsqueda para Ransack. 
+  # Configura los parámetros de búsqueda para Ransack.  
   def setup_search
     @q = Provider.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?

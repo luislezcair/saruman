@@ -11,14 +11,14 @@
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :product_number, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :description, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th> 
       <th><%= sort_link(@q, :product_type, {}, remote: true) %></th>
-      <th><%# sort_link(@q, :category, {}, remote: true) %></th>
-      <th><%# sort_link(@q, :producer, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :category_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :producer_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :family_name, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
-  </thead>
+  </thead> 
 
   <tbody>
     <% @products.each_with_index do |c, index| %>
@@ -26,10 +26,10 @@
         <td><%= @products.offset_value + index + 1 %></td>
         <td><%= c.product_number %></td>
         <td><%= c.name %></td>
-        <td><%= c.description %></td>
         <td><%= c.product_type %></td>
-        <td><%# c.category %></td>
-        <td><%# c.producer %></td>
+        <td><%= c.category.name %></td>
+        <td><%= c.producer.name %></td>
+        <td><%= c.family.name %></td>
 
         <td class="action-buttons">
           <% if can? :update, c %>
@@ -47,7 +47,7 @@
       </tr>
     <% end %>
   </tbody>
-
+ 
   <tfoot>
     <tr>
       <td class="page-entries-info" colspan="8"><%= page_entries_info @products %></td>
@@ -63,5 +63,8 @@
   </tfoot>
 </table>
   <%= search_form_for @q, url: download_products_products_path, id: 'export_form' do |f| %>
-
+<%= f.hidden_field :name_cont %>
+<%= f.hidden_field :category_id_eq %>
+<%= f.hidden_field :family_id_eq %>
+<%= f.hidden_field :producer_id_eq %>
 <% end %>

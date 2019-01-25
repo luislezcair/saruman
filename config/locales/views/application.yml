@@ -18,6 +18,7 @@ es-AR:
       products: 
         categories: 'Categorias'
         families: 'Familias'
+        family: 'Familia'
         producers: 'Fabricantes'
         products: 'Productos'
       taxes:

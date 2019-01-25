@@ -6,18 +6,27 @@
       <legend class="form-section">
         <i class="fa fa-archive"></i> <%= t('.section.product') %>
       </legend>
-      <%= f.input :product_number %>
       <div class="form-group row string required">
-        <%= f.input :name, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }  %>
+        <%= f.input :product_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      
+      </div>
+      <div class="form-group row string required">
+        <%= f.input :name, wrapper: false, grid_wrapper_html: { class: 'col-sm-6' }  %>
+      
+      </div>
+
+       <div class="form-group row string required">
         <%= f.input :product_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
+
       <%= f.input :description, as: :text %>
       <div class="form-group row string required">
         <%= f.association :category, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
         <%= f.association :producer, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
-      <%= f.association :family %>
-      
+      <div class="form-group row string required">
+        <%= f.association :family,  wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }  %>
+      </div>
       <legend class="form-section">
         <i class="fa fa-archive"></i> <%= t('.section.product_detail') %>
       </legend>
@@ -43,4 +52,4 @@
       </div>
     </div>
   </div>
-<% end %>
+<% end %> 

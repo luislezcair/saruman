@@ -7,6 +7,47 @@
   </nav>
 <% end %> 
 
+<%# -- filtrado --- %>
+<div class="card">
+  <div class="card-body">
+    <%= search_form_for @q, url: products_products_path, remote: true do |f| %>
+      <div class="row">
+
+
+        <div class="col-sm-3">
+           <%= f.input :category_id_eq, as: :select, collection: sorted_category, label: t('.search_form.category'), include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-3">
+           <%= f.input :family_id_eq, as: :select, collection: sorted_family, label: t('.search_form.family'), include_blank: t('search_form.any') %>
+        </div>
+        
+        <div class="col-sm-3">
+           <%= f.input :producer_id_eq, as: :select, collection: sorted_producer, label: t('.search_form.producer'), include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-3">
+          <%= f.input :name_cont, label: t('.search_form.product_name') do %>
+            <div class="input-group">
+              <%= f.input_field :name_cont, as: :string, class: 'form-control' %>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+    <% end %>
+  </div>
+</div>
+<%# -- filtrado --- %>
+
+
+
 <div class="card">
   <div class="card-header data-header">
     <div class="title"><%= t('.header') %></div>
