@@ -119,6 +119,9 @@ es-AR:
         tax_category: 'Categoría ante el IVA' 
         contacts: 'Telefono del Proveedor'
         address: 'Dirección del proveedor'
+        city: 'Ciudad'
+        state: 'Provincia'
+        country: 'País'
       tax_category:
         name: 'Nombre de la categoría'
         comment: 'Comentario'

@@ -16,7 +16,7 @@ class ProviderExporter
     #
 
     def attributes
-      attrs = %w[name contact_name email website tax_category_number identification_number tax_category contacts address]
+      attrs = %w[name contact_name email website tax_category_number identification_number tax_category contacts address city state country]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.provider.#{a}")
@@ -26,12 +26,20 @@ class ProviderExporter
     # Devuelve un arreglo con los valores de los atributos en el mismo orden
     # que los encabezados en `attributes`. Convierte las relaciones many-to-many
     # a string concatenando los valores que correspondan.
-    #
+    # 
     def values
       @providers.map do |pr|
         tax_category = pr.tax_category.name
         contacts = pr.contacts.limit(1).pluck(:name, :phone).join('; ')  
         address = pr.addresses.limit(1).pluck(:house_number, :street, :block, :floor, :number_department, :neighborhood).join('; ')
+        ci_id =  pr.addresses.limit(1).pluck(:city_id)
+        p_id =  pr.addresses.limit(1).pluck(:province_id)
+        co_id =  pr.addresses.limit(1).pluck(:country_id)
+        city = City.where(id: ci_id).limit(1).pluck(:name)
+        state = Province.where(id: p_id).limit(1).pluck(:name)
+        country = Country.where(id: co_id).limit(1).pluck(:name)
+
+
         [
         pr.name,
         pr.contact_name,
@@ -41,11 +49,14 @@ class ProviderExporter
         pr.identification_number,
         tax_category,
         contacts,
-        address
+        address,
+        city[0],
+        state[0],
+        country[0]
         ] 
       end
     end
-  
+   
     # Devuelve un arreglo con los formatos de datos para el archivo de Excel.
     # Tienen que tener el mismo orden que `attributes`. Si se coloca nil o se
     # omite el formato queda como string.
@@ -57,6 +68,9 @@ class ProviderExporter
         nil,
         nil, 
         nil, 
+        nil,
+        nil,
+        nil,
         nil,
         nil,
         nil,
@@ -87,7 +101,7 @@ class ProviderExporter
           sheet.add_row v, style: styles
         end
   
-        sheet.auto_filter = 'A1:H1'
+        sheet.auto_filter = 'A1:K1'
       end
   
       p.to_stream

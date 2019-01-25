@@ -16,7 +16,7 @@ class DepositExporter
     #
 
     def attributes
-      attrs = %w[name description address deposit_type ]
+      attrs = %w[name description address deposit_type city province country ]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.deposit.#{a}")
@@ -29,17 +29,14 @@ class DepositExporter
     #
     def values
       @deposits.map do |d|
-      #  city = d.city.name
-      #  province = d.province.name
-      #  country = d.country.name
         [
             d.name,
             d.description,
             d.address,
-            d.deposit_type
-            # city,
-            # province,
-            # country
+            d.deposit_type,
+            d.city.name,
+            d.province.name,
+            d.country.name
         ] 
       end
     end
@@ -50,6 +47,9 @@ class DepositExporter
     #
     def formats
       [
+        nil,
+        nil,
+        nil,
         nil,
         nil,
         nil,
@@ -80,7 +80,7 @@ class DepositExporter
           sheet.add_row v, style: styles
         end
   
-        sheet.auto_filter = 'A1:D1'
+        sheet.auto_filter = 'A1:G1'
       end
   
       p.to_stream
