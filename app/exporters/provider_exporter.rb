@@ -16,7 +16,7 @@ class ProviderExporter
     #
 
     def attributes
-      attrs = %w[name  email website tax_category_number identification_number tax_category contacts address]
+      attrs = %w[name contact_name email website tax_category_number identification_number tax_category contacts address]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.provider.#{a}")
@@ -34,6 +34,7 @@ class ProviderExporter
         address = pr.addresses.limit(1).pluck(:house_number, :street, :block, :floor, :number_department, :neighborhood).join('; ')
         [
         pr.name,
+        pr.contact_name,
         pr.email,
         pr.website,
         pr.tax_category_number,
@@ -51,6 +52,7 @@ class ProviderExporter
     #
     def formats
       [
+        nil,
         nil,
         nil,
         nil, 

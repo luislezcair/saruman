@@ -16,7 +16,7 @@ class Elements::ProvidersController < ApplicationController
     setup_search
     @providers = @q.result.page(params[:page])
   end
-
+ 
   # GET /elements/technicians/new 
   def new
     @provider = Provider.new
@@ -87,9 +87,9 @@ class Elements::ProvidersController < ApplicationController
 
   def provider_params 
     params.require(:provider).permit(
-                                    :name,:email, :website, :tax_category_number, :identification_number, :withholdingstatus, :tax_category_id,
+                                    :contact_name, :name,:email, :website, :tax_category_number, :identification_number, :withholdingstatus, :tax_category_id,
                                     contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
-                                    addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department,:_destroy],
+                                    addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department, :city_id, :province_id, :country_id,:_destroy],
                                     withholding_tax_ids: [])
   end
 end

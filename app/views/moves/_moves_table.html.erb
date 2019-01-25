@@ -11,7 +11,7 @@
     <tr>
       <th>#</th>
       <th>Depósito Destino</th>
-      <th>N° de Ticket</th>  
+      <th>N° de Comprobante</th>  
       <th>Fecha</th>
       <th>Usuario Emisor</th>  
       <th>Usuario Receptor</th>  
@@ -23,7 +23,7 @@
       <tr>
         <td></td>
         <td></td>
-        <td><%= "#{move.ticket_number} (#{move.ticket_type})" %></td>
+        <td><%= "#{move.voucher_number} (#{move.voucher_type})" %></td>
         <td><%= move.move_date %></td>
          <td><%= "#{move.user_register.firstname}, #{move.user_register.lastname}" %></td>
         <td><%= "#{move.user_take.firstname}, #{move.user_take.lastname}" %></td>

@@ -1,4 +1,4 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title">
@@ -41,8 +41,8 @@
             <tr data-controller="deposit-search" data-deposit-search-id="<%= c.id %>" data-deposit-search-label="<%= deposit_label(c) %>" data-action="click->deposit-search#select">
               <td><%= index + 1 %></td>
               <td><%= c.name %></td>
-              <td><%= c.deposit_type %></td>
-              <td><%= c.address %></td>
+              <td><%= c.deposit_type.deposit_type %></td>
+              <td><%= "#{c.address} - (#{c.city.name}, #{c.province.name})" %></td>
             </tr>
           <% end %>
         </tbody>

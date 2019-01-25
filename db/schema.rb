@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_095534) do
+ActiveRecord::Schema.define(version: 2019_01_24_111330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,16 @@ ActiveRecord::Schema.define(version: 2019_01_24_095534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
+    t.string "city"
+    t.string "country"
+    t.string "state"
+    t.bigint "city_id"
+    t.bigint "province_id"
+    t.bigint "country_id"
+    t.index ["city_id"], name: "index_addresses_on_city_id"
+    t.index ["country_id"], name: "index_addresses_on_country_id"
     t.index ["provider_id"], name: "index_addresses_on_provider_id"
+    t.index ["province_id"], name: "index_addresses_on_province_id"
   end
 
   create_table "auth_tokens", force: :cascade do |t|
@@ -150,6 +159,13 @@ ActiveRecord::Schema.define(version: 2019_01_24_095534) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "deposit_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "deposit_type"
+  end
+
   create_table "deposits", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -159,9 +175,10 @@ ActiveRecord::Schema.define(version: 2019_01_24_095534) do
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
-    t.string "deposit_type"
+    t.bigint "deposit_type_id"
     t.index ["city_id"], name: "index_deposits_on_city_id"
     t.index ["country_id"], name: "index_deposits_on_country_id"
+    t.index ["deposit_type_id"], name: "index_deposits_on_deposit_type_id"
     t.index ["province_id"], name: "index_deposits_on_province_id"
   end
 
@@ -518,10 +535,14 @@ ActiveRecord::Schema.define(version: 2019_01_24_095534) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "countries"
   add_foreign_key "addresses", "providers"
+  add_foreign_key "addresses", "provinces"
   add_foreign_key "contacts", "providers"
   add_foreign_key "deposits", "cities"
   add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "deposit_types"
   add_foreign_key "deposits", "provinces"
   add_foreign_key "families", "producers"
   add_foreign_key "inventories", "deposits"

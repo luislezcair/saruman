@@ -35,7 +35,7 @@
                 <td><%= c.id %></td>
                 <td><%= c.serial_number %></td>
                 <td><%= c.provider.name %></td>
-                <td><%= "#{c.deposit.name} (#{c.deposit.deposit_type})" %></td>
+                <td><%= "#{c.deposit.name} (#{c.deposit.deposit_type.deposit_type})" %></td>
                 <td><%= c.deposit.address %></td>
               </tr>
             <% end %>
@@ -79,8 +79,8 @@
             <i class="fa fa-paperclip"></i> Comprobante asociado
           </legend>
           <div class="form-group row string required">
-            <%= f.input :ticket_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-            <%= f.input :ticket_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+            <%= f.input :voucher_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+            <%= f.input :voucher_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
           </div>
 
           <div class="modal-footer">

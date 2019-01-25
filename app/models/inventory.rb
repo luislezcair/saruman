@@ -9,6 +9,8 @@ class Inventory < ApplicationRecord
   #validates :product_quantity,
   #          numericality: { less_than: 2**30 }
 
+  before_save :default_values
+
   extend Enumerize
 
   enumerize :status,  
@@ -20,6 +22,12 @@ class Inventory < ApplicationRecord
   # indistinto del depósito donde se encuentre.
   def stock_count(inv)
     count = Inventory.where(product_id: inv.product_id, product_exist: true).count
+  end
+
+  def default_values
+    self.product_exist ||= true
+    self.serial_number ||= 'empty'
+    self.product_quantity ||= 1
   end
 
   def stock_count_per_deposit(inv)
