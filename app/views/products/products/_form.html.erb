@@ -16,7 +16,7 @@
       </div>
 
        <div class="form-group row string required">
-        <%= f.input :product_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+          <%= f.association :product_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
 
       <%= f.input :description, as: :text %>

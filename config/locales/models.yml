@@ -29,6 +29,7 @@ es-AR:
         name: 'Nombre de contacto'
         phone: 'Teléfono'
         type_phone: 'Tipo de Teléfono'
+        telephone_type: 'Tipo de Teléfono'
       corporate_cellphone:
         phone: 'Teléfono'
         technical_service_corporate_cellphones: 'Servicios Técnicos'
@@ -39,13 +40,14 @@ es-AR:
         address: 'Dirección'
         country: 'País'
         province: 'Provincia'
-        city: 'Ciudad'
+        city: 'Ciudad' 
       deposit_type:
         deposit_type: 'Tipo de Deposito'
         description: 'Descripción'
       family:
         name: 'Familia'
         producer_id: 'Fabricante'
+        producer: 'Fabricante'
       group:
         name: 'Nombre'
         organization: 'Organización'
@@ -108,6 +110,9 @@ es-AR:
         power_out: 'Potencia de salida'
         poe: 'Energía sobre ethernet'
         producer: 'Fabricante'
+      product_type:
+        name: 'Tipo de Producto'
+        description: 'Descripción'
       provider:
         contact_name: "Razón Social del Proveedor"
         name: 'Nombre del Proveedor'
@@ -125,6 +130,9 @@ es-AR:
       tax_category:
         name: 'Nombre de la categoría'
         comment: 'Comentario'
+      telephone_type:
+        name: 'Tipo de Telefono'
+        description: 'Descripción'
       withholding_tax:
         withholding: 'Nombre de la Retención'
         comment: 'Comentario'
@@ -275,6 +283,9 @@ es-AR:
       technician:
         one: 'Técnico'
         other: 'Técnicos'
+      telephone_type:
+        one: 'Tipos de Telefonos'
+        other: 'Tipos de Telefonos'
       user:
         one: 'Usuario'
         other: 'Usuarios'

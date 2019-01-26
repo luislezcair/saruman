@@ -19,6 +19,7 @@ es-AR:
           category: 'Categoria'
           family: 'Familia' 
           producer: 'Fabricante'
+          product_type: 'Tipo de producto'
           tooltip:
             submit: 'Buscar'
       new:

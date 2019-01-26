@@ -12,7 +12,7 @@
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :product_number, {}, remote: true) %></th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th> 
-      <th><%= sort_link(@q, :product_type, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :product_type_name, {}, remote: true) %></th> 
       <th><%= sort_link(@q, :category_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :producer_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :family_name, {}, remote: true) %></th>
@@ -26,7 +26,7 @@
         <td><%= @products.offset_value + index + 1 %></td>
         <td><%= c.product_number %></td>
         <td><%= c.name %></td>
-        <td><%= c.product_type %></td>
+        <td><%= c.product_type.name %></td>
         <td><%= c.category.name %></td>
         <td><%= c.producer.name %></td>
         <td><%= c.family.name %></td>

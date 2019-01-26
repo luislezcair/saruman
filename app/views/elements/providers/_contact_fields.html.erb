@@ -7,13 +7,8 @@
         
         <div class="form-group row string required">
             <%= f.input :phone, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-
-
-                <select class="form-control" id="ccmonth" class="col-sm-3">
-                    <option>Teléfono</option>
-                    <option>Celular</option>
-                </select>
-           
+            <%= f.association :telephone_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+  
         </div>
         <div class="row">
         <div data-action="click->provider#deleteContact" >

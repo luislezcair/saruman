@@ -3,6 +3,9 @@ module ProductsHelper
     Category.sorted
   end
 
+  def sorted_product_type
+    ProductType.sorted
+  end
   def sorted_family
     Family.sorted
   end
