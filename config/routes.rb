@@ -64,6 +64,8 @@ Rails.application.routes.draw do
         get 'search'
         get 'download'
         get 'move'
+        get 'select' # Seleccionar si es un nuevo movimiento o uno en carga
+        post 'move_detail'
         post 'create_move'
       end
     end

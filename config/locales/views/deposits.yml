@@ -33,3 +33,7 @@ es-AR:
           close: 'Cerrar'
           title: 'Movimiento de Depósito'
           submit: 'Guardar'
+      select:
+        modal:
+          close: 'Cerrar'
+          title: 'Seleccionar Movimiento de Depósito'

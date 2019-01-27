@@ -5,22 +5,38 @@ import { Controller } from 'stimulus';
 export default class extends Controller {
   static targets = ['input'];
 
-  /* initialize() {
-    this.productsArray = [];
-  } */
-  
-  /* catchProducts(e) {
-    //const productsArray = [];
-    const id = this.productsArray.indexOf(e.target.dataset.id);
-    console.log(id)
-    if (e.target.checked) { // inputTarget.checked
-      id ? this.productsArray.splice(0, 0, e.target.dataset.id) : false;
-      //id ? this.productsArray.push(e.target.dataset.id) : false;
-    } else {
-      id ? this.productsArray.splice(id, 1) : false;
-    }
-    console.log(this.productsArray)
-  } */
+  add() {
+    var productsArray = [];
+    $(".catchProducts:checked").each(function() {
+      productsArray.push($(this).val());
+    });
+
+    const [moveId, siteToId] = this.getValueRadioBtn().split("&");
+    const url = '/elements/deposits/move_detail';
+
+    Rails.ajax({
+      type: 'POST',
+      dataType: 'json',
+      data: `q=${productsArray}&move_id=${moveId}&site_to_id=${siteToId}`,
+      url,
+      success: () => {
+        $('#select-deposit-move-modal').modal('hide');
+      },
+    }) 
+  }
+
+  select() {
+    const url = '/elements/deposits/select';
+
+    Rails.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url,
+      success: () => {
+        $('#select-deposit-move-modal').modal('show');
+      },
+    })
+  }
 
   move() {
     var productsArray = [];
@@ -38,8 +54,22 @@ export default class extends Controller {
       data: "q=" + productsArray,
       url,
       success: () => {
+        $('#select-deposit-move-modal').modal('hide');
         $('#deposit-move-modal').modal('show');
       },
-    });
+    }); 
+  }
+
+  enableBtn() {
+    document.getElementById("btnCargarDetalle").disabled = false;
+  }
+
+  getValueRadioBtn() {
+    var radios = document.getElementsByName('selectMove');
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        return radios[i].value;
+      }
+    }
   }
 }

@@ -34,4 +34,9 @@ class Inventory < ApplicationRecord
     count = Inventory.where(product_id: inv.product_id, product_exist: true, deposit_id: inv.deposit_id).count
   end
 
+  def update_status(inv, status)
+    # Update status
+    inv.update_attributes!(status: status)
+  end
+
 end

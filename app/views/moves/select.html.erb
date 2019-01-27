@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title">
+      <%= t('.header') %>
+      <% if current_user.group.organization %>
+        <sub> (<%= current_user.group.organization.name %>)</sub>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div id="select-moves-table-container">
+      <%# <%= render 'moves_table' %> %>
+    </div>
+  </div>
+</div>

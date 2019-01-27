@@ -7,7 +7,7 @@
       <% end %>
     </div>
     <div data-controller="deposit-move">
-      <button type="button" class="btn btn-sm btn-primary" data-action="deposit-move#move" data-togle="tooltip" data-trigger="hover" id="#deposit-move-button">Movimiento entre depósitos</button>
+      <button type="button" class="btn btn-sm btn-primary" data-action="deposit-move#select" data-togle="tooltip" data-trigger="hover" id="#select-deposit-move-button">Movimiento entre depósitos</button>
     </div>
   </div>
 
@@ -24,9 +24,15 @@
   </div>
 </div>
 
-<%# Modal Movimiento de Depósito %>
+<%# Modal Nuevo Movimiento de Depósito %>
 <div id="deposit-move-modal" class="modal" tabindex="-1" role="dialog">
+</div>
+
+
+<%# Modal Seleccionar Movimiento de Depósito En Carga %>
+<div id="select-deposit-move-modal" class="modal" tabindex="-1" role="dialog">
 </div>
 
 <input id="deposit-move-id-target" type="hidden" value="deposit_move_id">
 <input id="deposit-move-label-target" type="hidden" value="deposit_move">
+

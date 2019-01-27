@@ -13,7 +13,7 @@
         <th>Tipo</th>
         <th>Domicilio</th>
         <th>Stock</th>
-        <th>Última Entrada</th>
+        <th>Última Actualización</th>
       </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
         <td><%= inv.deposit_type.deposit_type %></td>
         <td><%= "#{inv.address} - (#{inv.city.name}, #{inv.province.name})" %></td>
         <td><%= indexes.length %></td>
-        <td><%= indexes.last.created_at.to_date.to_s(:long) %></td>
+        <td><%= I18n.l(indexes.last.updated_at.to_datetime, locale: :es, format: :long) %></td>
       </tr>
       <thead class="accordian-body collapse" id="head<%=inv.id%>" style="text-align: right !important; background-color: white;">
         <tr>
@@ -55,7 +55,15 @@
             <b class="text-info"><%= index.provider.name.blank? ? 'vacio' : index.provider.name %></b>
           </td>
           <td>
-            <b class="text-info"><%= index.status %></b>
+            <% if(index.status == :en_carga) %>
+              <b class="text-warning"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
+            <% elsif(index.status == :eliminado || index.status == :vendido) %>
+              <b class="text-danger"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
+            <% elsif(index.status == :en_transito) %>
+              <b class="text-info"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
+            <% elsif(index.status == :disponible) %>
+              <b class="text-success"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
+            <% end %>
           </td>
           <td>
 
