@@ -9,7 +9,7 @@
 
       <div class="form-group row string required">
         <%= f.input :name, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-        <%= f.association :deposit_type,label_method: :deposit_type,  include_blank: false,wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :deposit_type,label_method: :name,  include_blank: false,wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
 
       </div> 
       

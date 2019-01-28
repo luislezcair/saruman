@@ -29,11 +29,12 @@ class DepositExporter
     #
     def values
       @deposits.map do |d|
+        deposit_type = d.deposit_type.name
         [
             d.name,
+            deposit_type,
             d.description,
             d.address,
-            d.deposit_type,
             d.city.name,
             d.province.name,
             d.country.name

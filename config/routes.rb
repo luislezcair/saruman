@@ -58,8 +58,8 @@ Rails.application.routes.draw do
     resources :corporate_cellphones, concerns: :paginatable, except: [:show]
     resources :technicians, concerns: :paginatable, except: [:show]
     resources :work_types, concerns: :paginatable, except: [:show]
-    resources :telephone_types, concerns: :paginatable, except: [:show]
     resources :deposit_types, concerns: :paginatable, except: [:show]
+    resources :telephone_types, concerns: :paginatable, except: [:show]
     resources :deposits, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'

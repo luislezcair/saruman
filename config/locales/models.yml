@@ -42,7 +42,7 @@ es-AR:
         province: 'Provincia'
         city: 'Ciudad' 
       deposit_type:
-        deposit_type: 'Tipo de Deposito'
+        name: 'Tipo de Deposito'
         description: 'Descripción'
       family:
         name: 'Familia'

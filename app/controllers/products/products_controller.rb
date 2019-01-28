@@ -13,6 +13,7 @@ class Products::ProductsController < ApplicationController
 
   # GET /product/products
   def index 
+    setup_search
     @q = Product.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @products = @q.result.page(params[:page])
@@ -57,7 +58,7 @@ class Products::ProductsController < ApplicationController
               filename: "#{exp.filename}.xlsx",
               type: ProductExporter::EXCEL_MIME_TYPE
   end
-
+ 
   private
 
   def setup_search
@@ -81,3 +82,4 @@ class Products::ProductsController < ApplicationController
     params.require(:product).permit(:product_number, :name, :description, :ac, :power_in, :power_out, :poe, :dbi, :category_id, :producer_id, :product_type_id, :family_id)
   end
 end 
+ 

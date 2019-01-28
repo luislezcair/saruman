@@ -19,7 +19,7 @@
 
         <div class="col-sm-3">
            <%= f.input :deposit_type_id_eq, as: :select, collection: sorted_deposit_type, label: t('.search_form.deposit_type'), include_blank: t('search_form.any') %>
-        </div>
+        </div> 
 
         <div class="col-sm-3">
            <%= f.input :city_id_eq, as: :select, collection: sorted_city, label: t('.search_form.city'), include_blank: t('search_form.any') %>
@@ -39,7 +39,7 @@
             </div>
           <% end %>
         </div>
-
+ 
       </div>
 
     <% end %>

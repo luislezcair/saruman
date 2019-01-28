@@ -32,11 +32,12 @@ class ProductExporter
         category = pr.category.name
         family = pr.family.name
         producer = pr.producer.name
+        product_type = pr.product_type.name
         [
             pr.product_number,
             pr.name,
             pr.description,
-            pr.product_type,
+            product_type,
             category,
             family,
             producer
