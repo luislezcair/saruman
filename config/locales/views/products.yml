@@ -20,6 +20,7 @@ es-AR:
           family: 'Familia' 
           producer: 'Fabricante'
           product_type: 'Tipo de producto'
+          reset: 'Limpiar Filtros'
           tooltip:
             submit: 'Buscar'
       new:

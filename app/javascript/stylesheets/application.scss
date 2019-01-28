@@ -29,7 +29,11 @@ main {
     flex: 0 0 20%;
     max-width: 20%;
   }
+
 }
+
+
+
 
 .col-sm-2-5,
 .col-sm-3-5 {
@@ -302,3 +306,13 @@ input[readonly].form-control.normal {
   background-color: transparent!important;
   border: none;
 }
+
+.reset-search{
+  margin-top: 40%;
+}
+
+@media (max-width: 575.98px) {
+  .reset-search{
+    margin-top: 5%;
+  }
+ }
