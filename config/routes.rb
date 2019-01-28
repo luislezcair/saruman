@@ -77,7 +77,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'moves/index'
+  resources :moves, only: [:update, :edit, :index, :show] do
+    collection do
+      delete 'destroy_move_detail'
+    end
+  end
   
   namespace :products do
     resources :categories, concerns: :paginatable, except: [:show]

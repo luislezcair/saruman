@@ -1,0 +1,99 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title">
+      <%= t('.header')%>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%# Formulario de movimiento entre depósitos %>
+    <%= simple_form_for @move, :url => edit_move_path(@move), wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+      <legend class="form-section">
+        <i class="fa fa-truck fa-lg mt-4"></i> Seleccione el depósito destino
+      </legend>
+      <%# Buscar y seleccionar depósito %>
+      <%= f.simple_fields_for :move_details, f.object.move_details.limit(1) do |md| %>
+        <%= md.association :site_to %>
+      <% end %>
+
+      <div class="form-group row string required">
+        <%= f.input :move_date, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group date">
+            <%= f.input_field :move_date, as: :string, class: 'form-control mask-date align-right', placeholder: 'dd/mm/aaaa', value: short_date(f.object.move_date.utc) %>
+            <div class="input-group-append input-group-addon">
+              <span class="input-group-text">
+                <i class="fa fa-calendar"></i>
+              </span>
+            </div>
+            <%= f.full_error :move_date, class: 'invalid-feedback' %>
+          </div>
+        <% end %>
+        <%= f.input :status, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <legend class="form-section">
+        <i class="fa fa-user"></i> Usuarios involucrados
+      </legend>
+      <div class="form-group row string required">
+        <%= f.association :user_register, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :user_take, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <legend class="form-section">
+        <i class="fa fa-paperclip"></i> Comprobante asociado
+      </legend>
+      <div class="form-group row string required">
+        <%= f.input :voucher_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :voucher_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="card-body">
+        <div class="card-header data-header">
+          <div class="title">
+            <%= t('.header_detail')%>
+          </div>
+        </div>
+        <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+          <thead> 
+            <tr>
+              <th>Inventario Id</th>
+              <th>Producto</th>
+              <th>N° de Serie</th>
+              <th>N° MAC</th>
+              <th>Firmware Version</th>
+              <th>Depósito Origen</th>
+              <th>Proveedor</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @move_details.each do |md| %>
+              <tr>
+                <td><%= md.inventory.id %></td>
+                <td><%= md.inventory.product.name %></td>
+                <td><%= md.inventory.serial_number %></td>
+                <td><%= md.inventory.mac_address %></td>
+                <td><%= md.inventory.firmware_version %></td>
+                <td><%= "#{md.site_from.name}, #{md.site_from.address} (#{md.site_from.city.name} - #{md.site_from.province.name})" %></td>              
+                <td><%= md.inventory.provider.name %></td>              
+                <td>
+                  <%= link_to destroy_move_detail_moves_path(md), class: 'btn btn-sm btn-outline-danger', data: { toggle: 'tooltip', title: t('.detail_table.destroy_item') } do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                </td>              
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <div class="float-right">
+          <%= link_to t('.cancel'), moves_path, class: 'btn btn-secondary' %>
+          <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

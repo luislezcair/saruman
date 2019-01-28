@@ -31,7 +31,7 @@ es-AR:
       move:
         modal:
           close: 'Cerrar'
-          title: 'Movimiento de Depósito'
+          title: 'Nuevo Movimiento de Depósito'
           submit: 'Guardar'
       select:
         modal:

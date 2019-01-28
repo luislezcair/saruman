@@ -27,7 +27,17 @@
                 <td><%= c.move_details.first.site_to.name %></td>
                 <td><%= c.created_at %></td>
                 <td><%= "#{c.voucher_number} - (#{c.voucher_type})" %></td>
-                <td><%= c.status %></td>
+                <td>
+                  <% if(c.status == :en_carga) %>
+                    <b class="text-warning"><%= c.status.split("_").map(&:capitalize).join(" ") %></b>
+                  <% elsif(c.status == :retrasado || c.status == :eliminado || c.status == :en_espera) %>
+                    <b class="text-danger"><%= c.status.split("_").map(&:capitalize).join(" ") %></b>
+                  <% elsif(c.status == :en_transito) %>
+                    <b class="text-info"><%= c.status.split("_").map(&:capitalize).join(" ") %></b>
+                  <% elsif(c.status == :recibido) %>
+                    <b class="text-success"><%= c.status.split("_").map(&:capitalize).join(" ") %></b>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
