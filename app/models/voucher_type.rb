@@ -1,0 +1,2 @@
+class VoucherType < ApplicationRecord
+end

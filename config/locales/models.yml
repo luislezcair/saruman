@@ -133,9 +133,6 @@ es-AR:
       telephone_type:
         name: 'Tipo de Telefono'
         description: 'Descripción'
-      withholding_tax:
-        withholding: 'Nombre de la Retención'
-        comment: 'Comentario'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
@@ -175,7 +172,16 @@ es-AR:
         firstname: 'Nombre'
         lastname: 'Apellido'
         name: 'Nombre'
+
+      voucher_type:
+        name: 'Nombre Voucher'
+        description: 'Descripción voucher'
         technical_service_technicians: 'Servicios Técnicos'
+      withholding_tax:
+        withholding: 'Nombre de la Retención'
+        comment: 'Comentario'
+      work_type:
+        name: 'Nombre' 
 
       user:
         active: 'Activo'
@@ -186,8 +192,6 @@ es-AR:
         name: 'Nombre'
         technician: 'Técnico'
         username: 'Nombre de usuario'
-      work_type:
-        name: 'Nombre' 
 
 
     errors:

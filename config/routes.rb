@@ -95,6 +95,7 @@ Rails.application.routes.draw do
   end
   namespace :taxes do
     resources :withholding_taxes, concerns: :paginatable, except: [:show]
+    resources :voucher_types, concerns: :paginatable, except: [:show]
     resources :tax_categories, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'

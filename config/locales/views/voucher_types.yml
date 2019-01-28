@@ -1,0 +1,29 @@
+es-AR:
+  taxes:
+    voucher_types:
+      edit:
+        header: 'Editar Voucher'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        action:
+          addPhone: 'Agregar Voucher'
+          addAddress: 'Agregar Dirección'
+        submit: 'Guardar'
+      index:
+        header: 'Tipos de Vouchers'
+        tooltip:
+          new: 'Nuevo Voucher'
+      new:
+        header: 'Nuevo Voucher'
+      voucher_types_table:
+        delete_confirm: '¿Está seguro que desea eliminar este Voucher?' 
+        tooltip:
+          edit: 'Editar Voucher'
+          delete: 'Eliminar Voucher'
+      contact_fields:
+        deletePhone: 'Eliminar Voucher'
+      address_fields:
+        deleteAddress: 'Eliminar Voucher'
+  
