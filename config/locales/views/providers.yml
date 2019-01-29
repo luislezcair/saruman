@@ -22,6 +22,9 @@ es-AR:
           export: 'Exportar a Excel'
         search_form:
           provider_name: 'Nombre Proveedor'
+          identification_number: 'DNI'
+          tax_category_number: 'CUIT'
+          reset: 'Limpiar Filtros'
           tooltip:
             submit: 'Buscar'
       new:

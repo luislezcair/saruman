@@ -12,10 +12,11 @@
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
       
-      <th><%= sort_link(@q, :description, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :deposit_type_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :city_name, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
-  </thead>
+  </thead> 
 
   <tbody>
     <% @deposits.each_with_index do |t, index| %>
@@ -23,7 +24,8 @@
         <td><%= @deposits.offset_value + index + 1 %></td>
         <td><%= t.name %></td>
        
-        <td><%= t.description %></td>
+        <td><%= t.deposit_type.name %></td>
+        <td><%= t.city.name %></td>
 
         <td class="action-buttons">
           <% if can? :update, t %>
@@ -56,6 +58,9 @@
     <% end %>
   </tfoot>
 </table>
-<%= search_form_for @q, url: download_elements_deposits_path, id: 'export_form' do |f| %>
 
+<%= search_form_for @q, url: download_elements_deposits_path, id: 'export_form' do |f| %>
+  <%= f.hidden_field :deposit_type_id_eq %>
+  <%= f.hidden_field :city_id_eq %>
+  <%= f.hidden_field :name_cont %>
 <% end %>

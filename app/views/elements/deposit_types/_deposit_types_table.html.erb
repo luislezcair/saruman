@@ -10,7 +10,7 @@
   <thead>
     <tr>
       <th class="number-column">#</th>
-      <th><%= sort_link(@q, :deposit_type, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
     <% @deposit_types.each_with_index do |wt, index| %>
       <tr>
         <td><%= @deposit_types.offset_value + index + 1 %></td>
-        <td><%= wt.deposit_type %></td>
+        <td><%= wt.name %></td>
 
         <td class="action-buttons">
           <% if can? :update, wt %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_111330) do
+ActiveRecord::Schema.define(version: 2019_01_28_184652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,7 +139,9 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
     t.string "type_phone"
+    t.bigint "telephone_type_id"
     t.index ["provider_id"], name: "index_contacts_on_provider_id"
+    t.index ["telephone_type_id"], name: "index_contacts_on_telephone_type_id"
   end
 
   create_table "corporate_cellphones", force: :cascade do |t|
@@ -163,7 +165,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "deposit_type"
+    t.string "name"
   end
 
   create_table "deposits", force: :cascade do |t|
@@ -332,6 +334,13 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "product_number"
     t.string "name"
@@ -346,10 +355,11 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
     t.string "dbi"
     t.bigint "category_id"
     t.bigint "family_id"
-    t.string "product_type"
+    t.bigint "product_type_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -467,6 +477,13 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
     t.index ["firstname", "lastname"], name: "index_technicians_on_firstname_and_lastname", unique: true
   end
 
+  create_table "telephone_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "towers", force: :cascade do |t|
     t.string "name", null: false
     t.integer "ucrm_site_id"
@@ -512,6 +529,13 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "voucher_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "withholding_taxes", force: :cascade do |t|
     t.string "withholding"
     t.string "comment"
@@ -540,6 +564,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
   add_foreign_key "addresses", "providers"
   add_foreign_key "addresses", "provinces"
   add_foreign_key "contacts", "providers"
+  add_foreign_key "contacts", "telephone_types"
   add_foreign_key "deposits", "cities"
   add_foreign_key "deposits", "countries"
   add_foreign_key "deposits", "deposit_types"
@@ -557,6 +582,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_111330) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"
+  add_foreign_key "products", "product_types"
   add_foreign_key "providers", "tax_categories"
   add_foreign_key "withholdings", "providers"
   add_foreign_key "withholdings", "withholding_taxes"

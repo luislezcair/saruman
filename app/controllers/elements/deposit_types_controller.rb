@@ -6,12 +6,13 @@ class Elements::DepositTypesController < ApplicationController
     # GET /elements/work_types
     def index
       @q = DepositType.ransack(params[:q])
-      @q.sorts = 'type asc' if @q.sorts.empty?
+      @q.sorts = 'name asc' if @q.sorts.empty?
       @deposit_types = @q.result.page(params[:page])
     end
   
     # GET /elements/work_types/new
     def new
+      puts "----intro new ----------"
       @deposit_type = DepositType.new
     end
   
@@ -19,6 +20,7 @@ class Elements::DepositTypesController < ApplicationController
   
     # POST /elements/work_types
     def create
+      puts "----intro create ----------"
       @deposit_type = DepositType.new(deposit_type_params)
       if @deposit_type.save
         redirect_to elements_deposit_types_path
@@ -44,11 +46,12 @@ class Elements::DepositTypesController < ApplicationController
     private
   
     def set_deposit_type
+      puts "---- set_deposit_type ----------"
       @deposit_type = DepositType.find(params[:id])
     end
   
     def deposit_type_params
-      params.require(:deposit_type).permit(:deposit_type, :description)
+      params.require(:deposit_type).permit( :name, :description)
     end
   end
   

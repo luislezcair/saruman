@@ -28,7 +28,7 @@ class Elements::DepositsController < ApplicationController
     @inventory = @inventories.first
     @move = Move.new  
     @move.move_details.build
-  end
+  end 
 
   def create_move
     @move = Move.new(move_params)
@@ -51,7 +51,7 @@ class Elements::DepositsController < ApplicationController
 
   # GET /elements/deposits/search
   def search
-    setup_search
+    setup_search  
 
     @deposits = @deposits.all unless search_params? && valid_params?
     @name_cont = params.dig(:q, :name_cont)
@@ -59,6 +59,7 @@ class Elements::DepositsController < ApplicationController
 
   # GET /elements/deposits
   def index
+    setup_search
     @q = Deposit.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @deposits = @q.result.page(params[:page])
@@ -107,9 +108,11 @@ class Elements::DepositsController < ApplicationController
   private
 
   def setup_search
-    @q = Deposit.accessible_by(current_ability).ransack(params[:q])
+    @q = Deposit.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @deposits = @q.result.page(params[:page]).per(10)
+    puts ' setup_search ------------'
+    puts @deposits
   end
 
   # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la

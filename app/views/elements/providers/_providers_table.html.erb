@@ -12,6 +12,8 @@
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
        <th><%= sort_link(@q, :contact_name, {}, remote: true) %></th>
+       <th><%= sort_link(@q, :identification_number, {}, remote: true) %></th>
+       <th><%= sort_link(@q, :tax_category_number, {}, remote: true) %></th>
  
       <th class="action-column"></th>
     </tr>
@@ -23,7 +25,9 @@
         <td><%= @providers.offset_value + index + 1 %></td>
         <td><%= t.name %></td>
         <td><%= t.contact_name %></td>
-        
+        <td><%= t.identification_number %></td>
+        <td><%= t.tax_category_number %></td>
+         
 
         <td class="action-buttons">
           <% if can? :update, t %>
@@ -49,7 +53,7 @@
 
     <% if @providers.total_pages > 1 %>
       <tr>
-        <td colspan="4">
+        <td colspan="6">
           <%= paginate @providers, remote: true %>
         </td>
       </tr>
@@ -60,4 +64,6 @@
 <%= search_form_for @q, url: download_elements_providers_path, id: 'export_form' do |f| %>
   <%= f.hidden_field :name_cont %>
   <%= f.hidden_field :contact_name_cont %>
-<% end %>
+  <%= f.hidden_field :identification_number_cont %>
+  <%= f.hidden_field :tax_category_number_cont %>
+<% end %> 

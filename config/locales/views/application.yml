@@ -9,6 +9,7 @@ es-AR:
       invoices: 'Comprobantes'
       elements:
         corporate_cellphones: 'Teléfonos Celulares'
+        telephone_types: 'Tipos de Teléfonos'
         technicians: 'Técnicos'
         work_types: 'Tipos de trabajo'
         deposits: 'Depósitos'
@@ -18,11 +19,14 @@ es-AR:
       products: 
         categories: 'Categorias'
         families: 'Familias'
+        family: 'Familia'
         producers: 'Fabricantes'
         products: 'Productos'
+        product_types: 'Tipos de Productos'
       taxes:
         tax_categories: 'Categoría ante el IVA'
         withholding_taxes: 'Retenciones'
+        voucher_types: 'Vouchers'
       users: 'Usuarios'
   enumerize:
     account:

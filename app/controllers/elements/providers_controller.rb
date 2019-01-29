@@ -4,12 +4,12 @@ class Elements::ProvidersController < ApplicationController
   authorize_resource
   
   # GET /element/providers/search
-  def search
-    setup_search
+  # def search
+  #   setup_search
 
-    @providers = @providers.all unless search_params? && valid_params?
-    @name_cont = params.dig(:q, :name_cont)
-  end
+  #   @providers = @providers.all unless search_params? && valid_params?
+  #   @name_cont = params.dig(:q, :name_cont)
+  # end
 
   # GET /elements/technicians
   def index
@@ -22,7 +22,7 @@ class Elements::ProvidersController < ApplicationController
     @provider = Provider.new
     # @provider.contacts.build #edit
   end
-
+ 
   def edit; end
 
   # POST /elements/technicians
@@ -51,7 +51,10 @@ class Elements::ProvidersController < ApplicationController
 
   # GET /technical_services/download
   def download
+    puts "setup search -----------------------------"
+    puts params[:q]
     setup_search
+    @q = Provider.ransack(params[:q])
     @providers = @q.result
     exp = ProviderExporter.new(@providers)
     send_data exp.to_excel_workbook.read,
@@ -62,7 +65,7 @@ class Elements::ProvidersController < ApplicationController
   private
 
 
-  # Configura los parámetros de búsqueda para Ransack. 
+  # Configura los parámetros de búsqueda para Ransack.  
   def setup_search
     @q = Provider.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
@@ -88,7 +91,7 @@ class Elements::ProvidersController < ApplicationController
   def provider_params 
     params.require(:provider).permit(
                                     :contact_name, :name,:email, :website, :tax_category_number, :identification_number, :withholdingstatus, :tax_category_id,
-                                    contacts_attributes:[:id, :name, :phone, :type_phone, :_destroy], 
+                                    contacts_attributes:[:id, :name, :phone, :type_phone, :telephone_type_id, :_destroy], 
                                     addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department, :city_id, :province_id, :country_id,:_destroy],
                                     withholding_tax_ids: [])
   end

@@ -5,3 +5,4 @@ import './invoices';
 import './technical_services';
 import './technical_services/form';
 import './users/form';
+import './providers/form'

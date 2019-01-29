@@ -1,8 +1,14 @@
-import Rails from 'rails-ujs';
-import $ from 'jquery';
+import { MaskElementByClass, MakeDateRangePicker } from '../util';
 
-$(document).on 'click', '.add_fields', (event) ->
-  time = new Date().getTime()
-  regexp = new RegExp($(this).data('id'), 'g')
-  $(this).before($(this).data('fields').replace(regexp, time))
-  event.preventDefault()
+function maskProviderFormElements() {
+  MakeDateRangePicker('.input-group.date');
+
+  MaskElementByClass('mask-numeric', 'integer');
+  MaskElementByClass('mask-meters', 'meters');
+  MaskElementByClass('mask-time', 'shortTime');
+  MaskElementByClass('mask-date', 'date');
+  MaskElementByClass('mask-money', 'currency');
+}
+
+document.addEventListener('providers:new:load',  maskProviderFormElements);
+document.addEventListener('providers:edit:load', maskProviderFormElements);
