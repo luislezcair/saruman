@@ -105,7 +105,7 @@ es-AR:
         family: 'Familia'
         name: 'Producto'
         product_number: 'Número de producto'
-        product_type: 'Tipo'
+        product_type_id: 'Tipo'
         power_in: 'Potencia de entrada'
         power_out: 'Potencia de salida'
         poe: 'Energía sobre ethernet'
