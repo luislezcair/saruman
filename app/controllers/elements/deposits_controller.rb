@@ -38,6 +38,7 @@ class Elements::DepositsController < ApplicationController
         @move_detail = MoveDetail.new(site_to_id: site_to_id, site_from_id: inv.deposit.id, inventory_id: inv.id, move_id: @move.id)
         inv.deposit_id = site_to_id
         inv.product_quantity = 0
+        inv.status = 1
         inv.save!
         @move_detail.save!
       end
