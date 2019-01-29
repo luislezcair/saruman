@@ -3,6 +3,23 @@ class Elements::DepositsController < ApplicationController
   before_action :set_deposit, only: [:edit, :update, :destroy]
   authorize_resource
 
+  # GET /elements/deposits/select
+  def select
+    @deposit_moves = Move.joins(move_details: :site_to).where(status: 'en_carga').distinct
+  end
+
+  # POST /elements/deposits/move-detail => Add move details
+  def move_detail
+    params[:q].split(',').map(&:to_i).each do |productId|
+      p "producto: #{productId}"
+      inventory = Inventory.find(productId)
+      @move_detail = MoveDetail.new(site_to_id: params[:site_to_id], site_from_id: inventory.deposit_id, inventory_id: productId, move_id: params[:move_id])
+      @move_detail.save!
+      inventory.update_attributes(deposit_id: params[:site_to_id], status: :en_carga)
+    end
+    redirect_to inventories_path
+  end
+
   #  GET /elements/deposits/move
   def move
     id = params[:q].split(",").map { |s| s.to_i }
@@ -26,6 +43,10 @@ class Elements::DepositsController < ApplicationController
       end
       redirect_to inventories_path
     end
+  end
+
+  def create_detail_move
+    @move = Move.find(id: params[:move_id])
   end
 
   # GET /elements/deposits/search
@@ -106,7 +127,7 @@ class Elements::DepositsController < ApplicationController
   end
 
   def move_params
-    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :voucher_type, :voucher_number, move_details_attributes: [:site_to_id, :site_from_id])
+    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :voucher_type_id, :voucher_number, move_details_attributes: [:site_to_id, :site_from_id])
   end
 
   def deposit_params

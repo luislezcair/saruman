@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title">
+      <%= t('.header')%>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <legend class="form-section">
+      <i class="fa fa-truck fa-lg mt-4"></i> Depósito destino
+    </legend>
+    <%= @move.move_details.first.site_to.name %>
+
+    <div class="form-group row string required">
+      <div class="col-sm-3">
+        Fecha de movimiento <%= I18n.l(@move.move_date.to_date, locale: :es, format: :long) %>
+      </div>
+      <div class="col-sm-3">
+        Estado <%= @move.status.split("_").map(&:capitalize).join(" ") %>
+      </div>
+    </div>
+
+    <div class="form-group row string required">
+      <div class="col-sm-3">
+        Usuario Emisor <%= "#{@move.user_register.firstname}, #{@move.user_register.lastname}" %>
+      </div>
+      <div class="col-sm-3">
+        Usuario Receptor <%= "#{@move.user_take.firstname}, #{@move.user_take.lastname}" %>
+      </div>
+    </div>
+
+    <div class="form-group row string required">
+      <div class="col-sm-6">
+        Comprobante Asociado <%= "#{@move.voucher_number} (#{@move.voucher_type.name})" %>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="card-header data-header">
+        <div class="title">
+          <%= t('.header_detail')%>
+        </div>
+      </div>
+      <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+        <thead> 
+          <tr>
+            <th>Inventario Id</th>
+            <th>Producto</th>
+            <th>N° de Serie</th>
+            <th>N° MAC</th>
+            <th>Firmware Version</th>
+            <th>Depósito Origen</th>
+            <th>Proveedor</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @move.move_details.each do |md| %>
+            <tr>
+              <td><%= md.inventory.id %></td>
+              <td><%= md.inventory.product.name %></td>
+              <td><%= md.inventory.serial_number %></td>
+              <td><%= md.inventory.mac_address %></td>
+              <td><%= md.inventory.firmware_version %></td>
+              <td><%= "#{md.site_from.name}, #{md.site_from.address} (#{md.site_from.city.name} - #{md.site_from.province.name})" %></td>              
+              <td><%= md.inventory.provider.name %></td>                          
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), moves_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>

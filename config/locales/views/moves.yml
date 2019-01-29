@@ -2,3 +2,18 @@ es-AR:
   moves:
     index:
       header: 'Movimientos de Depósito'
+    moves_table:
+        tooltip:
+          edit: 'Editar'
+          show: 'Ver'
+    edit:
+      header: 'Editar Movimiento de Depósito'
+      header_detail: 'Detalle del Movimiento'
+      cancel: 'Cancelar'
+      submit: 'Guardar'
+      detail_table:
+        destroy_item: 'Eliminar'
+    show:
+      header: 'Movimiento de Depósito'
+      header_detail: 'Detalle del Movimiento'
+      cancel: 'Cancelar'

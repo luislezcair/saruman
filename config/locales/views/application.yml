@@ -26,7 +26,7 @@ es-AR:
       taxes:
         tax_categories: 'Categoría ante el IVA'
         withholding_taxes: 'Retenciones'
-        voucher_types: 'Vouchers'
+        voucher_types: 'Tipos de Comprobantes'
       users: 'Usuarios'
   enumerize:
     account:
