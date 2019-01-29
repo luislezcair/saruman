@@ -5,5 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# group = Group.create!(name: 'Administrador', admin: true)
-# User.create!(firstname: 'Admin', lastname: 'Admin', email: 'admn@admin.com', username: 'admin', password: 'admin-123', group: group)
+group = Group.create!(name: 'Administrador', admin: true)
+User.create!(firstname: 'Admin', lastname: 'Admin', email: 'admn@admin.com', username: 'admin', password: 'admin-123', group: group)
+User.create!(firstname: 'Tecnico', lastname: 'Tecnico', email: 'tecnico@tecnico.com', username: 'tecnico', password: 'tecnico-123', group: group)
