@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     resources :providers, concerns: :paginatable, except: [:show] do
       collection do
         get 'download'
+        get 'search'
       end
     end
   end
