@@ -13,3 +13,7 @@ es-AR:
       submit: 'Guardar'
       detail_table:
         destroy_item: 'Eliminar'
+    show:
+      header: 'Movimiento de Depósito'
+      header_detail: 'Detalle del Movimiento'
+      cancel: 'Cancelar'
