@@ -43,7 +43,7 @@ class MovesController < ApplicationController
   end
 
   def move_params
-    attrs = [:move_date, :status, :user_register_id, :user_take_id, :voucher_type, :voucher_number]
+    attrs = [:move_date, :status, :user_register_id, :user_take_id, :voucher_type_id, :voucher_number]
     params.require(:move).permit(attrs)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_184652) do
+ActiveRecord::Schema.define(version: 2019_01_29_125657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -296,8 +296,10 @@ ActiveRecord::Schema.define(version: 2019_01_28_184652) do
     t.string "status"
     t.string "voucher_type"
     t.string "voucher_number"
+    t.bigint "voucher_type_id"
     t.index ["user_register_id"], name: "index_moves_on_user_register_id"
     t.index ["user_take_id"], name: "index_moves_on_user_take_id"
+    t.index ["voucher_type_id"], name: "index_moves_on_voucher_type_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -579,6 +581,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_184652) do
   add_foreign_key "move_details", "moves"
   add_foreign_key "moves", "users", column: "user_register_id"
   add_foreign_key "moves", "users", column: "user_take_id"
+  add_foreign_key "moves", "voucher_types"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "families"
   add_foreign_key "products", "producers"

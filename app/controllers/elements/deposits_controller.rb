@@ -127,7 +127,7 @@ class Elements::DepositsController < ApplicationController
   end
 
   def move_params
-    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :voucher_type, :voucher_number, move_details_attributes: [:site_to_id, :site_from_id])
+    params.require(:move).permit(:move_date, :user_register_id, :user_take_id, :voucher_type_id, :voucher_number, move_details_attributes: [:site_to_id, :site_from_id])
   end
 
   def deposit_params

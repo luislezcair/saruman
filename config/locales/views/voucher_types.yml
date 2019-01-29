@@ -2,28 +2,28 @@ es-AR:
   taxes:
     voucher_types:
       edit:
-        header: 'Editar Voucher'
+        header: 'Editar Comprobante'
       form:
         cancel: 'Cancelar'
         section:
           basic: 'Información básica'
         action:
-          addPhone: 'Agregar Voucher'
+          addPhone: 'Agregar Comprobante'
           addAddress: 'Agregar Dirección'
         submit: 'Guardar'
       index:
-        header: 'Tipos de Vouchers'
+        header: 'Tipos de Comprobantes'
         tooltip:
-          new: 'Nuevo Voucher'
+          new: 'Nuevo Comprobante'
       new:
-        header: 'Nuevo Voucher'
+        header: 'Nuevo Comprobante'
       voucher_types_table:
-        delete_confirm: '¿Está seguro que desea eliminar este Voucher?' 
+        delete_confirm: '¿Está seguro que desea eliminar este tipo de comprobante?' 
         tooltip:
-          edit: 'Editar Voucher'
-          delete: 'Eliminar Voucher'
+          edit: 'Editar Comprobante'
+          delete: 'Eliminar Comprobante'
       contact_fields:
-        deletePhone: 'Eliminar Voucher'
+        deletePhone: 'Eliminar Comprobante'
       address_fields:
-        deleteAddress: 'Eliminar Voucher'
+        deleteAddress: 'Eliminar Comprobante'
   

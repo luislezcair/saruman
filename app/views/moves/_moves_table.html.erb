@@ -24,7 +24,7 @@
       <tr>
         <td></td>
         <td><%= "#{move.move_details.last.site_to.name} - #{move.move_details.last.site_to.city.name}, #{move.move_details.last.site_to.province.name}" %></td>
-        <td><%= "#{move.voucher_number} (#{move.voucher_type})" %></td>
+        <td><%= "#{move.voucher_number} (#{move.voucher_type.name})" %></td>
         <td><%= I18n.l(move.move_date.to_date, locale: :es, format: :long) %></td>
          <td><%= "#{move.user_register.firstname}, #{move.user_register.lastname}" %></td>
         <td><%= "#{move.user_take.firstname}, #{move.user_take.lastname}" %></td>

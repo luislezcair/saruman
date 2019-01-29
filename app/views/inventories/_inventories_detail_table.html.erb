@@ -20,7 +20,7 @@
     <% @inventories.each do |inv, indexes| %>
       <tr data-toggle="collapse" data-target="#deposito<%=inv.id%>, #head<%=inv.id%>" class="accordion-toggle">
         <td><%= inv.name %></td>
-        <td><%= inv.deposit_type.deposit_type %></td>
+        <td><%= inv.deposit_type.name %></td>
         <td><%= "#{inv.address} - (#{inv.city.name}, #{inv.province.name})" %></td>
         <td><%= indexes.length %></td>
         <td><%= I18n.l(indexes.last.updated_at.to_datetime, locale: :es, format: :long) %></td>
