@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_01_28_184652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
+    t.string "city"
+    t.string "country"
+    t.string "state"
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
