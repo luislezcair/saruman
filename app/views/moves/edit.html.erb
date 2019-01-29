@@ -78,7 +78,7 @@
                 <td><%= "#{md.site_from.name}, #{md.site_from.address} (#{md.site_from.city.name} - #{md.site_from.province.name})" %></td>              
                 <td><%= md.inventory.provider.name %></td>              
                 <td>
-                  <%= link_to destroy_move_detail_moves_path(md), class: 'btn btn-sm btn-outline-danger', data: { toggle: 'tooltip', title: t('.detail_table.destroy_item') } do %>
+                  <%= link_to destroy_move_detail_moves_path(:id => md.id), class: 'btn btn-sm btn-outline-danger', :id => "del-#{md.id}", method: :delete, data: { confirm: '¿Está seguro de eliminar este detalle?', toggle: 'tooltip', title: t('.detail_table.destroy_item') }, :remote => true do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
                 </td>              

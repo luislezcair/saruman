@@ -15,6 +15,16 @@ class MovesController < ApplicationController
   end
 
   def destroy_move_detail
+    @move_detail = MoveDetail.find(params[:id])
+    move = @move_detail.move
+    inventory = Inventory.find(@move_detail.inventory.id)
+    inventory.update_attributes(status: :disponible)
+    @move_detail.destroy
 
+    respond_to do |format|
+      format.html { redirect_to edit_move_path(move) }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
 end
