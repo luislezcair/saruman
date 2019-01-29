@@ -4,12 +4,12 @@ class Elements::ProvidersController < ApplicationController
   authorize_resource
   
   # GET /element/providers/search
-  # def search
-  #   setup_search
+  def search
+    setup_search
 
-  #   @providers = @providers.all unless search_params? && valid_params?
-  #   @name_cont = params.dig(:q, :name_cont)
-  # end
+    @providers = @providers.all unless search_params? && valid_params?
+    @name_cont = params.dig(:q, :name_cont)
+  end
 
   # GET /elements/technicians
   def index
