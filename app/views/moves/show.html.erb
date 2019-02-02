@@ -6,10 +6,16 @@
   </div>
 
   <div class="card-body">
-    <legend class="form-section">
-      <i class="fa fa-truck fa-lg mt-4"></i> Depósito destino
-    </legend>
-    <%= @move.move_details.first.site_to.name %>
+    <div class="row string">
+      <div class="col-sm-3">
+        <legend class="form-section">
+          <i class="fa fa-truck fa-lg mt-4"></i> Depósito destino
+        </legend>
+        <%= @move.move_details.first.site_to.name %>
+      </div>
+      <div class="col-sm-3">
+      </div>
+    </div>
 
     <div class="form-group row string required">
       <div class="col-sm-3">
