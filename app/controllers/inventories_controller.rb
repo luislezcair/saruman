@@ -1,6 +1,6 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_inventory, only: [:edit, :update, :destroy]
+  before_action :set_inventory, only: [:edit, :update, :destroy, :show]
   authorize_resource
 
   # GET /inventories
@@ -23,6 +23,8 @@ class InventoriesController < ApplicationController
     @inventory = @inventories.take   
     @inventories = @inventories.group_by {|i| i.deposit}
   end
+  
+  def show; end
 
   def edit; end
 
@@ -32,11 +34,7 @@ class InventoriesController < ApplicationController
       @inventory = Inventory.new(inventory_params)
       @inventory.save
     end 
-    #if @inventory.save
-      redirect_to inventories_path
-    #else
-    #  render :new, alert: :error
-    #end
+    redirect_to inventories_path
   end
 
   # PUT/PATCH /inventories/1
