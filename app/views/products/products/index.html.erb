@@ -32,7 +32,7 @@
         <div class="col-sm-2">
           <%= f.input :name_cont, label: t('.search_form.product_name') do %>
             <div class="input-group">
-              <%= f.input_field :name_cont, as: :string, class: 'form-control' %>
+              <%= f.input_field :product_number_or_name_cont, as: :string, class: 'form-control' %>
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
                   <i class="fa fa-search"></i>
@@ -40,7 +40,7 @@
               </div>
             </div>
           <% end %>
-        </div>
+        </div> 
 
         <%#  limpiar filtros %>
         <div class="col-sm-1">

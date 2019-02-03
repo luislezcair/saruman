@@ -10,7 +10,7 @@ function clearFilters(){
         $('#q_producer_id_eq').val("")
         $('#q_category_id_eq').val("")
         $('#q_product_type_id_eq').val("")
-        $('#q_name_cont').val("")
+        $('#q_product_number_or_name_cont').val("")
     });
 }
 

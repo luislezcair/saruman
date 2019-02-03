@@ -8,6 +8,8 @@ class Deposit < ApplicationRecord
   validates :name, presence: :true
   validates :deposit_type, presence: :true
 
+  scope :sorted, -> { order(:name) }
+
   # enumerize :deposit_type,  
   #             in: { oficina: 0, vehiculo: 1 }, 
   #             default: :oficina, 

@@ -4,7 +4,16 @@ class MovesController < ApplicationController
   authorize_resource
 
   def index
-    @moves = Move.joins(:user_take, :user_register, move_details: :site_to).distinct()
+    # @moves = Move.joins(:user_take, :user_register, move_details: :site_to).distinct()
+    @q = Move.ransack(params[:q])
+    @moves = @q.result(distinct: true)
+    .includes(:user_take)
+    .includes(:user_register)
+    .includes( move_details: :site_to)
+    .joins(:user_take)
+    .joins(:user_register)
+    .joins( move_details: :site_to)
+    .page(params[:page])
   end
 
   def edit
