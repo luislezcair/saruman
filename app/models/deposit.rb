@@ -6,6 +6,7 @@ class Deposit < ApplicationRecord
 
   extend Enumerize
   validates :name, presence: :true
+  validates :deposit_type, presence: :true
 
   # enumerize :deposit_type,  
   #             in: { oficina: 0, vehiculo: 1 }, 

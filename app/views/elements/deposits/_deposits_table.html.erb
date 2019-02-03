@@ -24,8 +24,8 @@
         <td><%= @deposits.offset_value + index + 1 %></td>
         <td><%= t.name %></td>
        
-        <td><%= t.deposit_type.name %></td>
-        <td><%= t.city.name %></td>
+        <td><%= t.deposit_type.name  %></td>
+        <td><%= t.city ? t.city.name : " "  %></td>
 
         <td class="action-buttons">
           <% if can? :update, t %>

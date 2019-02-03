@@ -316,3 +316,21 @@ input[readonly].form-control.normal {
     margin-top: 5%;
   }
  }
+
+ #invalid-product-number{
+
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #f86c6b;
+ }
+
+ #valid-product-number{
+   color: #4dbd74;
+ }
+
+ .validate-icon-styles {
+  font-size: 2em;
+  position: inherit;
+  right: 0;
+  margin-right: 24px;
+}

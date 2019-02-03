@@ -9,5 +9,9 @@ class Provider < ApplicationRecord
 	accepts_nested_attributes_for :contacts, allow_destroy: true
 	accepts_nested_attributes_for :addresses, allow_destroy: true
 	# accepts_nested_attributes_for :withholding_taxes, allow_destroy: true
+
+
+
+	validates :name, presence: :true
 end
- 
+  

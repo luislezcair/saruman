@@ -58,6 +58,16 @@ class Products::ProductsController < ApplicationController
               filename: "#{exp.filename}.xlsx",
               type: ProductExporter::EXCEL_MIME_TYPE
   end
+
+  def product_number_validator
+    if params[:product_number].size <= 1
+      render json: { valid: false }
+    elsif Product.find_by_product_number(params[:product_number])
+      render json: { valid: false }
+    else
+      render json: { valid: true }
+    end
+  end
  
   private
 

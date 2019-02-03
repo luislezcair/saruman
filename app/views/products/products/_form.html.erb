@@ -8,7 +8,12 @@
       </legend>
       <div class="form-group row string required">
         <%= f.input :product_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-      
+        <span class="validate-icon-styles">
+        <%# <div id="valid-product-number"> </div> %>
+          <span id="valid-product-number" class="fa fa-check-circle"></span>
+        </span>
+       
+        <div id="invalid-product-number"  ></div>
       </div>
       <div class="form-group row string required">
         <%= f.input :name, wrapper: false, grid_wrapper_html: { class: 'col-sm-6' }  %>
