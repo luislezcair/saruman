@@ -55,7 +55,7 @@
             <b class="text-info"><%= index.provider.name.blank? ? 'vacio' : index.provider.name %></b>
           </td>
           <td>
-            <% if(index.status == :en_carga) %>
+            <% if(index.status == :en_movimiento) %>
               <b class="text-warning"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
             <% elsif(index.status == :eliminado || index.status == :vendido) %>
               <b class="text-danger"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
