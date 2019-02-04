@@ -16,7 +16,7 @@ class DepositExporter
     #
 
     def attributes
-      attrs = %w[name description address deposit_type city province country ]
+      attrs = %w[name description  deposit_type address city province country ]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.deposit.#{a}")
@@ -32,8 +32,8 @@ class DepositExporter
         deposit_type = d.deposit_type.name
         [
             d.name,
-            deposit_type,
             d.description,
+            deposit_type,
             d.address,
             d.city.name,
             d.province.name,

@@ -5,4 +5,5 @@ class WithholdingTax < ApplicationRecord
     has_many :withholdings
     has_many :providers, :through => :withholdings
 
+    validates :withholding, presence: :true
 end

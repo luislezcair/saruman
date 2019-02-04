@@ -111,6 +111,7 @@ es-AR:
         power_out: 'Potencia de salida'
         poe: 'Energía sobre ethernet'
         producer: 'Fabricante'
+        product_type: 'Tipo de producto'
       product_type:
         name: 'Tipo de Producto'
         description: 'Descripción'
@@ -244,6 +245,39 @@ es-AR:
         work_type:
           delete_error: 'No se puede eliminar este tipo de trabajo'
           delete_success: 'Se ha eliminado el tipo de trabajo'
+        category:
+          delete_error: 'No se puede eliminar esta Categoría'
+          delete_success: 'Se ha eliminado la categoría'
+        producer:
+          delete_error: 'No se puede eliminar este fabricante'
+          delete_success: 'Se ha eliminado el fabricante'
+        family:
+          delete_error: 'No se puede eliminar esta familia'
+          delete_success: 'Se ha eliminado la familia'
+        provider:
+          delete_error: 'No se puede eliminar este proveedor'
+          delete_success: 'Se ha eliminado el proveedor'
+        product_type:
+          delete_error: 'No se puede eliminar este tipo de producto'
+          delete_success: 'Se ha eliminado el tipo de producto'
+        deposit_type:
+          delete_error: 'No se puede eliminar este tipo de deposito'
+          delete_success: 'Se ha eliminado el tipo de deposito'
+        deposit:
+          delete_error: 'No se puede eliminar este  deposito'
+          delete_success: 'Se ha eliminado el deposito'
+        provider:
+          delete_error: 'No se puede eliminar este proveedor'
+          delete_success: 'Se ha eliminado el proveedor'
+        voucher_type:
+          delete_error: 'No se puede eliminar este tipo de comprobante'
+          delete_success: 'Se ha eliminado el tipo de comprobante'
+        tax_category:
+          delete_error: 'No se puede eliminar este tipo de categoria ante el IVA'
+          delete_success: 'Se ha eliminado el tipo de categoria ante el IVA'
+        withholding_tax:
+          delete_error: 'No se puede eliminar esta  Retención'
+          delete_success: 'Se ha eliminado la  Retención'
 
     models:
       category:

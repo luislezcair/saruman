@@ -16,6 +16,14 @@ es-AR:
       header: 'Inventario'
       tooltip:
         new: 'Nuevo Registro'
+      search_form:
+          product_name: 'Nombre - Serie Producto'
+          reset: 'Limpiar Filtros'
+          deposit: 'Deposito'
+          family: 'Familia'
+          producer: 'Fabricante'
+          tooltip:
+            submit: 'Buscar'
     new:
       form:
         new_header: 'Registrar Producto en Inventario'

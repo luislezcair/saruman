@@ -3,6 +3,8 @@ class Inventory < ApplicationRecord
   belongs_to :deposit
   belongs_to :provider
   has_many :move_details
+  # belongs_to :family
+  # belongs_to :producer
   
   attr_accessor :product_quantity
 

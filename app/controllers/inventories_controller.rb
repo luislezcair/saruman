@@ -2,6 +2,7 @@ class InventoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_inventory, only: [:edit, :update, :destroy, :show]
   authorize_resource
+  # respond_to :js, :json, :html
 
   # GET /inventories
   def index
@@ -11,6 +12,7 @@ class InventoriesController < ApplicationController
                     .select('inventories.product_id')
                     .group('inventories.product_id')
                     .page(params[:page])
+
   end
 
   # GET /inventories/new
@@ -37,7 +39,7 @@ class InventoriesController < ApplicationController
     end 
     redirect_to inventories_path
   end
-
+ 
   # PUT/PATCH /inventories/1
   def update
     if @inventory.update(inventory_params)

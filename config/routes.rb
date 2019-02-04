@@ -96,6 +96,7 @@ Rails.application.routes.draw do
       collection do
         get 'search'
         get 'download'
+        get 'product_number_validator/:product_number', to: 'products#product_number_validator'
       end
     end
     resources :families, concerns: :paginatable, except: [:show]

@@ -1,3 +1,48 @@
+<%# -- filtrado --- %> 
+<div class="card">
+  <div class="card-body">
+    <%= search_form_for @q, url: inventories_path, remote: true do |f| %>
+      <div class="row">
+
+
+        <div class="col-sm-2">
+           <%= f.input :product_family_id_eq, as: :select, collection: sorted_family, label: t('.search_form.family'), include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-2">
+           <%= f.input :product_producer_id_eq, as: :select, collection: sorted_producer, label: t('.search_form.producer'), include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-3">
+          <%= f.input :product_name_cont, label: t('.search_form.product_name') do %>
+            <div class="input-group">
+              <%= f.input_field :product_name_or_product_product_number_cont, as: :string, class: 'form-control' %>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+ 
+         <div class="col-sm-1">
+    
+          <div class="reset-search">
+                    <%= link_to '<button class="btn btn-warning"  >
+                          <i class="fa fa-refresh"></i>
+                        </button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+<%# -- filtrado --- %>
+
+
+
 <div class="card">
   <div class="card-header data-header">
     <div class="title">
