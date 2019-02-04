@@ -115,6 +115,7 @@ Rails.application.routes.draw do
   resources :inventories, concerns: :paginatable do
     collection do 
       get 'deposit_stock'
+      get 'per_deposit'
     end
   end
 end

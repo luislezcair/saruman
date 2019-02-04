@@ -12,7 +12,7 @@ class InventoriesController < ApplicationController
                     .select('inventories.product_id')
                     .group('inventories.product_id')
                     .page(params[:page])
-
+    @deposits = Deposit.all.order(:name)
   end
 
   # GET /inventories/new
@@ -25,6 +25,13 @@ class InventoriesController < ApplicationController
     @inventories = Inventory.where(product_id: params[:product_id], product_exist: true)
     @inventory = @inventories.take   
     @inventories = @inventories.group_by {|i| i.deposit}
+  end
+
+  # Devuelve todos los productos asociados a un (1) depósito
+  def per_deposit
+    @inventories = Inventory.where(deposit_id: params[:deposit_id], product_exist: true)
+    @inventories = @inventories.group_by {|i| i.product}
+    @deposit = Deposit.find(params[:deposit_id])
   end
   
   def show; end
