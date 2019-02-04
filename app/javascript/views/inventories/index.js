@@ -11,7 +11,7 @@ function clearFilters(){
         $('#q_product_producer_id_eq').val("")
 
     });
-}
+} 
 
 function search(){
     console.log('into function search');
