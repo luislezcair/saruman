@@ -18,6 +18,7 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new
   end
 
+  # Productos por depósito: devuelve únicamente un producto agrupado por depósito
   def deposit_stock
     @inventories = Inventory.where(product_id: params[:product_id], product_exist: true)
     @inventory = @inventories.take   

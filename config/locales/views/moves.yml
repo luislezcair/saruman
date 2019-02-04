@@ -11,6 +11,7 @@ es-AR:
       header_detail: 'Detalle del Movimiento'
       cancel: 'Cancelar'
       submit: 'Guardar'
+      status_help: '¡Atención! Si cambia el estado del movimiento a eliminado/recibido, los productos en el detalle cambiarán su estado a disponible, no es posible deshacer esta acción.'
       detail_table:
         destroy_item: 'Eliminar'
     show:
