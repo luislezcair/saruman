@@ -16,7 +16,7 @@ class Inventory < ApplicationRecord
   extend Enumerize
 
   enumerize :status,  
-              in: { disponible: 0, en_carga: 1, en_transito: 2, vendido: 3, eliminado: 4 }, 
+              in: { disponible: 0, en_movimiento: 1, en_transito: 2, vendido: 3, eliminado: 4 }, 
               default: :disponible, 
               predicates: true
   

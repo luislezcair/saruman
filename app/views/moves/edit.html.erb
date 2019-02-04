@@ -28,7 +28,10 @@
             <%= f.full_error :move_date, class: 'invalid-feedback' %>
           </div>
         <% end %>
-        <%= f.input :status, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :status, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3', "aria-label" => "statusHelp" } do %>
+          <%= f.input_field :status, as: :select, class: 'form-control' %>
+          <small id="statusHelp" class="form-text text-muted" style="display:none"><p class="text-danger"><%= t('.status_help')%></p></small>
+        <% end %>
       </div>
 
       <legend class="form-section">

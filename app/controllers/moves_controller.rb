@@ -17,11 +17,18 @@ class MovesController < ApplicationController
   end
 
   def edit
-    @move_details = MoveDetail.joins(:inventory).where(move_id: params[:id])
   end
 
   def update
     if @move.update(move_params)
+      case @move.status
+      when "en_carga", "retrasado", "en_espera"
+        @move_details.each do |md| md.inventory.update_attributes(status: :en_movimiento) end
+      when "en_transito"
+        @move_details.each do |md| md.inventory.update_attributes(status: :en_transito) end 
+      when "recibido", "eliminado"
+        @move_details.each do |md| md.inventory.update_attributes(status: :disponible) end
+      end
       redirect_to moves_path
     else
       render :edit, alert: :error
@@ -49,6 +56,7 @@ class MovesController < ApplicationController
 
   def set_move
     @move = Move.find_by_id(params[:id])
+    @move_details = MoveDetail.joins(:inventory).where(move_id: params[:id])
   end
 
   def move_params

@@ -41,8 +41,10 @@
         </td>
         <td class="action-buttons">
           <% if can? :update, move %>
-            <%= link_to edit_move_path(move), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-              <i class="fa fa-pencil"></i>
+            <% if (move.status != 'eliminado' && move.status != 'recibido') %>
+              <%= link_to edit_move_path(move), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
             <% end %>
           <% end %>
           <%= link_to move_path(move), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>

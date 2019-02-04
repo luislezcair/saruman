@@ -7,6 +7,7 @@ import './technical_services';
 import './technical_services/form';
 import './users/form';
 import './providers/form'
+import './moves/form';
 import './providers/index'
 import './products/index'
 import './products/form'

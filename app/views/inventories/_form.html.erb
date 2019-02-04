@@ -26,14 +26,11 @@
         </div>
       <% end %>
 
-      <div class="form-group row string required">
-        <%= f.input :product_quantity, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 1, maxlength: 6 } %>
-        <div>
-            <%# <button class="btn btn-primary" type="button">
-              <i class="fa fa-arrow-right"></i>
-            </button> %>
+      <% if !@inventory.persisted? %>
+        <div class="form-group row string required">
+          <%= f.input :product_quantity, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 1, maxlength: 6 } %>
         </div>
-      </div>
+      <% end %>
 
       <%= f.input :provider do %>
         <div data-controller="provider-search" data-provider-search-url="<%= search_elements_providers_path %>" class="input-group">
@@ -47,6 +44,17 @@
           <%= f.full_error :provider, class: 'invalid-feedback' %>
         </div>
       <% end %>
+
+      <div class="form-group row string required">
+        <% if @inventory.persisted? && (@inventory.status == :en_movimiento || @inventory.status == :en_transito) %>
+          <%= f.input :status, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, disabled: true  %>
+          <div class="col-sm-6">
+            <small class="text-muted"><%= t('.status_not_editable') %></small>
+          </div>
+        <% elsif @inventory.persisted? %>
+          <%= f.input :status, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, :disabled => [:en_movimiento, :en_transito] %>
+        <% end %>
+      </div>
 
       <legend class="form-section">
         <i class=""></i> <%= t('.section.deposit') %>

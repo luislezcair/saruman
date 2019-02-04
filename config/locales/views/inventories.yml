@@ -11,6 +11,7 @@ es-AR:
       find_product: 'Buscar producto'
       find_deposit: 'Buscar depósito'
       find_provider: 'Buscar proveedor'
+      status_not_editable: 'Este producto se encuentra en el detalle de un movimiento entre depósitos, debe finalizar el movimiento de depósito o eliminar este registro del detalle de movimiento, para poder editarlo desde aquí.'
     index:
       header: 'Inventario'
       tooltip:
@@ -25,11 +26,17 @@ es-AR:
             submit: 'Buscar'
     new:
       form:
-        new_header: 'Registrar Producto'
+        new_header: 'Registrar Producto en Inventario'
+    edit:
+      form:
+        edit_header: 'Editar Registro en Inventario'
     inventories_table:
       tooltip:
+        show: 'Ver detalles'
+    inventories_detail_table:
+      tooltip:
         delete: 'Eliminar'
-        edit: 'Editar servicio'
+        edit: 'Editar'
         show: 'Ver detalles'
     deposit_stock:
       header: 'Detalle Inventario'

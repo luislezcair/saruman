@@ -15,7 +15,7 @@ class Elements::DepositsController < ApplicationController
       inventory = Inventory.find(productId)
       @move_detail = MoveDetail.new(site_to_id: params[:site_to_id], site_from_id: inventory.deposit_id, inventory_id: productId, move_id: params[:move_id])
       @move_detail.save!
-      inventory.update_attributes(deposit_id: params[:site_to_id], status: :en_carga)
+      inventory.update_attributes(deposit_id: params[:site_to_id], status: :en_movimiento)
     end
     redirect_to inventories_path
   end

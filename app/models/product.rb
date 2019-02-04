@@ -5,7 +5,5 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :family, optional: true
   belongs_to :product_type, optional: true
-  validates :product_number, :name, presence: :true
-
-
+  validates :product_number, :name, presence: :true, uniqueness: true
 end
