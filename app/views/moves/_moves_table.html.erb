@@ -55,3 +55,13 @@
     <% end %>
   </tbody>
 </table>
+
+<%= search_form_for @q, url: download_moves_path, id: 'export_form' do |f| %>
+  <%= f.hidden_field :move_date_lteq %>
+  <%= f.hidden_field :move_date_lteq %>
+  <%= f.hidden_field :voucher_type_id_eq %>
+  <%= f.hidden_field :user_register_id_eq %>
+  <%= f.hidden_field :user_take_id_eq %>
+  <%= f.hidden_field :move_details_site_to_id_eq %>
+  <%= f.hidden_field :voucher_number_cont %>
+<% end %>  

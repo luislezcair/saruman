@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-sm-3">
-          <%= f.input :product_name_cont, label: t('.search_form.product_name') do %>
+          <%= f.input :product_name_or_product_product_number_cont, label: t('.search_form.product_name') do %>
             <div class="input-group">
               <%= f.input_field :product_name_or_product_product_number_cont, as: :string, class: 'form-control' %>
               <div class="input-group-append">
@@ -53,6 +53,11 @@
     </div>
 
     <div>
+      <% if can? :download_product, Inventory %>
+        <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
+         <i class="fa fa-table"></i>
+        </button>
+      <% end %>
       <% if can? :create, Inventory %>
         <%= link_to new_inventory_path, id: 'button_new', class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', trigger: 'hover', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>

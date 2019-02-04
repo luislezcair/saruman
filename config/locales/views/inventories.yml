@@ -16,6 +16,7 @@ es-AR:
       header: 'Inventario'
       tooltip:
         new: 'Nuevo Registro'
+        export: 'Exportar a Excel'
       search_form:
           product_name: 'Nombre - Serie Producto'
           reset: 'Limpiar Filtros'

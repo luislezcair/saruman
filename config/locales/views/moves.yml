@@ -2,6 +2,8 @@ es-AR:
   moves:
     index:
       header: 'Movimientos de Depósito'
+      tooltip:
+        export: 'Exportar a Excel'
       search_form:
         reset: 'Limpiar Filtros'
         voucher_name: 'Num. comprobante'
