@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   resources :moves, only: [:update, :edit, :index, :show] do
     collection do
       delete 'destroy_move_detail'
+      get 'download'
     end
   end
   
@@ -115,6 +116,7 @@ Rails.application.routes.draw do
   resources :inventories, concerns: :paginatable do
     collection do 
       get 'deposit_stock'
+      get 'download_product'
       get 'per_deposit'
     end
   end

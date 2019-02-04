@@ -50,9 +50,33 @@ class MovesController < ApplicationController
       format.json { head :no_content }
       format.js   { render :layout => false }
     end
+  end 
+
+
+  def download
+    puts params
+    setup_search
+
+    exp = MoveExporter.new(@moves)
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: MoveExporter::EXCEL_MIME_TYPE
   end
 
   private
+
+  def setup_search
+    @q = Move.ransack(params[:q])
+    @moves = @q.result(distinct: true)
+    .includes(:user_take)
+    .includes(:user_register)
+    .includes( move_details: :site_to)
+    .joins(:user_take)
+    .joins(:user_register)
+    .joins( move_details: :site_to)
+    .page(params[:page])
+                    
+  end
 
   def set_move
     @move = Move.find_by_id(params[:id])

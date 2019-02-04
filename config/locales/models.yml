@@ -60,10 +60,13 @@ es-AR:
         firmware_version: 'Versión de firmware'
         mac_address: 'Dirección MAC'
         product: 'Producto'
+        product_name: 'Producto'
         product_quantity: 'Cantidad de productos'
         provider: 'Proveedor'
         serial_number: 'Número de serie'
         status: 'Estado'
+        stock: 'stock total'
+        stock_deposit: 'stock deposito'
       invoice:
         client: 'Cliente'
         contabilium: 'Contabilium'
@@ -91,6 +94,8 @@ es-AR:
         user_take: 'Usuario receptor'
         voucher_type: 'Tipo de comprobante'
         voucher_number: 'Número de comprobante'
+        site_from: 'Depósito origen'
+        site_to: 'Depósito destino'
       move_detail:
         site_from: 'Depósito origen'
         site_to: 'Depósito destino'
@@ -304,6 +309,9 @@ es-AR:
       invoice:
         one: 'Comprobante'
         other: 'Comprobantes'
+      move:
+        one: 'Movimientos entre Deposito'
+        other: 'Movimientos entre Depositos'
       product:
         one: 'Producto'
         other: 'Productos'
