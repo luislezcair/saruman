@@ -111,6 +111,7 @@ es-AR:
         dbi: 'Potencia de antena (DBI)'
         family: 'Familia'
         name: 'Producto'
+        unit: 'Unidad de medida'
         product_number: 'Número de producto'
         product_type: 'Tipo'
         power_in: 'Potencia de entrada'

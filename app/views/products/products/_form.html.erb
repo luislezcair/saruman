@@ -54,6 +54,9 @@
         <%= f.input :stock_min_default, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 10, maxlength: 6 } %>
         <%= f.input :reorder_point_default, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 5, maxlength: 6 } %>
       </div>
+      <div class="form-group row string required">
+        <%= f.input :unit, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, include_blank: false %>
+      </div>
 
     </div>
 
