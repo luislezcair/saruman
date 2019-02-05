@@ -44,11 +44,7 @@ class InventoriesController < ApplicationController
       @inventory = Inventory.new(inventory_params)
       @inventory.save
     end 
-    #if @inventory.save
-      redirect_to inventories_path
-    #else
-    #  render :new, alert: :error
-    #end
+    redirect_to inventories_path
   end
 
   

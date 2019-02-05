@@ -73,33 +73,35 @@
         </div>
       <% end %>
 
-      <legend class="form-section">
-        <i class=""></i> <%= t('.section.particular_product') %>
-      </legend>
+      <% if @inventory.persisted? %>
+        <legend class="form-section">
+          <i class=""></i> <%= t('.section.particular_product') %>
+        </legend>
 
-      <div class="form-group row string required">
-        <%= f.input :mac_address, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
-          <div class="input-group">
-            <%= f.input_field :mac_address, as: :string, class: 'form-control' %>
-          </div>
-        <% end %>
-      </div>
+        <div class="form-group row string required">
+          <%= f.input :mac_address, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
+            <div class="input-group">
+              <%= f.input_field :mac_address, as: :string, class: 'form-control' %>
+            </div>
+          <% end %>
+        </div>
 
-      <div class="form-group row string required">
-        <%= f.input :serial_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
-          <div class="input-group">
-            <%= f.input_field :serial_number, as: :string, class: 'form-control' %>
-          </div>
-        <% end %>
-      </div>
+        <div class="form-group row string required">
+          <%= f.input :serial_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
+            <div class="input-group">
+              <%= f.input_field :serial_number, as: :string, class: 'form-control' %>
+            </div>
+          <% end %>
+        </div>
 
-      <div class="form-group row string required">
-        <%= f.input :firmware_version, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
-          <div class="input-group">
-            <%= f.input_field :firmware_version, as: :string, class: 'form-control' %>
-          </div>
-        <% end %>
-      </div>
+        <div class="form-group row string required">
+          <%= f.input :firmware_version, wrapper: false, grid_wrapper_html: { class: 'col-sm-9' } do %>
+            <div class="input-group">
+              <%= f.input_field :firmware_version, as: :string, class: 'form-control' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
     </div>
 
