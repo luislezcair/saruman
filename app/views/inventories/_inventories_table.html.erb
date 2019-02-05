@@ -11,11 +11,11 @@
     <tr>
       <th>#</th>
       <th>Número de Producto</th>
-      <%# <th>Nombre Producto</th> %>
       <th>Modelo / Nombre</th>
       <th>Familia</th>
       <th>Fabricante</th>
       <th>Stock</th>
+      <th>Unidad de Medida</th>
       <th class="action-column"></th>
     </tr>
   </thead>
@@ -29,6 +29,7 @@
         <td><%= inv.product.family.name %></td>
         <td><%= inv.product.producer.name %></td>
         <td><%= inv.stock_count(inv) %></td>
+        <td><%= inv.product.producer.unit %></td>
 
         <td class="action-buttons">
           <%= link_to deposit_stock_inventories_path(product_id: inv.product_id), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
@@ -41,7 +42,7 @@
 
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="7"></td>
+      <td class="page-entries-info" colspan="8"></td>
     </tr>
   </tfoot>
 </table>
