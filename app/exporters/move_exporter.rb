@@ -16,7 +16,7 @@ class MoveExporter
     #
 
     def attributes
-      attrs = %w[site_from site_to ]
+      attrs = %w[site_from site_to voucher_number move_date user_register user_take]
   
       attrs.map do |a|
         I18n.t(".activerecord.attributes.move.#{a}")
@@ -33,10 +33,14 @@ class MoveExporter
 
             [
                 mv.move_details.last.site_from.name,
-                mv.move_details.last.site_to.name
+                mv.move_details.last.site_to.name,
+                mv.voucher_number + " - " + mv.voucher_type.name,
+                mv.move_date.to_date,
+                mv.user_register.firstname + " " + mv.user_register.lastname,
+                mv.user_take.firstname + " " + mv.user_take.lastname
             ]
       end
-    end
+    end 
   
     # Devuelve un arreglo con los formatos de datos para el archivo de Excel.
     # Tienen que tener el mismo orden que `attributes`. Si se coloca nil o se
@@ -44,6 +48,10 @@ class MoveExporter
     #
     def formats
       [
+        nil,
+        nil,
+        nil,
+        'DD/MM/YYYY',
         nil,
         nil
       ]
@@ -74,7 +82,7 @@ class MoveExporter
 
           end
     
-          sheet.auto_filter = 'A1:B1'
+          sheet.auto_filter = 'A1:F1'
       end
 
 

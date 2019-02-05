@@ -12,7 +12,12 @@ class InventoriesController < ApplicationController
                     .select('inventories.product_id')
                     .group('inventories.product_id')
                     .page(params[:page])
-    @deposits = Deposit.all.order(:name)
+
+    @p = Deposit.ransack(params[:p])
+    puts "filter deposit"
+    # @p.sorts = 'deposit.name asc' if @p.sorts.empty?
+    @deposits = @p.result
+    # @deposits = Deposit.all.order(:name)
   end
 
   # GET /inventories/new

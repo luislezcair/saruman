@@ -23,6 +23,7 @@ es-AR:
           deposit: 'Deposito'
           family: 'Familia'
           producer: 'Fabricante'
+          deposit_type: 'Tipo depósito'
           inventory_per_deposit: 'Ver inventario por depósito'
           tooltip:
             submit: 'Buscar'
