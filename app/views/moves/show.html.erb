@@ -9,16 +9,18 @@
     <div class="row string justify-content-start">
       <div class="col-sm-3">
         <legend class="form-section">
-          <i class="fa fa-truck fa-lg mt-4"></i> Depósito destino
-        </legend>
-        <%= "#{[@move.move_details.first.site_to.name, @move.move_details.first.site_to.address].reject(&:empty?).join(", ")} (#{@move.move_details.first.site_to.city.name} - #{@move.move_details.first.site_to.province.name})" %>
-      </div>
-      <div class="col-sm-3">
-        <legend class="form-section">
           <i class="fa fa-truck fa-lg mt-4"></i> Depósito Origen
         </legend>
         <%= "#{[@move.move_details.first.site_from.name, @move.move_details.first.site_from.address].reject(&:empty?).join(", ")} (#{@move.move_details.first.site_from.city.name} - #{@move.move_details.first.site_from.province.name})" %>
       </div>
+      <div class="col-sm-3">
+        <legend class="form-section">
+          <i class="fa fa-truck fa-lg mt-4"></i> Depósito destino
+        </legend>
+        <%= "#{[@move.move_details.first.site_to.name, @move.move_details.first.site_to.address].reject(&:empty?).join(", ")} (#{@move.move_details.first.site_to.city.name} - #{@move.move_details.first.site_to.province.name})" %>
+      </div>
+      
+
       <div class="col-sm-3">
         <legend class="form-section">
           <i class="fa fa-calendar fa-lg mt-4"></i> Fecha de movimiento 
