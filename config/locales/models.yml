@@ -118,6 +118,8 @@ es-AR:
         poe: 'Energía sobre ethernet'
         producer: 'Fabricante'
         product_type: 'Tipo de producto'
+        reorder_point_default: 'Punto de reorden por defecto'
+        stock_min_default: 'Stock mínimo por defecto'
       product_type:
         name: 'Tipo de Producto'
         description: 'Descripción'

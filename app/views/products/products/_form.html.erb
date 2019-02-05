@@ -47,6 +47,13 @@
         <%= f.input :power_out, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
       <%= f.input :poe %>
+      <legend class="form-section">
+        <i class="fa fa-clock"></i> <%= t('.section.stock') %>
+      </legend>
+      <div class="form-group row string required">
+        <%= f.input :stock_min_default, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 10, maxlength: 6 } %>
+        <%= f.input :reorder_point_default, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', value: 5, maxlength: 6 } %>
+      </div>
 
     </div>
 

@@ -8,6 +8,7 @@ es-AR:
         section: &form_sections
           product: 'Datos del producto'
           product_detail: 'Detalles del producto'
+          stock: 'Valores por defecto de stock'
         submit: 'Guardar'
       index:
         header: 'Productos'

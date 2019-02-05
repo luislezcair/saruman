@@ -16,6 +16,8 @@
       <th><%= sort_link(@q, :category_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :producer_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :family_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :stock_min_default, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :reorder_point_default, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
   </thead> 
@@ -30,6 +32,8 @@
         <td><%= c.category.name %></td>
         <td><%= c.producer.name %></td>
         <td><%= c.family.name %></td>
+        <td><%= c.stock_min_default %></td>
+        <td><%= c.reorder_point_default %></td>
 
         <td class="action-buttons">
           <% if can? :update, c %>
@@ -50,12 +54,12 @@
  
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="8"><%= page_entries_info @products %></td>
+      <td class="page-entries-info" colspan="10"><%= page_entries_info @products %></td>
     </tr>
 
     <% if @products.total_pages > 1 %>
       <tr>
-        <td colspan="8">
+        <td colspan="10">
           <%= paginate @products, remote: true %>
         </td>
       </tr>
