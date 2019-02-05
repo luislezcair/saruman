@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 group = Group.create!(name: 'Tecnico', admin: false)
- User.create!(firstname: 'Admin', lastname: 'Admin', email: 'admn@admin.com', username: 'admin', password: 'admin-123', group: group)
+
 User.create!(firstname: 'Tecnico', lastname: 'Tecnico', email: 'tecnico@tecnico.com', username: 'tecnico', password: 'tecnico-123', group: group)
 User.create!(firstname: 'Arturo', lastname: 'Suarez', email: 'arturo@tecnico.com', username: 'Arturo', password: 'test-123', group: group)
 User.create!(firstname: 'Nicole', lastname: 'Necochea', email: 'nicole@tecnico.com', username: 'Nicole', password: 'test-123', group: group)
@@ -17,9 +17,9 @@ DepositType.create!(name:'Camioneta', description: '')
 DepositType.create!(name:'Moto', description: '')
 DepositType.create!(name:'Edificio', description: '')
 
-TelephoneType.create!(name:'Telefono Fijo', description:)
-TelephoneType.create!(name:'Celular', description:)
-TelephoneType.create!(name:'Fax', description:)
+TelephoneType.create!(name:'Telefono Fijo', description:'')
+TelephoneType.create!(name:'Celular', description:'')
+TelephoneType.create!(name:'Fax', description:'')
 
 Category.create!(name:'Tecnologia', description:'')
 Category.create!(name:'Accesorio para vechiculos', description:'')
