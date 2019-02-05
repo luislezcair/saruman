@@ -1,2 +1,0 @@
-module Products::StocksHelper
-end
