@@ -38,9 +38,9 @@ TaxCategory.create!(name:'Monotributo Cat B')
 TaxCategory.create!(name:'Monotributo Cat C')
 TaxCategory.create!(name:'Monotributo Cat D')
 
-Withholding.create!(withholding:'IIBB')
-Withholding.create!(withholding:'Ganancias')
-Withholding.create!(withholding:'Retencion x')
+# Withholding.create!(withholding:'IIBB')
+# Withholding.create!(withholding:'Ganancias')
+# Withholding.create!(withholding:'Retencion x')
 
 VourcherType.create!(name:'Factura C')
 VourcherType.create!(name:'Remito R')
