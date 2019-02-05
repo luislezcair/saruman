@@ -26,7 +26,7 @@
                 <td><input type="radio" name="selectMove" data-action="deposit-move#enableBtn" value="<%= "#{c.id}&#{c.move_details.last.site_to_id}" %>" class=""></td>
                 <td><%= c.move_details.first.site_to.name %></td>
                 <td><%= c.created_at %></td>
-                <td><%= "#{c.voucher_number} - (#{c.voucher_type})" %></td>
+                <td><%= "#{c.voucher_number} - (#{c.voucher_type.name })" %></td>
                 <td>
                   <% if(c.status == :en_carga) %>
                     <b class="text-warning"><%= c.status.split("_").map(&:capitalize).join(" ") %></b>

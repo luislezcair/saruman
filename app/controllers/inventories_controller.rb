@@ -1,6 +1,7 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_inventory, only: [:edit, :update, :destroy]
+  before_action :set_inventory, only: [:edit, :update, :destroy, :show]
+  before_action :set_move_detail, only: [:show]
   authorize_resource
   # respond_to :js, :json, :html
 
@@ -61,11 +62,7 @@ class InventoriesController < ApplicationController
       @inventory = Inventory.new(inventory_params)
       @inventory.save
     end 
-    #if @inventory.save
-      redirect_to inventories_path
-    #else
-    #  render :new, alert: :error
-    #end
+    redirect_to inventories_path
   end
 
   
@@ -109,6 +106,10 @@ class InventoriesController < ApplicationController
   
   def set_inventory
     @inventory = Inventory.find(params[:id])
+  end
+
+  def set_move_detail
+    @move_details = MoveDetail.where(inventory_id: params[:id])
   end
 
   def inventory_params

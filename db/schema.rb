@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_125657) do
+ActiveRecord::Schema.define(version: 2019_02_05_142835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_01_29_125657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "provider_id"
+    t.string "city"
+    t.string "country"
+    t.string "state"
     t.bigint "city_id"
     t.bigint "province_id"
     t.bigint "country_id"
@@ -355,6 +358,8 @@ ActiveRecord::Schema.define(version: 2019_01_29_125657) do
     t.bigint "category_id"
     t.bigint "family_id"
     t.bigint "product_type_id"
+    t.integer "stock_min_default"
+    t.integer "reorder_point_default"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"

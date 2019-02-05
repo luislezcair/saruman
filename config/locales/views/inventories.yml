@@ -30,7 +30,16 @@ es-AR:
             submit: 'Buscar'
     new:
       form:
-        new_header: 'Registrar Producto en Inventario'
+        new_header: 'Registrar Producto En Inventario'
+    show:
+      close: 'Cerrar'
+      header: 'Registro En Inventario'
+      header_move_details: 'Historial de Movimientos Entre Depósitos'
+      section: &form_sections
+        deposit: 'Lugar en el que se encuentra'
+        particular_product: 'Datos del producto en particular'
+        product: 'Datos del producto'
+        provider: 'Proveedor'
     edit:
       form:
         edit_header: 'Editar Registro en Inventario'
