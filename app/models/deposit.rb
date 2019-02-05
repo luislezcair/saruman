@@ -3,6 +3,7 @@ class Deposit < ApplicationRecord
   belongs_to :province, optional: true
   belongs_to :city, optional: true
   belongs_to :deposit_type
+  has_many :inventories
 
   extend Enumerize
   validates :name, presence: :true

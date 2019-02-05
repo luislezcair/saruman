@@ -96,6 +96,7 @@ es-AR:
         voucher_number: 'Número de comprobante'
         site_from: 'Depósito origen'
         site_to: 'Depósito destino'
+        deposit_name: 'Depósito'
       move_detail:
         site_from: 'Depósito origen'
         site_to: 'Depósito destino'

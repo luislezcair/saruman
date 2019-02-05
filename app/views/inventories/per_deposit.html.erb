@@ -17,6 +17,33 @@
     <h6><%= "#{@deposit.address} (#{[@deposit.city.name, @deposit.province.name, @deposit.country.name].compact.join(", ")})" %></h6>
     <small class="text-muted">Última actualización: <%= I18n.l(@deposit.updated_at.to_date, locale: :es, format: :long) %></small>
   </div>
+    <div class="card-body ">
+        <%# --- filtro  ---%>
+        <%= search_form_for @q, url: per_deposit_inventories_path, remote: true do |f| %>
+        <div class="row">
+              
+
+              <div class="col-sm-3">
+                <%= f.input :product_name_cont, label: t('.search_form.product_name')  %>
+              </div>
+
+
+              <div class="col-sm-3">
+                <%= f.input :product_product_number_cont, label: t('.search_form.product_number') do %>
+                  <div class="input-group">
+                    <%= f.input_field :product_product_number_cont, as: :string, class: 'form-control' %>
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                        <i class="fa fa-search"></i>
+                      </button>&nbsp;&nbsp;
+                      <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+        </div>
+        <% end %>
+  </div>
 
   <div class="card-body">
     <div id="inventories-table-container">

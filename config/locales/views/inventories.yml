@@ -23,6 +23,8 @@ es-AR:
           deposit: 'Deposito'
           family: 'Familia'
           producer: 'Fabricante'
+          deposit_type: 'Tipo depósito'
+          deposit_name: 'Depósito'
           inventory_per_deposit: 'Ver inventario por depósito'
           tooltip:
             submit: 'Buscar'
@@ -41,7 +43,7 @@ es-AR:
     edit:
       form:
         edit_header: 'Editar Registro en Inventario'
-    inventories_table:
+    inventories_table: 
       tooltip:
         show: 'Ver depósitos'
     inventories_detail_table:
@@ -60,3 +62,9 @@ es-AR:
       header: 'Detalle Inventario'
     per_deposit:
       header: 'Inventario por depósito'
+      search_form:
+        product_number: 'Número de Producto' 
+        product_name: 'Nombre Producto'
+        reset: 'Limpiar Filtros'
+        tooltip:
+          submit: 'Buscar'
