@@ -9,5 +9,6 @@ class Deposit < ApplicationRecord
   validates :deposit_type, presence: :true
 
   scope :sorted, -> { order(:name) }
+
 end
  

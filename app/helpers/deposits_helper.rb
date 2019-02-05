@@ -12,5 +12,16 @@ module DepositsHelper
     "(#{dep.name}) - (#{dep.deposit_type.name}) - (#{dep.address})"
   end
 
+  def checkForRepeatedValues(inventories)
+    p inventories.inspect
+    aux = inventories.first.product_id
+    inventories.each do |i|
+        if (i.product_id != aux)
+        return false
+        end
+    end
+    return true
+  end
+
   module_function :deposit_label
 end 
