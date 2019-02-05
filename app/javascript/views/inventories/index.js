@@ -98,13 +98,11 @@ function search(){
         console.log('intro');
         $("#change-inventory-deposito, #change-inventory-producto").change(function(event){
             if (document.getElementById('change-inventory-deposito').checked == true) {
-                console.log("deposit");
                 document.getElementById('inventories-deposit-table-container').style.display = 'block';
                 document.getElementById('inventories-table-container').style.display = 'none';
                 document.getElementById('filtro-deposito').style.display = 'block';
                 document.getElementById('filtro-producto').style.display = 'none';
             }else{
-              console.log("product");
                 document.getElementById('inventories-deposit-table-container').style.display = 'none';
                 document.getElementById('inventories-table-container').style.display = 'block';
                 document.getElementById('filtro-deposito').style.display = 'none';

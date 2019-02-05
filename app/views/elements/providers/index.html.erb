@@ -43,22 +43,12 @@
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
                   <i class="fa fa-search"></i>
-                </button>
+                </button>&nbsp;&nbsp;
+                <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
               </div>
             </div>
           <% end %>
         </div>
-
-
-        <div class="col-sm-1">
-    
-          <div class="reset-search">
-                    <%= link_to '<button class="btn btn-warning reset-filter "  >
-                          <i class="fa fa-refresh"></i>
-                        </button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset')%>
-          </div>
-        </div>
-
       </div>
 
     <% end %>
