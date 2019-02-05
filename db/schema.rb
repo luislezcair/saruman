@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_142835) do
+ActiveRecord::Schema.define(version: 2019_02_05_150312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -389,6 +389,17 @@ ActiveRecord::Schema.define(version: 2019_02_05_142835) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.integer "stock_min"
+    t.integer "reorder_point"
+    t.bigint "deposit_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deposit_id"], name: "index_stocks_on_deposit_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
+  end
+
   create_table "support_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -589,6 +600,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_142835) do
   add_foreign_key "products", "producers"
   add_foreign_key "products", "product_types"
   add_foreign_key "providers", "tax_categories"
+  add_foreign_key "stocks", "deposits"
+  add_foreign_key "stocks", "products"
   add_foreign_key "withholdings", "providers"
   add_foreign_key "withholdings", "withholding_taxes"
 end
