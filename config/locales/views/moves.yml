@@ -12,6 +12,7 @@ es-AR:
         user_register: 'Usuario Emisor'
         user_take: 'Usuario Receptor'
         site_to_id: 'Deposito Destino'
+        deposit_name: 'Depósito'
         tooltip:
           submit: 'Buscar'
     moves_table:

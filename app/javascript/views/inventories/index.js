@@ -70,6 +70,26 @@ function search(){
                 error: function(jqXHR, textStatus, errorThrown){}
             })
         })
+
+        $("#q_name_cont").keyup(function(event){
+            console.log('into keyUp');
+            console.log(this);
+            const valor =  { 
+                'name_cont':  $('#q_name_cont').val()
+              
+                           }
+
+            $.ajax({
+                type: "GET", 
+                url: "/inventories",
+                dataType: 'script',
+                data: {"p": valor} ,
+                success: function(data, textStatus, jqXHR){
+                    
+                },
+                error: function(jqXHR, textStatus, errorThrown){}
+            })
+        })
     }
 
 
