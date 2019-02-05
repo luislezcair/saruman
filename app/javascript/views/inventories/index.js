@@ -10,6 +10,7 @@ function clearFilters(){
         $('#q_product_family_id_eq').val("")
         $('#q_product_producer_id_eq').val("")
         $('#q_deposit_type_id_eq').val("")
+        $('#q_name_cont').val("")
 
     });
 } 
