@@ -30,7 +30,7 @@ class Products::ProductTypesController < ApplicationController
     # PUT/PATCH /products/product_types/1
     def update
       if @product_type.update(product_type_params)
-        redirect_to products_product_type_path
+        redirect_to products_product_types_path 
       else
         render :edit, alert: :error 
       end
