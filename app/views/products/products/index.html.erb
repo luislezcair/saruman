@@ -17,36 +17,41 @@
         <div class="col-sm-3">
            <%= f.input :product_type_id_eq, as: :select, collection: sorted_product_type, label: t('.search_form.product_type'), include_blank: t('search_form.any') %>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
            <%= f.input :category_id_eq, as: :select, collection: sorted_category, label: t('.search_form.category'), include_blank: t('search_form.any') %>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-3">
            <%= f.input :producer_id_eq, as: :select, collection: sorted_producer, label: t('.search_form.producer'), include_blank: t('search_form.any') %>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
            <%= f.input :family_id_eq, as: :select, collection: sorted_family, label: t('.search_form.family'), include_blank: t('search_form.any') %>
         </div>
         
  
-        <div class="col-sm-2">
-          <%= f.input :name_cont, label: t('.search_form.product_name') do %>
-            <div class="input-group">
-              <%= f.input_field :product_number_or_name_cont, as: :string, class: 'form-control' %>
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
-                  <i class="fa fa-search"></i>
-                </button>&nbsp;&nbsp;
-                <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
-              </div>
-            </div>
-          <% end %>
-        </div> 
       </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+              <%= f.input :product_number_or_name_cont,  label: t('.search_form.product_name') %>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary float-right margLefRig" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+            <i class="fa fa-search"></i>
+            </button>&nbsp;&nbsp;
+            <%= link_to '<button class="btn btn-warning float-right margLefRig"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
+        </div>
+      </div>
+      
+
     <% end %>
   </div>
 </div>
-<%# -- filtrado --- %>
+<%# -- filtrado --- %> 
 
 
 

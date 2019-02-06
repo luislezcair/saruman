@@ -18,6 +18,7 @@ class InventoriesController < ApplicationController
     puts "filter deposit----------------------------------------------------------------------------------------"
     # @p.sorts = 'deposit.name asc' if @p.sorts.empty?
     @deposits = @p.result
+              
     # @deposits = Deposit.all.order(:name)
   end
 

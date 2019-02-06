@@ -16,7 +16,7 @@ es-AR:
         search_form:
           deposit_type: 'Tipo de Deposito'
           city: 'Ciudad'
-          product_name: 'Nombre Producto'
+          deposit_name: 'Nombre Deposito'
           reset: 'Limpiar Filtros'
           tooltip:
             submit: 'Buscar'

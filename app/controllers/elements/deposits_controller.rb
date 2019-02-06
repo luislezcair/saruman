@@ -29,7 +29,7 @@ class Elements::DepositsController < ApplicationController
     @move = Move.new  
     @move.move_details.build
   end 
-
+ 
   def create_move
     @move = Move.new(move_params)
     if @move.save!
@@ -60,7 +60,7 @@ class Elements::DepositsController < ApplicationController
 
   # GET /elements/deposits
   def index
-    setup_search
+    # setup_search
     @q = Deposit.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @deposits = @q.result.page(params[:page])

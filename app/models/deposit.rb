@@ -8,8 +8,12 @@ class Deposit < ApplicationRecord
   extend Enumerize
   validates :name, presence: :true
   validates :deposit_type, presence: :true
+  validates :country, presence: :true
+  validates :province, presence: :true
+  validates :city, presence: :true
+  validates :address, presence: :true
 
   scope :sorted, -> { order(:name) }
 
 end
- 
+  
