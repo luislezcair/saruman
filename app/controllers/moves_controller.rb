@@ -26,7 +26,9 @@ class MovesController < ApplicationController
         @move_details.each do |md| md.inventory.update_attributes(status: :en_movimiento) end
       when "en_transito"
         @move_details.each do |md| md.inventory.update_attributes(status: :en_transito) end 
-      when "recibido", "eliminado"
+      when "recibido"
+        @move_details.each do |md| md.inventory.update_attributes(status: :disponible, deposit_id: md.site_to_id) end
+      when "eliminado"
         @move_details.each do |md| md.inventory.update_attributes(status: :disponible) end
       end
       redirect_to moves_path

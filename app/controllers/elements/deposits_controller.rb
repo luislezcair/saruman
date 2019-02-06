@@ -28,15 +28,18 @@ class Elements::DepositsController < ApplicationController
     @inventory = @inventories.first
     @move = Move.new  
     @move.move_details.build
-  end 
+  end   
 
+  # Crear un movimiento entre depósitos
+  # Se crea el movimiento en la clase Move y también su respectivo detalle en MoveDetail
+  # El estado inicial de Move es 'en_carga'
+  # Cada producto del detalle cambia su estado a 'en_movimiento' hasta ser finalizado o eliminado
   def create_move
     @move = Move.new(move_params)
     if @move.save!
       site_to_id = params.dig(:move, :move_details_attributes, "0", :site_to_id).to_i
       @@product_moves.each do |inv|
         @move_detail = MoveDetail.new(site_to_id: site_to_id, site_from_id: inv.deposit.id, inventory_id: inv.id, move_id: @move.id)
-        inv.deposit_id = site_to_id
         inv.product_quantity = 0
         inv.status = 1
         inv.save!
