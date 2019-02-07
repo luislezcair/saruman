@@ -41,9 +41,9 @@
         <tr>
           <th><span class="cui-arrow-right" aria-hidden="true"></span></i></th>
           <th>Selección</th>
-          <th>Número Serial</th>
-          <th>Proveedor</th>
-          <th>Estado</th>
+          <th colspan="2">Número Serial</th>
+          <th colspan="2">Proveedor</th>
+          <th colspan="2">Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -59,13 +59,13 @@
               <% end %>
             </div>
           </td>
-          <td>
+          <td colspan="2">
             <b class="text-info"><%= index.serial_number.blank? ? 'vacio' : index.serial_number %></b>
           </td>
-          <td>
+          <td colspan="2">
             <b class="text-info"><%= index.provider.name.blank? ? 'vacio' : index.provider.name %></b>
           </td>
-          <td>
+          <td colspan="2">
             <% if(index.status == :en_movimiento) %>
               <b class="text-warning"><%= index.status.split("_").map(&:capitalize).join(" ") %></b>
             <% elsif(index.status == :eliminado || index.status == :vendido) %>
@@ -85,7 +85,7 @@
             <%= link_to inventory_path(index), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
               <i class="fa fa-eye"></i>
             <% end %>
-        </td>
+          </td>
         </tr>
       <% end %> 
     <% end %>

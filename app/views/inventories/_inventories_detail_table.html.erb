@@ -38,7 +38,7 @@
           <th><span class="cui-arrow-right" aria-hidden="true"></span></i></th>
           <th>Selección</th>
           <th>Número Serial</th>
-          <th>Proveedor</th>
+          <th colspan="2">Proveedor</th>
           <th>Estado</th>
           <th>Acciones</th>
         </tr>
@@ -58,7 +58,7 @@
           <td>
             <b class="text-info"><%= index.serial_number.blank? ? 'vacio' : index.serial_number %></b>
           </td>
-          <td>
+          <td colspan="2">
             <b class="text-info"><%= index.provider.name.blank? ? 'vacio' : index.provider.name %></b>
           </td>
           <td>
