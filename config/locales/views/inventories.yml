@@ -46,7 +46,7 @@ es-AR:
     inventories_table: 
       tooltip:
         show: 'Ver depósitos'
-    inventories_detail_table:
+    inventories_detail_table: 
       tooltip:
         delete: 'Eliminar'
         edit: 'Editar'
@@ -64,6 +64,8 @@ es-AR:
     per_deposit:
       header: 'Inventario por depósito'
       back: 'Atrás'
+      tooltip:
+        export: 'Exportar a Excel'
       search_form:
         product_number: 'Número de Producto' 
         product_name: 'Nombre Producto'

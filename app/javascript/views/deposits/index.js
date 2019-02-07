@@ -14,31 +14,35 @@ function clearFilters(){
 }
 
 function search(){
-    console.log('into function search');
+
 
         $("#q_name_cont").keyup(function(event){
-            console.log('into keyUp');
-            console.log(this);
+            console.log('keyUp ...');
+            const valor =  { 
+                'city_id_eq':  $('#q_city_id_eq').val(),
+                'deposit_type_id_eq': $('#q_deposit_type_id_eq').val(),
+                'name_cont': $('#q_name_cont').val()
+             }
 
             $.ajax({
                 type: "GET", 
                 url: "/elements/deposits",
                 dataType: 'script',
-                data: $(this).serialize(),
+                data: {"q": valor} ,
                 success: function(data, textStatus, jqXHR){
                     
                 },
                 error: function(jqXHR, textStatus, errorThrown){}
             })
         })
-
+ 
         $("#q_city_id_eq, #q_deposit_type_id_eq").change(function(event){
-            console.log('into change');
-            console.log(this); 
+
             const valor =  { 
                 'city_id_eq':  $('#q_city_id_eq').val(),
-                'deposit_type_id_eq': $('#q_deposit_type_id_eq').val()
-        }
+                'deposit_type_id_eq': $('#q_deposit_type_id_eq').val(),
+                'q_name_cont': $('#q_name_cont').val()
+             }
             $.ajax({
                 type: "GET", 
                 url: "/elements/deposits",

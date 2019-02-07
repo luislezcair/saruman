@@ -63,7 +63,7 @@ class Elements::DepositsController < ApplicationController
 
   # GET /elements/deposits
   def index
-    setup_search
+    # setup_search
     @q = Deposit.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @deposits = @q.result.page(params[:page])

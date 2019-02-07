@@ -16,9 +16,9 @@
       <th><%= sort_link(@q, :category_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :producer_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :family_name, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :stock_min_default, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :reorder_point_default, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :unit, {}, remote: true) %></th>
+      <th><%# sort_link(@q, :stock_min_default, {}, remote: true) %></th>
+      <th><%# sort_link(@q, :reorder_point_default, {}, remote: true) %></th>
+
       <th class="action-column"></th>
     </tr>
   </thead> 
@@ -33,9 +33,9 @@
         <td><%= c.category.name %></td>
         <td><%= c.producer.name %></td>
         <td><%= c.family.name %></td>
-        <td><%= c.stock_min_default %></td>
-        <td><%= c.reorder_point_default %></td>
-        <td><%= c.unit.split("_").map(&:capitalize).join(" ") %></td>
+        <td><%# c.stock_min_default %></td>
+        <td><%# c.reorder_point_default %></td>
+
 
         <td class="action-buttons">
           <% if can? :update, c %>

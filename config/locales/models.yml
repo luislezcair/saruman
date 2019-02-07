@@ -67,6 +67,12 @@ es-AR:
         status: 'Estado'
         stock: 'stock total'
         stock_deposit: 'stock deposito'
+        product_number: 'Nu. Producto'
+        category: 'Categoría'
+        producer: 'Fabricante'
+        producer_type: 'Tipo de Fabricante'
+        family: 'Familia'
+
       invoice:
         client: 'Cliente'
         contabilium: 'Contabilium'

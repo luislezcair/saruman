@@ -118,6 +118,7 @@ Rails.application.routes.draw do
       get 'deposit_stock'
       get 'download_product'
       get 'per_deposit'
+      get 'download_deposit_product'
     end
   end
 end

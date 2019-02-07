@@ -15,18 +15,25 @@ function clearFilters(){
     });
 } 
 
+
+
 function search(){
     console.log('into function search');
 
         $("#q_product_name_or_product_product_number_cont").keyup(function(event){
             console.log('into keyUp');
             console.log(this);
+            const valor =  { 
+                'product_name_or_product_product_number_cont':  $('#q_product_name_or_product_product_number_cont').val(),
+                'product_family_id_eq':  $('#q_product_family_id_eq').val(),
+                'product_producer_id_eq': $('#q_product_producer_id_eq').val()
+            }
 
             $.ajax({
                 type: "GET", 
                 url: "/inventories",
                 dataType: 'script',
-                data: $(this).serialize(),
+                data: {"q": valor} ,
                 success: function(data, textStatus, jqXHR){
                     
                 },
@@ -38,6 +45,7 @@ function search(){
             console.log('into change');
             console.log(this); 
             const valor =  { 
+                'product_name_or_product_product_number_cont':  $('#q_product_name_or_product_product_number_cont').val(),
                 'product_family_id_eq':  $('#q_product_family_id_eq').val(),
                 'product_producer_id_eq': $('#q_product_producer_id_eq').val()
         }
@@ -53,13 +61,17 @@ function search(){
             })
         })
 
-        $("#q_deposit_type_id_eq").change(function(event){
+
+
+
+        $("#q_deposit_type_id_eq, #q_id_eq").change(function(event){
             console.log('into change');
             console.log(this); 
             const valor =  { 
-                'deposit_type_id_eq':  $('#q_deposit_type_id_eq').val()
+                'deposit_type_id_eq':  $('#q_deposit_type_id_eq').val(),
+                'id_eq':  $('#q_id_eq').val()
               
-        }
+                  }
             $.ajax({
                 type: "GET", 
                 url: "/inventories",
@@ -72,25 +84,25 @@ function search(){
             })
         })
 
-        $("#q_name_cont").keyup(function(event){
-            console.log('into keyUp');
-            console.log(this);
-            const valor =  { 
-                'name_cont':  $('#q_name_cont').val()
+        // $("#q_name_cont").keyup(function(event){
+        //     console.log('into keyUp');
+        //     console.log(this);
+        //     const valor =  { 
+        //         'name_cont':  $('#q_name_cont').val()
               
-                           }
+        //                    }
 
-            $.ajax({
-                type: "GET", 
-                url: "/inventories",
-                dataType: 'script',
-                data: {"p": valor} ,
-                success: function(data, textStatus, jqXHR){
+        //     $.ajax({
+        //         type: "GET", 
+        //         url: "/inventories",
+        //         dataType: 'script',
+        //         data: {"p": valor} ,
+        //         success: function(data, textStatus, jqXHR){
                     
-                },
-                error: function(jqXHR, textStatus, errorThrown){}
-            })
-        })
+        //         },
+        //         error: function(jqXHR, textStatus, errorThrown){}
+        //     })
+        // })
     }
 
 
