@@ -9,6 +9,7 @@
 <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data" style="border-collapse:collapse;">
   <thead>
       <tr>
+        <th></th>
         <th>Depósito</th>
         <th>Tipo</th>
         <th>Domicilio</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @inventories.each do |inv, indexes| %>
       <tr data-toggle="collapse" data-target="#deposito<%=inv.id%>, #head<%=inv.id%>" class="accordion-toggle">
+        <th><i class="fa fa-arrows-v fa-lg"></i></th>
         <td><%= inv.name %></td>
         <td><%= inv.deposit_type.name %></td>
         <td><%= "#{inv.address} - (#{inv.city.name}, #{inv.province.name})" %></td>
@@ -86,7 +88,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="8"></td>
+      <td class="page-entries-info" colspan="9"></td>
     </tr>
   </tfoot>
 </table>

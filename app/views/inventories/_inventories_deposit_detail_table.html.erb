@@ -9,19 +9,21 @@
 <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data" style="border-collapse:collapse;">
   <thead>
       <tr>
-        <th>Número de Producto</th>
-        <th>Producto/Modelo/Familia</th>
+        <th></th>
+        <th>N° de Producto</th>
+        <th>Modelo</th>
         <th>Fabricante</th>
         <th>Tipo</th>
         <th>Categoria</th>
         <th>Descripción</th>
         <th>Stock Actual</th>
-        <th>Stock Mínimo / Reposición</th>
+        <th class="text-center">Stock Mínimo / Reposición</th>
       </tr>
   </thead>
   <tbody>
     <% @inventories.each do |inv, indexes| %>
       <tr data-toggle="collapse" data-target="#inventory<%=inv.id%>, #head<%=inv.id%>" class="accordion-toggle">
+        <th><i class="fa fa-arrows-v fa-lg"></i></th>
         <td><%= inv.product_number %></td>
         <td><%= "#{inv.name} - #{inv.family.name}" %></td>
         <td><%= inv.producer.name %></td>
