@@ -110,7 +110,7 @@
           </legend>
           <div class="form-group row string required">
             <%= f.association :voucher_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-            <%= f.input :voucher_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+            <%= f.input :voucher_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', maxlength: 6 }  %>
           </div>
 
           <div class="modal-footer">
