@@ -16,6 +16,7 @@
         <th>Categoria</th>
         <th>Descripción</th>
         <th>Stock Actual</th>
+        <th>Stock Mínimo / Reposición</th>
       </tr>
   </thead>
   <tbody>
@@ -27,7 +28,12 @@
         <td><%= inv.product_type.name %></td>
         <td><%= inv.category.name %></td>
         <td><%= inv.description[0..50].gsub(/\s\w+\s*$/,'...') %></td>
-        <td><%= indexes.length %></td>
+        <% if (inv.is_reorder_point?(indexes.length, inv.reorder_point_default)) %>
+          <td class="text-danger text-center"><%= indexes.length %></td>
+        <% else %>
+          <td class="text-center"><%= indexes.length %></td>
+        <% end %>
+        <td class="text-center"><%= "#{[inv.stock_min_default, inv.reorder_point_default].compact.join(" / ")}" %></td>
       </tr>
       <thead class="accordian-body collapse" id="head<%=inv.id%>" style="text-align: right !important; background-color: white;">
         <tr>
@@ -84,7 +90,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="7"></td>
+      <td class="page-entries-info" colspan="9"></td>
     </tr>
   </tfoot>
 </table>

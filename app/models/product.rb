@@ -14,4 +14,8 @@ class Product < ApplicationRecord
                           cajas: 3 },
                           default: :unidades,
                           predicates: true
+
+  def is_reorder_point?(stock, reorder_point)
+    (stock <= reorder_point) ? true : false
+  end
 end
