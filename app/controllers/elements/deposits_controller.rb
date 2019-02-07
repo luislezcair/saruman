@@ -17,7 +17,7 @@ class Elements::DepositsController < ApplicationController
       @move_detail.save!
       inventory.update_attributes(deposit_id: params[:site_to_id], status: :en_movimiento)
     end
-    redirect_to inventories_path
+    redirect_back fallback_location: inventories_path
   end
 
   #  GET /elements/deposits/move
@@ -45,7 +45,7 @@ class Elements::DepositsController < ApplicationController
         inv.save!
         @move_detail.save!
       end
-      redirect_to inventories_path
+      redirect_back fallback_location: inventories_path
     end
   end
 
@@ -89,7 +89,7 @@ class Elements::DepositsController < ApplicationController
   # PUT/PATCH /elements/deposits/1
   def update
     if @deposit.update(deposit_params)
-      redirect_to elements_deposits_path
+      redirect_back fallback_location: elements_deposits_path
     else
       render :edit, alert: :error
     end

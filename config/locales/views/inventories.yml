@@ -62,6 +62,7 @@ es-AR:
       header: 'Detalle Inventario'
     per_deposit:
       header: 'Inventario por depósito'
+      back: 'Atrás'
       search_form:
         product_number: 'Número de Producto' 
         product_name: 'Nombre Producto'

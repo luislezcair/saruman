@@ -21,6 +21,7 @@ export default class extends Controller {
       url,
       success: () => {
         $('#select-deposit-move-modal').modal('hide');
+        $('#inventories-table-container').location.reload();
       },
     }) 
   }
@@ -56,6 +57,7 @@ export default class extends Controller {
       success: () => {
         $('#select-deposit-move-modal').modal('hide');
         $('#deposit-move-modal').modal('show');
+        $('#inventories-table-container').location.reload();
       },
     }); 
   }

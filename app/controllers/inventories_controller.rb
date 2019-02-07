@@ -3,7 +3,6 @@ class InventoriesController < ApplicationController
   before_action :set_inventory, only: [:edit, :update, :destroy, :show]
   before_action :set_move_detail, only: [:show]
   authorize_resource
-  # respond_to :js, :json, :html
 
   # GET /inventories
   def index
@@ -15,10 +14,7 @@ class InventoriesController < ApplicationController
                     .page(params[:page])
 
     @p = Deposit.ransack(params[:p])
-    puts "filter deposit----------------------------------------------------------------------------------------"
-    # @p.sorts = 'deposit.name asc' if @p.sorts.empty?
     @deposits = @p.result
-    # @deposits = Deposit.all.order(:name)
   end
 
   # GET /inventories/new
@@ -34,22 +30,13 @@ class InventoriesController < ApplicationController
 
   # Devuelve todos los productos asociados a un (1) depósito
   def per_deposit
-    puts " -----------------params[:deposit_id]---------------------------"
-    puts params[:deposit_id]
     if params[:deposit_id].present? 
     cookies[:deposit_id] = params[:deposit_id]
     end
-    puts "------------- cookies ----------"
-    puts  cookies[:deposit_id]
     @q = Inventory.ransack(params[:q],deposit_id: cookies[:deposit_id] , product_exist: true)
     @inventories = @q.result
     @inventories = @inventories.group_by {|i| i.product}
     @deposit = Deposit.find(cookies[:deposit_id]  ) 
-
-
-    # @inventories = Inventory.where(deposit_id: params[:deposit_id], product_exist: true)
-    # @inventories = @inventories.group_by {|i| i.product}
-    # @deposit = Deposit.find(params[:deposit_id]) 
   end
   
   def show; end
@@ -65,12 +52,10 @@ class InventoriesController < ApplicationController
     redirect_to inventories_path
   end
 
-  
-  
   # PUT/PATCH /inventories/1
   def update
     if @inventory.update(inventory_params)
-      redirect_to inventories_path
+      redirect_to per_deposit_inventories_path(deposit_id: params[:deposit_id])
     else
       render :edit, alert: :error
     end
