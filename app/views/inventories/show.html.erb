@@ -85,7 +85,7 @@
             <td><%# <%= [md.move.user_register.lastname, md.user_register.firstname].compact.join(", ") %></td>
             <td><%# [md.move.user_take.lastname, md.user_take.firstname].compact.join(", ") %></td>
             <td><%= I18n.l(md.move.move_date.to_date, locale: :es, format: :long) %></td>
-            <td><%= I18n.l(md.move.created_at.to_date, locale: :es, format: :long) %></td>
+            <td><%= I18n.l(md.move.created_at.to_datetime, locale: :es, format: :long) %></td>
             <td><%= "#{md.move.voucher_number} (#{md.move.voucher_type.name})" %></td>
             <td><%= md.move.status.split("_").map(&:capitalize).join(" ") %></td>
           </tr>
