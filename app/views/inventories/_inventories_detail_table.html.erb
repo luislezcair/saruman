@@ -12,8 +12,9 @@
         <th>Depósito</th>
         <th>Tipo</th>
         <th>Domicilio</th>
-        <th>Stock</th>
         <th>Última Actualización</th>
+        <th>Stock</th>
+        <th class="text-center">Stock Mínimo / Reposición</th>
       </tr>
   </thead>
   <tbody>
@@ -22,8 +23,13 @@
         <td><%= inv.name %></td>
         <td><%= inv.deposit_type.name %></td>
         <td><%= "#{inv.address} - (#{inv.city.name}, #{inv.province.name})" %></td>
-        <td><%= indexes.length %></td>
         <td><%= I18n.l(indexes.last.updated_at.to_datetime, locale: :es, format: :long) %></td>
+        <% if (indexes.last.product.is_reorder_point?(indexes.length, indexes.last.product.reorder_point_default)) %>
+          <td class="text-danger text-center"><%= indexes.length %></td>
+        <% else %>
+          <td class="text-center"><%= indexes.length %></td>
+        <% end %>
+        <td class="text-center"><%= "#{[indexes.last.product.stock_min_default, indexes.last.product.reorder_point_default].compact.join(" / ")}" %></td>
       </tr>
       <thead class="accordian-body collapse" id="head<%=inv.id%>" style="text-align: right !important; background-color: white;">
         <tr>
@@ -40,7 +46,6 @@
           <td></td>
           <td>
             <div data-controller="deposit-move">
-              <%# <input type="checkbox" data-action="deposit-move#catchProducts" data-target="deposit-move.input" data-id="<%= index.id %>
               <% if(index.status == :disponible) %>
                 <input type="checkbox" value="<%= index.id %>" class="catchProducts">
               <% else %>
@@ -81,7 +86,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="6"></td>
+      <td class="page-entries-info" colspan="8"></td>
     </tr>
   </tfoot>
 </table>

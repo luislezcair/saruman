@@ -60,6 +60,7 @@ es-AR:
         show: 'Ver detalles'
     deposit_stock:
       header: 'Detalle Inventario'
+      back: 'Atrás'
     per_deposit:
       header: 'Inventario por depósito'
       back: 'Atrás'
