@@ -21,13 +21,9 @@
         <%# --- filtro  ---%>
         <%= search_form_for @q, url: per_deposit_inventories_path, remote: true do |f| %>
         <div class="row">
-              
-
               <div class="col-sm-5">
                 <%= f.input :product_name_cont, label: t('.search_form.product_name')  %>
               </div>
-
-
               <div class="col-sm-5">
                 <%= f.input :product_product_number_cont, label: t('.search_form.product_number') do %>
                   <div class="input-group">
@@ -44,7 +40,15 @@
         </div>
         <% end %>
   </div>
-
+  <div class="row">
+    <div class="col-sm-11">
+      <% if can? :download_deposit_product, Inventory %>
+      <button type="submit" form="export_form" class="btn btn-sm btn-success  float-right margLefRig" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
+      <i class="fa fa-table"></i>
+      </button> 
+      <% end %>
+    </div>
+  </div>
   <div class="card-body">
     <div id="inventories-table-container">
       <%= render 'inventories_deposit_detail_table' %>

@@ -5,7 +5,7 @@
     </div>
   <% end %>
 </div>
-
+ 
 <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data" style="border-collapse:collapse;">
   <thead>
       <tr>
@@ -88,3 +88,7 @@
     </tr>
   </tfoot>
 </table>
+<%= search_form_for @q, url: download_deposit_product_inventories_path, id: 'export_form' do |f| %>
+  <%= f.hidden_field :product_name_cont %>
+  <%= f.hidden_field :product_product_number_cont %>
+<% end %>  
