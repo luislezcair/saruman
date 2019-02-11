@@ -72,10 +72,44 @@
          <i class="fa fa-table"></i>
         </button>
       <% end %>
+
+      <a class="btn btn-sm btn-outline-primary float-right margLefRig" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+      data-placement="top" title="Información">
+        <i class="fa fa-question"></i>
+      </a>
+
     </div>
   </div>
 
   <div class="card-body">
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p>
+                  <span class="badge badge-secondary">En carga</span>
+                  Movimiento entre depósitos se encuentra en carga de detalles.
+                </p>
+                <p>
+                  <span class="badge badge-light">En espera</span>
+                  Movimiento entre depósitos en espera a ser enviado.
+                </p>
+                <p>
+                  <span class="badge badge-danger">Eliminado</span>
+                   Movimiento entre depósitos eliminado (se conserva detalle para su consulta). 
+                </p>
+                <p>
+                  <span class="badge badge-info">En transito</span>
+                  Movimiento entre depósitos en tránsito, a depósito destino.
+                </p>
+                <p>
+                  <span class="badge badge-success">Recibido</span>
+                 Movimiento entre depósitos recibido correctamente.
+                </p>
+                <p>
+                  <span class="badge badge-warning">Retrasado</span>
+                  Movimiento entre depósitos retrasado.   
+                </p>
+              </div>
+            </div>
     <div id="moves-table-container">
       <%= render 'moves_table' %>
     </div>

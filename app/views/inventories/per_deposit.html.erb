@@ -47,7 +47,39 @@
       <i class="fa fa-table"></i>
       </button> 
       <% end %>
-    </div>
+
+            <p>
+              <a class="btn btn-sm btn-outline-primary float-right margLefRig" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+               data-placement="top" title="Información">
+                <i class="fa fa-question"></i>
+              </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p>
+                  <span class="badge badge-success">Disponible</span>
+                  Producto disponible para manipulación (eliminar, mover, vender).
+                </p>
+                <p>
+                  <span class="badge badge-warning">En movimiento</span>
+                  Producto en carga como detalle de un movimiento entre depósitos.
+                </p>
+                <p>
+                  <span class="badge badge-danger">Eliminado</span>
+                  Producto eliminado.   
+                </p>
+                <p>
+                  <span class="badge badge-info">En transito</span>
+                  Producto en tránsito a depósito destino.
+                </p>
+                <p>
+                  <span class="badge badge-danger">Vendido</span>
+                  Producto vendido.
+                </p>
+              </div>
+            </div>
+
+        </div>
   </div>
   <div class="card-body">
     <div id="inventories-table-container">
