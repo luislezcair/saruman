@@ -10,7 +10,11 @@ class Move < ApplicationRecord
 
   attribute :move_date, :datetime, default: -> { Time.current }
 
-  validates_presence_of :voucher_number
+  validates :voucher_number, presence: :true
+  validates :voucher_type, presence: :true
+  validates :user_take, presence: :true
+  validates :user_register, presence: :true
+  validates :move_date, presence: :true
 
   extend Enumerize
 

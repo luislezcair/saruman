@@ -80,7 +80,7 @@
           </legend>
           <%# Buscar y seleccionar depósito %>
           <%= f.simple_fields_for :move_details do |md| %>
-            <%= md.association :site_to %>
+            <%= md.association :site_to, include_blank: false %>
           <% end %>
 
           <div class="form-group row string required">
@@ -101,16 +101,16 @@
             <i class="fa fa-user"></i> Usuarios involucrados
           </legend>
           <div class="form-group row string required">
-            <%= f.association :user_register, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-            <%= f.association :user_take, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+            <%= f.association :user_register, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, include_blank: false %>
+            <%= f.association :user_take, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, include_blank: false %>
           </div>
 
           <legend class="form-section">
             <i class="fa fa-paperclip"></i> Comprobante asociado
           </legend>
           <div class="form-group row string required">
-            <%= f.association :voucher_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-            <%= f.input :voucher_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', maxlength: 6 }  %>
+            <%= f.association :voucher_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, include_blank: false %>
+            <%= f.input :voucher_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric', maxlength: 6, value: 0 }  %>
           </div>
 
           <div class="modal-footer">
