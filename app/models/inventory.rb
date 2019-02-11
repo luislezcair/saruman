@@ -3,13 +3,8 @@ class Inventory < ApplicationRecord
   belongs_to :deposit
   belongs_to :provider
   has_many :move_details
-  # belongs_to :family
-  # belongs_to :producer
   
   attr_accessor :product_quantity
-
-  #validates :product_quantity,
-  #          numericality: { less_than: 2**30 }
 
   before_save :default_values
 
@@ -19,6 +14,12 @@ class Inventory < ApplicationRecord
               in: { disponible: 0, en_movimiento: 1, en_transito: 2, vendido: 3, eliminado: 4 }, 
               default: :disponible, 
               predicates: true
+  # Status References
+  # disponible    (success):  Producto disponible para manipulación (eliminar, mover, vender).
+  # en_movimiento (warning):  Producto en carga como detalle de un movimiento entre depósitos.
+  # eliminado     (danger):   Producto eliminado.   
+  # en_transito   (info):     Producto en tránsito a depósito destino.
+  # vendido       (danger):   Producto vendido.
   
   # Método que devuelve la cantidad de stock existente para un producto dentro del inventario, 
   # indistinto del depósito donde se encuentre.
