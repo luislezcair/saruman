@@ -22,4 +22,12 @@ class Move < ApplicationRecord
               in: { en_carga: 0, en_transito: 1, retrasado: 2, recibido: 3, en_espera: 4, eliminado: 5 }, 
               default: :en_carga, 
               predicates: true
+  # Status References
+  # eliminado   (danger):     Movimiento entre depósitos eliminado (se conserva detalle para su consulta).
+  # en_carga    (secondary):  Movimiento entre depósitos se encuentra en carga de detalles.
+  # en_espera   (light):      Movimiento entre depósitos en espera a ser enviado.
+  # en_transito (info):       Movimiento entre depósitos en tránsito, a depósito destino.
+  # recibido    (success):    Movimiento entre depósitos recibido correctamente.
+  # retrasado   (warning):    Movimiento entre depósitos retrasado.   
+
 end
