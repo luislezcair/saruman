@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DepositType < ApplicationRecord
     has_many :deposits
     # belongs_to :city

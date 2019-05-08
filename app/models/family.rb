@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Family < ApplicationRecord
   belongs_to :producer
   # has_many :inventories

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controlador para inventarios
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_inventory, only: [:edit, :update, :destroy, :show]
@@ -9,46 +12,50 @@ class InventoriesController < ApplicationController
     @q = Inventory.ransack(params[:q])
     @q.sorts = 'product.name asc' if @q.sorts.empty?
     @inventories = @q.result
-                    .select('inventories.product_id')
-                    .group('inventories.product_id')
-                    .page(params[:page])
+                     .select('inventories.product_id')
+                     .group('inventories.product_id')
+                     .page(params[:page])
 
     @p = Deposit.ransack(params[:p])
     @deposits = @p.result
   end
- 
+
   # GET /inventories/new
   def new
     @inventory = Inventory.new
   end
- 
+
   def deposit_stock
-    @inventories = Inventory.where(product_id: params[:product_id], product_exist: true)
-    @inventory = @inventories.take   
-    @inventories = @inventories.group_by {|i| i.deposit}
+    @inventories = Inventory.where(product_id: params[:product_id],
+                                   product_exist: true)
+    @inventory = @inventories.take
+    @inventories = @inventories.group_by(&:deposit)
   end
 
   # Devuelve todos los productos asociados a un (1) depósito
   def per_deposit
-    if params[:deposit_id].present? 
-      cookies[:deposit_id] = params[:deposit_id]
-    end
-    @q = Inventory.ransack(params[:q],deposit_id: cookies[:deposit_id] , product_exist: true)
+    cookies[:deposit_id] = params[:deposit_id] if params[:deposit_id].present?
+
+    @q = Inventory.ransack(params[:q],
+                           deposit_id: cookies[:deposit_id],
+                           product_exist: true)
+
     @inventories = @q.result
-    @inventories = @inventories.group_by {|i| i.product}
-    @deposit = Deposit.find(cookies[:deposit_id]  ) 
+    @inventories = @inventories.group_by(&:product)
+    @deposit = Deposit.find(cookies[:deposit_id])
   end
-  
+
   def show; end
 
-  def edit; end 
+  def edit; end
 
   # POST /inventories
   def create
-    inventory_params[:product_quantity].to_i.times do |i|
+    inventory_params[:product_quantity].to_i.times do
       @inventory = Inventory.new(inventory_params)
       @inventory.save
-    end 
+    end
+
     redirect_to inventories_path
   end
 
@@ -60,16 +67,14 @@ class InventoriesController < ApplicationController
       render :edit, alert: :error
     end
   end
-  
+
   # DELETE /inventories/1
   def destroy
     destroy_model(@inventory)
   end
 
   def download_product
-    puts params
     setup_search
-    # @inventories = @q.result
     exp = InventoryExporter.new(@inventories)
     send_data exp.to_excel_workbook.read,
               filename: "#{exp.filename}.xlsx",
@@ -77,35 +82,33 @@ class InventoriesController < ApplicationController
   end
 
   def download_deposit_product
-    puts params
     setup_search_deposit
-    # @inventories = @q.result
     exp = InventoryDepositExporter.new(@inventories, @deposit)
     send_data exp.to_excel_workbook.read,
               filename: "#{exp.filename}.xlsx",
               type: InventoryDepositExporter::EXCEL_MIME_TYPE
   end
 
-  
   private
 
   def setup_search_deposit
-    @q = Inventory.ransack(params[:q],deposit_id: cookies[:deposit_id] , product_exist: true)
+    @q = Inventory.ransack(params[:q],
+                           deposit_id: cookies[:deposit_id],
+                           product_exist: true)
     @inventories = @q.result
-    @inventories = @inventories.group_by {|i| i.product}
-    @deposit = Deposit.find(cookies[:deposit_id]  ) 
+    @inventories = @inventories.group_by(&:product)
+    @deposit = Deposit.find(cookies[:deposit_id])
   end
 
   def setup_search
     @q = Inventory.ransack(params[:q])
     @q.sorts = 'product.name asc' if @q.sorts.empty?
     @inventories = @q.result
-                    .select('inventories.product_id, inventories.deposit_id')
-                    .group('inventories.product_id, inventories.deposit_id')
-                    .order(' product_id asc')
-                    
+                     .select('inventories.product_id, inventories.deposit_id')
+                     .group('inventories.product_id, inventories.deposit_id')
+                     .order('product_id asc')
   end
-  
+
   def set_inventory
     @inventory = Inventory.find(params[:id])
   end
@@ -115,6 +118,9 @@ class InventoriesController < ApplicationController
   end
 
   def inventory_params
-    params.require(:inventory).permit(:product_id, :deposit_id, :provider_id, :firmware_version, :serial_number, :mac_address, :product_exist, :product_quantity)
+    params.require(:inventory)
+          .permit(:product_id, :deposit_id, :provider_id, :firmware_version,
+                  :serial_number, :mac_address, :product_exist,
+                  :product_quantity)
   end
 end

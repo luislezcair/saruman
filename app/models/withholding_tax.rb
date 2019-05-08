@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WithholdingTax < ApplicationRecord
     # belongs_to :Provideer
     #  has_one :Provideer

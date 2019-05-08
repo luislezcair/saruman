@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
+# Controlador para Proveedores
 class Elements::ProvidersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_provider, only: [:edit, :update, :destroy]
   authorize_resource
-  
+
   # GET /element/providers/search
   def search
     setup_search
@@ -16,13 +19,13 @@ class Elements::ProvidersController < ApplicationController
     setup_search
     @providers = @q.result.page(params[:page])
   end
- 
-  # GET /elements/technicians/new 
+
+  # GET /elements/technicians/new
   def new
     @provider = Provider.new
     # @provider.contacts.build #edit
   end
- 
+
   def edit; end
 
   # POST /elements/technicians
@@ -34,7 +37,7 @@ class Elements::ProvidersController < ApplicationController
       render :new, alert: :error
     end
   end
- 
+
   # PUT/PATCH /elements/technicians/1
   def update
     if @provider.update(provider_params)
@@ -51,8 +54,6 @@ class Elements::ProvidersController < ApplicationController
 
   # GET /technical_services/download
   def download
-    puts "setup search -----------------------------"
-    puts params[:q]
     setup_search
     @q = Provider.ransack(params[:q])
     @providers = @q.result
@@ -64,8 +65,7 @@ class Elements::ProvidersController < ApplicationController
 
   private
 
-
-  # Configura los parámetros de búsqueda para Ransack.  
+  # Configura los parámetros de búsqueda para Ransack.
   def setup_search
     @q = Provider.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
@@ -88,12 +88,16 @@ class Elements::ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
   end
 
-  def provider_params 
-    params.require(:provider).permit(
-                                    :contact_name, :name,:email, :website, :tax_category_number, :identification_number, :withholdingstatus, :tax_category_id,
-                                    contacts_attributes:[:id, :name, :phone, :type_phone, :telephone_type_id, :_destroy], 
-                                    addresses_attributes:[:id, :street, :house_number, :neighborhood,:block, :floor, :number_department, :city_id, :province_id, :country_id,:_destroy],
-                                    withholding_tax_ids: [])
+  def provider_params
+    params.require(:provider)
+          .permit(:contact_name, :name, :email, :website, :tax_category_number,
+                  :identification_number, :withholdingstatus, :tax_category_id,
+                  contacts_attributes: [:id, :name, :phone, :type_phone,
+                                        :telephone_type_id, :_destroy],
+                  addresses_attributes: [:id, :street, :house_number,
+                                         :neighborhood, :block, :floor,
+                                         :number_department, :city_id,
+                                         :province_id, :country_id, :_destroy],
+                  withholding_tax_ids: [])
   end
 end
- 

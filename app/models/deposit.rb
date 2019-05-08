@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Deposit < ApplicationRecord
   belongs_to :country, optional: true
   belongs_to :province, optional: true

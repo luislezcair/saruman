@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Controlador para categorías de productos
 class Products::CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:edit, :update, :destroy]
   authorize_resource
 
   # GET /product/categories
-  def index 
+  def index
     @q = Category.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @categories = @q.result.page(params[:page])
@@ -20,7 +23,7 @@ class Products::CategoriesController < ApplicationController
   # POST /product/categories
   def create
     @category = Category.new(category_params)
-    if @category.save 
+    if @category.save
       redirect_to products_categories_path
     else
       render :new, alert: :error
@@ -32,12 +35,12 @@ class Products::CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to products_categories_path
     else
-      render :edit, alert: :error 
+      render :edit, alert: :error
     end
   end
 
   # DELETE /products/categories/1
-  def destroy 
+  def destroy
     destroy_model(@category)
   end
 

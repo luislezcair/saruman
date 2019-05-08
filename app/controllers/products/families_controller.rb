@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Controlador para familias de productos
 class Products::FamiliesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_family, only: [:edit, :update, :destroy]
   authorize_resource
 
   # GET /product/families
-  def index 
+  def index
     @q = Family.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @families = @q.result.page(params[:page])
@@ -20,7 +23,7 @@ class Products::FamiliesController < ApplicationController
   # POST /product/families
   def create
     @family = Family.new(family_params)
-    if @family.save 
+    if @family.save
       redirect_to products_families_path
     else
       render :new, alert: :error
@@ -32,12 +35,12 @@ class Products::FamiliesController < ApplicationController
     if @family.update(family_params)
       redirect_to products_family_path
     else
-      render :edit, alert: :error 
+      render :edit, alert: :error
     end
   end
 
   # DELETE /products/families/1
-  def destroy 
+  def destroy
     destroy_model(@family)
   end
 

@@ -49,12 +49,11 @@ class TechnicalServicesController < ApplicationController
 
   # DELETE /technical_services/1
   def destroy
-    destroy_model(@technical_service) 
+    destroy_model(@technical_service)
   end
 
   # GET /technical_services/download
   def download
-    puts "into technical provider"
     setup_search
     @technical_services = @q.result
 
@@ -126,4 +125,3 @@ class TechnicalServicesController < ApplicationController
     params.require(:technical_service).permit(attrs)
   end
 end
- 

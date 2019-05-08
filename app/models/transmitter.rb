@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Transmitter < ApplicationRecord
   has_many :technical_services, dependent: :restrict_with_error
 

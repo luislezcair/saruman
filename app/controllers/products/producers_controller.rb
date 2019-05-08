@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Controlador para Productores
 class Products::ProducersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_producer, only: [:edit, :update, :destroy]
   authorize_resource
 
   # GET /product/producers
-  def index 
+  def index
     @q = Producer.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
     @producers = @q.result.page(params[:page])
@@ -20,7 +23,7 @@ class Products::ProducersController < ApplicationController
   # POST /product/producers
   def create
     @producer = Producer.new(producer_params)
-    if @producer.save 
+    if @producer.save
       redirect_to products_producers_path
     else
       render :new, alert: :error
@@ -32,12 +35,12 @@ class Products::ProducersController < ApplicationController
     if @producer.update(producer_params)
       redirect_to products_producers_path
     else
-      render :edit, alert: :error 
+      render :edit, alert: :error
     end
   end
 
   # DELETE /products/producers/1
-  def destroy 
+  def destroy
     destroy_model(@producer)
   end
 
@@ -51,6 +54,7 @@ class Products::ProducersController < ApplicationController
   end
 
   private
+
   def setup_search
     @q = Producer.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controlador para productos
 class Products::ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, only: [:edit, :update, :destroy]
@@ -12,7 +15,7 @@ class Products::ProductsController < ApplicationController
   end
 
   # GET /product/products
-  def index 
+  def index
     setup_search
     @q = Product.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
@@ -29,7 +32,7 @@ class Products::ProductsController < ApplicationController
   # POST /product/products
   def create
     @product = Product.new(product_params)
-    if @product.save 
+    if @product.save
       redirect_to products_products_path
     else
       render :new, alert: :error
@@ -41,12 +44,12 @@ class Products::ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to products_products_path
     else
-      render :edit, alert: :error 
+      render :edit, alert: :error
     end
-  end 
+  end
 
   # DELETE /products/products/1
-  def destroy 
+  def destroy
     destroy_model(@product)
   end
 
@@ -68,7 +71,7 @@ class Products::ProductsController < ApplicationController
       render json: { valid: true }
     end
   end
- 
+
   private
 
   def setup_search
@@ -89,7 +92,11 @@ class Products::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_number, :name, :description, :ac, :power_in, :power_out, :poe, :dbi, :category_id, :producer_id, :product_type_id, :family_id, :stock_min_default, :reorder_point_default, :unit)
+    params.require(:product).permit(:product_number, :name, :description, :ac,
+                                    :power_in, :power_out, :poe, :dbi,
+                                    :category_id, :producer_id,
+                                    :product_type_id, :family_id,
+                                    :stock_min_default, :reorder_point_default,
+                                    :unit)
   end
-end 
- 
+end
