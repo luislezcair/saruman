@@ -114,11 +114,8 @@ es-AR:
         iva_amount: 'IVA'
         net_amount: 'Neto'
         quantity: 'Cantidad'
-<<<<<<< HEAD
-
       organization:
         name: 'Organización'
-=======
       move:
         move_date: 'Fecha del movimiento'
         status: 'Estado'
@@ -132,7 +129,6 @@ es-AR:
       move_detail:
         site_from: 'Depósito origen'
         site_to: 'Depósito destino'
->>>>>>> feature/new_inventory
       plan_service:
         name: 'Servicio'
       producer:
