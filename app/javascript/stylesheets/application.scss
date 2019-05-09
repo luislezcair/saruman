@@ -37,7 +37,11 @@ h6 {
     flex: 0 0 20%;
     max-width: 20%;
   }
+
 }
+
+
+
 
 .col-sm-2-5,
 .col-sm-3-5 {
@@ -348,4 +352,31 @@ input[readonly].form-control.normal {
 
 .small-text {
   font-size: 0.9em;
+}
+
+.btn-add-contact {
+  background-color: transparent !important;
+  border: none;
+}
+
+#invalid-product-number {
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #f86c6b;
+}
+
+#valid-product-number {
+  color: #4dbd74;
+}
+
+.validate-icon-styles {
+  font-size: 2em;
+  position: inherit;
+  right: 0;
+  margin-right: 24px;
+}
+
+.margLefRig {
+  margin-left: 3px;
+  margin-right: 3px;
 }

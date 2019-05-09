@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_235630) do
-
+ActiveRecord::Schema.define(version: 2019_02_10_230005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +22,49 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.string "names_depth_cache", default: "", null: false
     t.string "nature", default: "patrimonial", null: false
     t.index ["ancestry"], name: "index_accounts_on_ancestry"
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "house_number"
+    t.string "neighborhood"
+    t.string "block"
+    t.string "floor"
+    t.string "number_department"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "provider_id"
+    t.string "city"
+    t.string "country"
+    t.string "state"
+    t.bigint "city_id"
+    t.bigint "province_id"
+    t.bigint "country_id"
+    t.index ["city_id"], name: "index_addresses_on_city_id"
+    t.index ["country_id"], name: "index_addresses_on_country_id"
+    t.index ["provider_id"], name: "index_addresses_on_provider_id"
+    t.index ["province_id"], name: "index_addresses_on_province_id"
   end
 
   create_table "auth_tokens", force: :cascade do |t|
@@ -59,6 +101,20 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "background_job_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_products", id: false, force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "product_id"
+    t.index ["category_id"], name: "index_categories_products_on_category_id"
+    t.index ["product_id"], name: "index_categories_products_on_product_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -98,6 +154,18 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "provider_id"
+    t.string "type_phone"
+    t.bigint "telephone_type_id"
+    t.index ["provider_id"], name: "index_contacts_on_provider_id"
+    t.index ["telephone_type_id"], name: "index_contacts_on_telephone_type_id"
+  end
+
   create_table "corporate_cellphones", force: :cascade do |t|
     t.bigint "phone", null: false
     t.datetime "created_at", null: false
@@ -115,6 +183,29 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "deposit_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+    t.bigint "city_id"
+    t.bigint "province_id"
+    t.bigint "country_id"
+    t.bigint "deposit_type_id"
+    t.index ["city_id"], name: "index_deposits_on_city_id"
+    t.index ["country_id"], name: "index_deposits_on_country_id"
+    t.index ["deposit_type_id"], name: "index_deposits_on_deposit_type_id"
+    t.index ["province_id"], name: "index_deposits_on_province_id"
+  end
+
   create_table "devices", force: :cascade do |t|
     t.inet "ip_address"
     t.string "model", default: "", null: false
@@ -122,6 +213,14 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.integer "ucrm_device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.bigint "producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_families_on_producer_id"
   end
 
   create_table "ground_wire_setup_types", force: :cascade do |t|
@@ -145,6 +244,22 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.boolean "admin", default: false, null: false
     t.integer "organization_id"
     t.index ["name"], name: "index_groups_on_name", unique: true
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "deposit_id"
+    t.string "firmware_version"
+    t.string "serial_number"
+    t.string "mac_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "provider_id"
+    t.boolean "product_exist"
+    t.string "status"
+    t.index ["deposit_id"], name: "index_inventories_on_deposit_id"
+    t.index ["product_id"], name: "index_inventories_on_product_id"
+    t.index ["provider_id"], name: "index_inventories_on_provider_id"
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -181,6 +296,34 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.decimal "total_amount", precision: 15, scale: 2, default: "0.0", null: false
   end
 
+  create_table "move_details", force: :cascade do |t|
+    t.bigint "inventory_id"
+    t.bigint "move_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "site_from_id"
+    t.bigint "site_to_id"
+    t.index ["inventory_id"], name: "index_move_details_on_inventory_id"
+    t.index ["move_id"], name: "index_move_details_on_move_id"
+    t.index ["site_from_id"], name: "index_move_details_on_site_from_id"
+    t.index ["site_to_id"], name: "index_move_details_on_site_to_id"
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.datetime "move_date"
+    t.bigint "user_register_id"
+    t.bigint "user_take_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.string "voucher_type"
+    t.string "voucher_number"
+    t.bigint "voucher_type_id"
+    t.index ["user_register_id"], name: "index_moves_on_user_register_id"
+    t.index ["user_take_id"], name: "index_moves_on_user_take_id"
+    t.index ["voucher_type_id"], name: "index_moves_on_voucher_type_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "account_code", default: "", null: false
@@ -209,6 +352,57 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.index ["ucrm_plan_service_id"], name: "index_plan_services_on_ucrm_plan_service_id", unique: true
   end
 
+  create_table "producers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_number"
+    t.string "name"
+    t.string "description"
+    t.boolean "ac"
+    t.string "power_in"
+    t.string "power_out"
+    t.string "poe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "producer_id"
+    t.string "dbi"
+    t.bigint "category_id"
+    t.bigint "family_id"
+    t.bigint "product_type_id"
+    t.integer "stock_min_default"
+    t.integer "reorder_point_default"
+    t.string "unit"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["family_id"], name: "index_products_on_family_id"
+    t.index ["producer_id"], name: "index_products_on_producer_id"
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "contact_name"
+    t.string "email"
+    t.string "website"
+    t.string "tax_category_number"
+    t.string "identification_number"
+    t.boolean "withholdingstatus", default: false
+    t.bigint "tax_category_id"
+    t.index ["tax_category_id"], name: "index_providers_on_tax_category_id"
+  end
+
   create_table "provinces", force: :cascade do |t|
     t.integer "country_id"
     t.string "name"
@@ -216,6 +410,17 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.integer "ucrm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer "stock_min"
+    t.integer "reorder_point"
+    t.bigint "deposit_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deposit_id"], name: "index_stocks_on_deposit_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
   end
 
   create_table "support_types", force: :cascade do |t|
@@ -239,6 +444,13 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_system_configurations_on_name", unique: true
+  end
+
+  create_table "tax_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "technical_service_corporate_cellphones", force: :cascade do |t|
@@ -303,6 +515,13 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.index ["firstname", "lastname"], name: "index_technicians_on_firstname_and_lastname", unique: true
   end
 
+  create_table "telephone_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "towers", force: :cascade do |t|
     t.string "name", null: false
     t.integer "ucrm_site_id"
@@ -360,6 +579,29 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "voucher_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "withholding_taxes", force: :cascade do |t|
+    t.string "withholding"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "withholdings", force: :cascade do |t|
+    t.bigint "provider_id"
+    t.bigint "withholding_tax_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_withholdings_on_provider_id"
+    t.index ["withholding_tax_id"], name: "index_withholdings_on_withholding_tax_id"
+  end
+
   create_table "work_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -367,4 +609,35 @@ ActiveRecord::Schema.define(version: 2019_01_28_235630) do
     t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "countries"
+  add_foreign_key "addresses", "providers"
+  add_foreign_key "addresses", "provinces"
+  add_foreign_key "contacts", "providers"
+  add_foreign_key "contacts", "telephone_types"
+  add_foreign_key "deposits", "cities"
+  add_foreign_key "deposits", "countries"
+  add_foreign_key "deposits", "deposit_types"
+  add_foreign_key "deposits", "provinces"
+  add_foreign_key "families", "producers"
+  add_foreign_key "inventories", "deposits"
+  add_foreign_key "inventories", "products"
+  add_foreign_key "inventories", "providers"
+  add_foreign_key "move_details", "deposits", column: "site_from_id"
+  add_foreign_key "move_details", "deposits", column: "site_to_id"
+  add_foreign_key "move_details", "inventories"
+  add_foreign_key "move_details", "moves"
+  add_foreign_key "moves", "users", column: "user_register_id"
+  add_foreign_key "moves", "users", column: "user_take_id"
+  add_foreign_key "moves", "voucher_types"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "families"
+  add_foreign_key "products", "producers"
+  add_foreign_key "products", "product_types"
+  add_foreign_key "providers", "tax_categories"
+  add_foreign_key "stocks", "deposits"
+  add_foreign_key "stocks", "products"
+  add_foreign_key "withholdings", "providers"
+  add_foreign_key "withholdings", "withholding_taxes"
 end
