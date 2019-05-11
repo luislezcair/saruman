@@ -28,7 +28,8 @@ gem 'jbuilder'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
+gem 'aws-sdk-s3', require: false
 
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -75,12 +76,10 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
+  gem 'webdrivers'
 
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
 
   gem 'launchy'
 
@@ -128,3 +127,5 @@ gem 'whenever', require: false
 
 # Models with tree structure using the materialized path pattern
 gem 'ancestry'
+
+gem 'active_storage_validations'

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# Controlador para tipos de trabajo
+# Controlador para CRUD de WorkTypes.
+#
 class Elements::WorkTypesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_work_type, only: [:edit, :update, :destroy]
