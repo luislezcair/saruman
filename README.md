@@ -1,6 +1,6 @@
 # Sinergia-I
 
-[![Build Status](https://travis-ci.com/luislezcair/maxwell.svg?token=ZTezY5pdSseyfJxAaZH6&branch=master)](https://travis-ci.com/luislezcair/maxwell)
+[![Build Status](https://travis-ci.com/luislezcair/saruman.svg?token=ZTezY5pdSseyfJxAaZH6&branch=master)](https://travis-ci.com/luislezcair/saruman)
 
 Sistema de control de inventario de Sinergia.
 
