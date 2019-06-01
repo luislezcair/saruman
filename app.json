@@ -1,7 +1,7 @@
 {
-  "name": "Maxwell",
-  "description": "Maxwell es un sistema orientado a ISPs para el registro y facturación de servicios técnicos realizados por personal de la empresa en el domicilio de clientes.",
-  "repository": "https://github.com/luislezcair/maxwell",
+  "name": "Saruman",
+  "description": "Sistema de control de inventario de Sinergia E.",
+  "repository": "https://github.com/luislezcair/saruman",
   "keywords": ["ucrm", "contabilium", "isp", "ubiquiti"],
 
   "scripts": {

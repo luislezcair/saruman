@@ -2,21 +2,21 @@ es-AR:
   products:
     producers:
       edit:
-        header: 'Editar Fabricante'
+        header: 'Editar Proveedor'
       form:
         cancel: 'Cancelar'
         section:
           basic: 'Información básica'
         submit: 'Guardar'
       index:
-        header: 'Fabricantes'
+        header: 'Proveedores'
         tooltip:
-          new: 'Nuevo fabricante'
+          new: 'Nuevo Proveedor'
           export: 'Exportar a Excel'
       new:
-        header: 'Nuevo fabricante'
+        header: 'Nuevo Proveedor'
       producers_table:
-        delete_confirm: '¿Está seguro que desea eliminar este fabricante?'
+        delete_confirm: '¿Está seguro que desea eliminar este proveedor?'
         tooltip:
           edit: 'Editar'
           delete: 'Eliminar'

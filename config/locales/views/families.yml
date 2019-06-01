@@ -2,20 +2,20 @@ es-AR:
   products:
     families:
       edit:
-        header: 'Editar Familia'
+        header: 'Editar Marca'
       form:
         cancel: 'Cancelar'
         section:
           basic: 'Información básica'
         submit: 'Guardar'
       index:
-        header: 'Familias'
+        header: 'Marcas'
         tooltip:
-          new: 'Nueva familia'
+          new: 'Nueva Marca'
       new:
-        header: 'Nueva Familia'
+        header: 'Nueva Marca'
       families_table:
-        delete_confirm: '¿Está seguro que desea eliminar esta familia?'
+        delete_confirm: '¿Está seguro que desea eliminar esta marca?'
         tooltip:
-          edit: 'Editar familia'
-          delete: 'Eliminar familia'
+          edit: 'Editar marca'
+          delete: 'Eliminar marca'

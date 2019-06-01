@@ -8,7 +8,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    
+
     <div class="modal-body">
       <% if (checkForRepeatedValues(@inventories)) %>
         <div class="card">
@@ -18,9 +18,9 @@
             <button data-toggle="collapse" data-target="#show-product-description">Descripción</button>
             <div id="show-product-description" class="collapse"><h6><%= @inventory.product.description %></h6></div>
           </div>
-      
+
           <table id="deposit-move-table" class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
-            <thead> 
+            <thead>
               <tr>
                 <th>Inventario Id</th>
                 <th>N° Serial</th>
@@ -42,15 +42,15 @@
               <% end %>
             </tbody>
           </table>
-        </div> <%# class="card" %> 
+        </div> <%# class="card" %>
       <% else %>
         <div class="card">
           <table id="deposit-move-table" class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
-            <thead> 
+            <thead>
               <tr>
                 <th>Número de Producto</th>
-                <th>Producto/Modelo/Familia</th>
-                <th>Fabricante</th>
+                <th>Producto/Modelo/Marca</th>
+                <th>Proveedor</th>
                 <th>Categoria</th>
                 <th>N° Serial</th>
                 <th>Proveedor</th>

@@ -147,11 +147,11 @@
 
             <li class="nav-title"><%= t('.nav.services') %></li>
 
-            <li class="nav-item">
-              <%= link_to technical_services_path, class: 'nav-link' do %>
-                <i class="nav-icon fa fa-wrench"></i> <%= t('.nav.technical_services') %>
-              <% end %>
-            </li>
+            <%# <li class="nav-item"> %>
+            <%#   <%= link_to technical_services_path, class: 'nav-link' do %1> %>
+            <%#     <i class="nav-icon fa fa-wrench"></i> <%= t('.nav.technical_services') %1> %>
+            <%#   <% end %1> %>
+            <%# </li> %>
 
             <li class="nav-item">
               <%= link_to inventories_path, class: 'nav-link' do %>
@@ -173,17 +173,17 @@
               <% end %>
             </li>
 
-            <li class="nav-item">
-              <%= link_to billing_exports_path, class: 'nav-link' do %>
-                <i class="nav-icon fa fa-money"></i> <%= t('.nav.billing_exports') %>
-              <% end %>
-            </li>
+            <%# <li class="nav-item"> %>
+            <%#   <%= link_to billing_exports_path, class: 'nav-link' do %1> %>
+            <%#     <i class="nav-icon fa fa-money"></i> <%= t('.nav.billing_exports') %1> %>
+            <%#   <% end %1> %>
+            <%# </li> %>
 
-            <li class="nav-item">
-              <%= link_to accounts_path, class: 'nav-link' do %>
-                <i class="nav-icon fa fa-book"></i> <%= t('.nav.accounts_chart') %>
-              <% end %>
-            </li>
+            <%# <li class="nav-item"> %>
+            <%#   <%= link_to accounts_path, class: 'nav-link' do %1> %>
+            <%#     <i class="nav-icon fa fa-book"></i> <%= t('.nav.accounts_chart') %1> %>
+            <%#   <% end %1> %>
+            <%# </li> %>
 
             <li class="nav-title"><%= t('.nav.system') %></li>
 
@@ -194,22 +194,22 @@
 
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <%= link_to elements_technicians_path, class: 'nav-link' do %>
+                  <%= link_to elements_providers_path, class: 'nav-link' do %>
                     <i class="nav-icon fa fa-puzzle-piece"></i> <%= t('.nav.elements') %>
-                  <% end %>
-                </li>
-                
-                <li class="nav-item">
-                  <%= link_to products_categories_path, class: 'nav-link' do %>
-                    <i class="nav-icon fa fa-archive"></i> <%= t('.nav.products') %>
                   <% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to taxes_tax_categories_path, class: 'nav-link' do %>
-                    <i class="nav-icon fa fa-bank"></i> <%= t('.nav.taxes') %>
+                  <%= link_to products_products_path, class: 'nav-link' do %>
+                    <i class="nav-icon fa fa-archive"></i> <%= t('.nav.products') %>
                   <% end %>
                 </li>
+
+                <%# <li class="nav-item"> %>
+                <%#   <%= link_to taxes_tax_categories_path, class: 'nav-link' do %1> %>
+                <%#     <i class="nav-icon fa fa-bank"></i> <%= t('.nav.taxes') %1> %>
+                <%#   <% end %1> %>
+                <%# </li> %>
 
                 <li class="nav-item">
                   <%= link_to system_users_path, class: 'nav-link' do %>

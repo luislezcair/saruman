@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Controlador para familias de productos
+# Controlador para marcas de productos
 class Products::FamiliesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_family, only: [:edit, :update, :destroy]

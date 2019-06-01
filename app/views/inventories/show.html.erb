@@ -4,7 +4,7 @@
       <%= t('.header')%>
     </div>
   </div>
-  
+
   <div class="card-body">
     <legend class="form-section">
       <i class=""></i> <%= t('.section.product') %>
@@ -13,7 +13,7 @@
     <div class="form-group row string">
       <label class="col-sm-3 text-muted">N° de Producto / Código de Barras: </label>
       <div class="col-sm-3"><%= @inventory.product.product_number %></div>
-      <label class="col-sm-3 text-muted">Modelo / Fabricante / Familia: </label>
+      <label class="col-sm-3 text-muted">Modelo / Proveedor / Marca: </label>
       <div class="col-sm-3"><%= "#{[@inventory.product.name, @inventory.product.producer.name,  @inventory.product.family.name].compact.join(" / ") }" %></div>
     </div>
 
@@ -65,7 +65,7 @@
       </div>
     </div>
     <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
-      <thead> 
+      <thead>
         <tr>
           <th>Depósito Origen</th>
           <th>Depósito Destino</th>
@@ -93,6 +93,7 @@
       </tbody>
     </table>
   </div>
+
   <div class="modal-footer">
     <div class="float-right">
       <%= link_to t('.close'), per_deposit_inventories_path(deposit_id: @inventory.deposit_id), class: 'btn btn-secondary' %>

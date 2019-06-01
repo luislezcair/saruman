@@ -21,8 +21,8 @@ es-AR:
           product_name: 'Nombre - Serie Producto'
           reset: 'Limpiar Filtros'
           deposit: 'Deposito'
-          family: 'Familia'
-          producer: 'Fabricante'
+          family: 'Marca'
+          producer: 'Proveedor'
           deposit_type: 'Tipo depósito'
           deposit_name: 'Depósito'
           inventory_per_deposit: 'Ver inventario por depósito'
@@ -43,10 +43,10 @@ es-AR:
     edit:
       form:
         edit_header: 'Editar Registro en Inventario'
-    inventories_table: 
+    inventories_table:
       tooltip:
         show: 'Ver depósitos'
-    inventories_detail_table: 
+    inventories_detail_table:
       tooltip:
         delete: 'Eliminar'
         edit: 'Editar'
@@ -67,7 +67,7 @@ es-AR:
       tooltip:
         export: 'Exportar a Excel'
       search_form:
-        product_number: 'Número de Producto' 
+        product_number: 'Número de Producto'
         product_name: 'Nombre Producto'
         reset: 'Limpiar Filtros'
         tooltip:

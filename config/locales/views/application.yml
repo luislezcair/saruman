@@ -16,11 +16,11 @@ es-AR:
         deposit_types: 'Tipo de Depósitos'
         providers: 'Proveedores'
       groups: 'Grupos y Permisos'
-      products: 
+      products:
         categories: 'Categorias'
-        families: 'Familias'
-        family: 'Familia'
-        producers: 'Fabricantes'
+        families: 'Marcas'
+        family: 'Marca'
+        producers: 'Proveedores'
         products: 'Productos'
         product_types: 'Tipos de Productos'
       taxes:

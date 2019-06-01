@@ -1,67 +1,65 @@
-<%# -- filtrado --- productos%> 
+<%# -- filtrado --- productos%>
 <div class="card" >
   <div class="card-body">
-      <div id="filtro-producto">
-          <%= search_form_for @q, url: inventories_path, remote: true do |f| %>
-            <div class="row" >
-              <div class="col-sm-3">
-                <%= f.input :product_family_id_eq, as: :select, collection: sorted_family, label: t('.search_form.family'), include_blank: t('search_form.any') %>
-              </div>
+    <div id="filtro-producto">
+      <%= search_form_for @q, url: inventories_path, remote: true do |f| %>
+        <div class="row" >
+          <div class="col-sm-3">
+            <%= f.input :product_family_id_eq, as: :select, collection: sorted_family, label: t('.search_form.family'), include_blank: t('search_form.any') %>
+          </div>
 
-              <div class="col-sm-3">
-                <%= f.input :product_producer_id_eq, as: :select, collection: sorted_producer, label: t('.search_form.producer'), include_blank: t('search_form.any') %>
-              </div>
+          <div class="col-sm-3">
+            <%= f.input :product_producer_id_eq, as: :select, collection: sorted_producer, label: t('.search_form.producer'), include_blank: t('search_form.any') %>
+          </div>
 
-              <div class="col-sm-5">
-                <%= f.input :product_name_or_product_product_number_cont, label: t('.search_form.product_name') do %>
-                  <div class="input-group">
-                    <%= f.input_field :product_name_or_product_product_number_cont, as: :string, class: 'form-control' %>
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
-                        <i class="fa fa-search"></i>
-                      </button>&nbsp;&nbsp;
-                      <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+          <div class="col-sm-5">
+            <%= f.input :product_name_or_product_product_number_cont, label: t('.search_form.product_name') do %>
+              <div class="input-group">
+                <%= f.input_field :product_name_or_product_product_number_cont, as: :string, class: 'form-control' %>
 
-            </div>
-          <% end %>  
-      </div>
-      <%# filtrado deposito---- %>
-      <div id="filtro-deposito">
-        <%= search_form_for @p, url: inventories_path, remote: true do |f| %>
-            <div class="row" >
-                  <div class="col-sm-4">
-                    <%= f.input :deposit_type_id_eq, as: :select, collection: sorted_deposit_type, label: t('.search_form.deposit_type'), include_blank: t('search_form.any') %>
-                  </div>
-                  
-                  <div class="col-sm-4 ">
-                    <%= f.input :id_eq, as: :select, collection: sorted_deposit, label: t('.search_form.deposit_name'), include_blank: t('search_form.any') %>
-                  </div>
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                    <i class="fa fa-search"></i>
+                  </button>
 
-                <div class="col-sm-2 align-self-center">
-                         <div class="input-group-append">
-                            <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
-                         </div>
-                      
+                  <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
                 </div>
-                  
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%# filtrado deposito---- %>
+    <div id="filtro-deposito">
+      <%= search_form_for @p, url: inventories_path, remote: true do |f| %>
+        <div class="row" >
+          <div class="col-sm-4">
+            <%= f.input :deposit_type_id_eq, as: :select, collection: sorted_deposit_type, label: t('.search_form.deposit_type'), include_blank: t('search_form.any') %>
+          </div>
+
+          <div class="col-sm-4 ">
+            <%= f.input :id_eq, as: :select, collection: sorted_deposit, label: t('.search_form.deposit_name'), include_blank: t('search_form.any') %>
+          </div>
+
+          <div class="col-sm-2 align-self-center">
+            <div class="input-group-append">
+              <%= link_to '<button class="btn btn-warning"><i class="fa fa-refresh"></i></button>'.html_safe, request.path, remote: true,  title: t('.search_form.reset'), class:'reset-filter' %>
             </div>
-            <% end%>
-      </div>
-
-
+          </div>
+        </div>
+      <% end%>
+    </div>
 
     <div class="row">
       <div class="col-sm-12" data-controller="inventory">
         <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
           <label class="btn btn-outline-secondary active">
-              <input id="change-inventory-deposito" type="radio" name="options" autocomplete="off" data-action="click->inventory#inventoryPerDeposit"> Depositos
+            <input id="change-inventory-deposito" type="radio" name="options" autocomplete="off" data-action="click->inventory#inventoryPerDeposit">Depositos
           </label>
           <label class="btn btn-outline-secondary">
-            <input id="change-inventory-producto" type="radio" name="options" autocomplete="off" data-action="click->inventory#inventoryPerDeposit">Productos 
+            <input id="change-inventory-producto" type="radio" name="options" autocomplete="off" data-action="click->inventory#inventoryPerDeposit">Productos
           </label>
         </div>
       </div>
@@ -70,10 +68,6 @@
   </div>
 </div>
 <%# -- filtrado --- %>
-
-
-
-
 
 <div class="card">
   <div class="card-header data-header">
@@ -84,7 +78,7 @@
     <div>
       <% if can? :download_product, Inventory %>
         <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
-         <i class="fa fa-table"></i>
+          <i class="fa fa-table"></i>
         </button>
       <% end %>
       <% if can? :create, Inventory %>

@@ -1,23 +1,15 @@
 <%= content_for :header_tabs do %>
   <nav class="nav nav-pills flex-column flex-sm-row">
-    <%= link_to t('common.nav.elements.technicians'), elements_technicians_path, class: 'flex-sm-fill text-sm-center nav-link' %>
-    <%= link_to t('common.nav.elements.corporate_cellphones'), elements_corporate_cellphones_path, class: 'flex-sm-fill text-sm-center nav-link' %>
-    <%= link_to t('common.nav.elements.telephone_types'), elements_telephone_types_path, class: 'flex-sm-fill text-sm-center nav-link' %>
-    <%= link_to t('common.nav.elements.work_types'), elements_work_types_path, class: 'flex-sm-fill text-sm-center nav-link' %>
     <%= link_to t('common.nav.elements.providers'), elements_providers_path, class: 'flex-sm-fill text-sm-center nav-link active' %>
     <%= link_to t('common.nav.elements.deposits'), elements_deposits_path, class: 'flex-sm-fill text-sm-center nav-link' %>
     <%= link_to t('common.nav.elements.deposit_types'), elements_deposit_types_path, class: 'flex-sm-fill text-sm-center nav-link' %>
   </nav>
 <% end %>
 
-
 <div class="card">
   <div class="card-body">
     <%= search_form_for @q, url: elements_providers_path, remote: true do |f| %>
       <div class="row">
-
-
-
         <div class="col-sm-4">
           <%= f.input :identification_number_cont, label: t('.search_form.identification_number') do %>
             <div class="input-group">
@@ -33,8 +25,6 @@
             </div>
           <% end %>
         </div>
-
-
 
         <div class="col-sm-4">
           <%= f.input :name_cont, label: t('.search_form.provider_name') do %>
@@ -55,21 +45,17 @@
   </div>
 </div>
 
-
-
 <div class="card">
   <div class="card-header data-header">
     <div class="title"><%= t('.header') %></div>
+
     <div>
       <% if can? :download, Provider %>
         <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
           <i class="fa fa-table"></i>
         </button>
       <% end %>
-        
 
-
-     
       <% if can? :create, Provider %>
         <%= link_to new_elements_provider_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>
@@ -77,9 +63,10 @@
       <% end %>
     </div>
   </div>
+
   <div class="card-body">
     <div id="providers-table-container">
       <%= render 'providers_table' %>
     </div>
-  </div> 
+  </div>
 </div>

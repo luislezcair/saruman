@@ -27,7 +27,7 @@
                 </p>
                 <p>
                   <span class="badge badge-danger">Eliminado</span>
-                  Producto eliminado.   
+                  Producto eliminado.
                 </p>
                 <p>
                   <span class="badge badge-info">En transito</span>
@@ -71,7 +71,7 @@
         <td><%= inv.deposit_type.name %></td>
         <td><%= "#{inv.address} - (#{inv.city.name}, #{inv.province.name})" %></td>
         <td><%= I18n.l(indexes.last.updated_at.to_datetime, locale: :es, format: :long) %></td>
-        <% if (indexes.last.product.is_reorder_point?(indexes.length, indexes.last.product.reorder_point_default)) %>
+        <% if (indexes.last.product.reorder_point?(indexes.length, indexes.last.product.reorder_point_default)) %>
           <td class="text-danger text-center"><%= indexes.length %></td>
         <% else %>
           <td class="text-center"><%= indexes.length %></td>
@@ -128,7 +128,7 @@
             <% end %>
         </td>
         </tr>
-      <% end %> 
+      <% end %>
     <% end %>
   </tbody>
   <tfoot>

@@ -2,8 +2,8 @@
 
 # Representa un ítem en inventario
 class Inventory < ApplicationRecord
-  belongs_to :product
   belongs_to :deposit
+  belongs_to :product
   belongs_to :provider
 
   has_many :move_details, dependent: :restrict_with_error
@@ -50,7 +50,6 @@ class Inventory < ApplicationRecord
   end
 
   def update_status(inv, status)
-    # Update status
     inv.update!(status: status)
   end
 end

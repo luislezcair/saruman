@@ -92,11 +92,9 @@ class Products::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_number, :name, :description, :ac,
-                                    :power_in, :power_out, :poe, :dbi,
-                                    :category_id, :producer_id,
+    params.require(:product).permit(:product_number, :name, :description, :dbi,
+                                    :category_id, :producer_id, :unit,
                                     :product_type_id, :family_id,
-                                    :stock_min_default, :reorder_point_default,
-                                    :unit)
+                                    :stock_min_default, :reorder_point_default)
   end
 end

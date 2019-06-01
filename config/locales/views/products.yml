@@ -8,7 +8,7 @@ es-AR:
         section: &form_sections
           product: 'Datos del producto'
           product_detail: 'Detalles del producto'
-          stock: 'Valores por defecto de stock'
+          stock: 'Valores de stock'
         submit: 'Guardar'
       index:
         header: 'Productos'
@@ -18,8 +18,8 @@ es-AR:
         search_form:
           product_name: 'Nombre - Serie Producto'
           category: 'Categoria'
-          family: 'Familia' 
-          producer: 'Fabricante'
+          family: 'Marca'
+          producer: 'Proveedor'
           product_type: 'Tipo de producto'
           reset: 'Limpiar Filtros'
           tooltip:

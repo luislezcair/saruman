@@ -11,10 +11,10 @@
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
-       <th><%= sort_link(@q, :contact_name, {}, remote: true) %></th>
-       <th><%= sort_link(@q, :identification_number, {}, remote: true) %></th>
-       <th><%= sort_link(@q, :tax_category_number, {}, remote: true) %></th>
- 
+      <th><%= sort_link(@q, :contact_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :identification_number, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :tax_category_number, {}, remote: true) %></th>
+
       <th class="action-column"></th>
     </tr>
   </thead>
@@ -27,7 +27,6 @@
         <td><%= t.contact_name ? t.contact_name : "" %></td>
         <td><%= t.identification_number ? t.identification_number : "" %></td>
         <td><%= t.tax_category_number ? t.tax_category_number : "" %></td>
-         
 
         <td class="action-buttons">
           <% if can? :update, t %>
@@ -48,7 +47,7 @@
 
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="4"><%= page_entries_info @providers %></td>
+      <td class="page-entries-info" colspan="6"><%= page_entries_info @providers %></td>
     </tr>
 
     <% if @providers.total_pages > 1 %>
@@ -66,4 +65,4 @@
   <%= f.hidden_field :contact_name_cont %>
   <%= f.hidden_field :identification_number_cont %>
   <%= f.hidden_field :tax_category_number_cont %>
-<% end %>  
+<% end %>
