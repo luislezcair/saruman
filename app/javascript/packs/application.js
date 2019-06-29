@@ -11,8 +11,8 @@ import '@coreui/coreui';
 import 'inputmask';
 import 'jstree';
 
-// SASS stylesheets modules //
-import '@coreui/coreui/scss/coreui.scss';
+// SASS stylesheets modules
+import '../stylesheets/application.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'simple-line-icons/scss/simple-line-icons.scss';
 import 'jstree/dist/themes/default/style.min.css';
@@ -28,8 +28,6 @@ import '../views';
 
 // Custom assets modules //
 import '../images';
-
-import '../stylesheets/application.scss';
 
 Turbolinks.start();
 Rails.start();

@@ -1,11 +1,4 @@
-import './avatars/1.jpg';
-import './avatars/2.jpg';
-import './avatars/3.jpg';
-import './avatars/4.jpg';
-import './avatars/5.jpg';
-import './avatars/6.jpg';
-import './avatars/7.jpg';
-import './avatars/8.jpg';
+import './avatars/main.png';
 
 import './brand/brand.png';
 

@@ -1,0 +1,8 @@
+// Theme colors for Saruman
+$primary: #f47521;
+
+$theme-colors: (
+  "primary": $primary
+);
+
+@import "@coreui/coreui/scss/coreui.scss";
