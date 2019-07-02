@@ -156,6 +156,12 @@
             <%# </li> %>
 
             <li class="nav-item">
+              <%= link_to products_products_path, class: 'nav-link' do %>
+                <i class="nav-icon fa fa-archive"></i> <%= t('.nav.products') %>
+              <% end %>
+            </li>
+
+            <li class="nav-item">
               <%= link_to inventories_path, class: 'nav-link' do %>
                 <i class="nav-icon fa fa-list"></i> <%= t('.nav.inventory') %>
               <% end %>
@@ -198,12 +204,6 @@
                 <li class="nav-item">
                   <%= link_to elements_providers_path, class: 'nav-link' do %>
                     <i class="nav-icon fa fa-puzzle-piece"></i> <%= t('.nav.elements') %>
-                  <% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to products_products_path, class: 'nav-link' do %>
-                    <i class="nav-icon fa fa-archive"></i> <%= t('.nav.products') %>
                   <% end %>
                 </li>
 
