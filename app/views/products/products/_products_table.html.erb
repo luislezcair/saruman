@@ -11,8 +11,8 @@
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :product_number, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :name, {}, remote: true) %></th> 
-      <th><%= sort_link(@q, :product_type_name, {}, remote: true) %></th> 
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :product_type_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :category_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :producer_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :family_name, {}, remote: true) %></th>
@@ -21,7 +21,7 @@
 
       <th class="action-column"></th>
     </tr>
-  </thead> 
+  </thead>
 
   <tbody>
     <% @products.each_with_index do |c, index| %>
@@ -29,10 +29,10 @@
         <td><%= @products.offset_value + index + 1 %></td>
         <td><%= c.product_number %></td>
         <td><%= c.name %></td>
-        <td><%= c.product_type.name %></td>
+        <td><%= c.product_type&.name %></td>
         <td><%= c.category.name %></td>
         <td><%= c.producer.name %></td>
-        <td><%= c.family.name %></td>
+        <td><%= c.family&.name %></td>
         <td><%# c.stock_min_default %></td>
         <td><%# c.reorder_point_default %></td>
 
@@ -53,7 +53,7 @@
       </tr>
     <% end %>
   </tbody>
- 
+
   <tfoot>
     <tr>
       <td class="page-entries-info" colspan="11"><%= page_entries_info @products %></td>
@@ -74,4 +74,4 @@
   <%= f.hidden_field :product_type_id_eq %>
   <%= f.hidden_field :family_id_eq %>
   <%= f.hidden_field :producer_id_eq %>
-<% end %>  
+<% end %>

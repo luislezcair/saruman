@@ -22,6 +22,7 @@ const maskDefaults = {
     radixPoint: ',',
     removeMaskOnSubmit: true,
     unmaskAsNumber: true,
+    numericInput: true,
   },
   date: {
     alias: 'datetime',

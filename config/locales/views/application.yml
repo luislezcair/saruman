@@ -25,9 +25,10 @@ es-AR:
         product_types: 'Tipos de Productos'
       taxes:
         tax_categories: 'Categoría ante el IVA'
-        withholding_taxes: 'Retenciones'
         voucher_types: 'Tipos de Comprobantes'
+        withholding_taxes: 'Retenciones'
       users: 'Usuarios'
+
   enumerize:
     account:
       nature:
@@ -98,6 +99,8 @@ es-AR:
         deposit_moves: 'Mov. por Depósito'
         elements: 'Elementos'
         inventory: 'Inventario'
+        management: 'Administración'
+        product_management: 'Gestión de productos'
         products: 'Productos'
         taxes: 'Impuestos'
         services: 'Servicios'

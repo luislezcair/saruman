@@ -40,7 +40,7 @@
             </div>
           <% end %>
         </div>
-      <% end %> 
+      <% end %>
 
       <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
 
@@ -74,13 +74,15 @@
 
       <%= two_column_multiple_choice_for(f, :work_types, required: true) %>
 
+      <%# <%= binding.pry %1> %>
+
       <div class="form-group row string required">
         <%= f.input :labour_cost, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">$</span>
             </div>
-            <%= f.input_field :labour_cost, as: :string, class: 'form-control mask-money' %>
+            <%= f.input_field :labour_cost, as: :string, value: currency_value(f.object.labour_cost), class: 'form-control mask-money' %>
           </div>
         <% end %>
 
@@ -89,7 +91,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">$</span>
             </div>
-            <%= f.input_field :equipment_cost, as: :string, class: 'form-control mask-money' %>
+            <%= f.input_field :equipment_cost, as: :string, value: currency_value(f.object.equipment_cost), class: 'form-control mask-money' %>
           </div>
         <% end %>
       </div>

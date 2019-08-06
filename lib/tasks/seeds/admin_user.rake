@@ -32,8 +32,14 @@ PERMISSIONS = [
   { title: 'Tipos de depósito', category: 'Inventario', code: 'deposit_type' }
 ].freeze
 
+TAX_CATEGORIES = [
+  { name: 'IVA Responsable Inscripto' },
+  { name: 'Monotributista' },
+  { name: 'IVA Exento' }
+].freeze
+
 def create_permissions
-  print 'Creating permissions...'
+  puts 'Creating permissions...'
 
   PERMISSIONS.each do |p|
     perm = Permission.find_or_initialize_by(code: p[:code])
@@ -41,6 +47,15 @@ def create_permissions
     perm.category = p[:category]
     perm.custom_actions = p[:custom_actions]
     perm.save!
+  end
+end
+
+def create_tax_categories
+  puts 'Creating tax categories...'
+
+  TAX_CATEGORIES.each do |t|
+    t = TaxCategory.find_or_initialize_by(name: t[:name])
+    t.save!
   end
 end
 
@@ -63,6 +78,7 @@ namespace :seeds do
       end
 
       create_permissions
+      create_tax_categories
     end
   end
 end

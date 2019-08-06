@@ -95,6 +95,7 @@ class Products::ProductsController < ApplicationController
     params.require(:product).permit(:product_number, :name, :description, :dbi,
                                     :category_id, :producer_id, :unit,
                                     :product_type_id, :family_id,
-                                    :stock_min_default, :reorder_point_default)
+                                    :stock_min_default, :reorder_point_default,
+                                    :sale_price, :cost_price)
   end
 end

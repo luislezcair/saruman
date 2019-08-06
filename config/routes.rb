@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     resources :work_types, concerns: :paginatable, except: [:show]
     resources :deposit_types, concerns: :paginatable, except: [:show]
     resources :telephone_types, concerns: :paginatable, except: [:show]
+
     resources :deposits, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
@@ -79,6 +80,7 @@ Rails.application.routes.draw do
         post 'create_move'
       end
     end
+
     resources :providers, concerns: :paginatable, except: [:show] do
       collection do
         get 'download'
@@ -93,15 +95,17 @@ Rails.application.routes.draw do
       get 'download'
     end
   end
-  
+
   namespace :products do
     resources :categories, concerns: :paginatable, except: [:show]
     resources :product_types, concerns: :paginatable, except: [:show]
+
     resources :producers, concerns: :paginatable, except: [:show] do
       collection do
         get 'download'
       end
     end
+
     resources :products, concerns: :paginatable, except: [:show] do
       collection do
         get 'search'
@@ -109,8 +113,10 @@ Rails.application.routes.draw do
         get 'product_number_validator/:product_number', to: 'products#product_number_validator'
       end
     end
+
     resources :families, concerns: :paginatable, except: [:show]
   end
+
   namespace :taxes do
     resources :withholding_taxes, concerns: :paginatable, except: [:show]
     resources :voucher_types, concerns: :paginatable, except: [:show]
@@ -123,7 +129,7 @@ Rails.application.routes.draw do
   end
 
   resources :inventories, concerns: :paginatable do
-    collection do 
+    collection do
       get 'deposit_stock'
       get 'download_product'
       get 'per_deposit'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_173630) do
+ActiveRecord::Schema.define(version: 2019_08_05_232041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -380,6 +380,8 @@ ActiveRecord::Schema.define(version: 2019_06_01_173630) do
     t.integer "stock_min_default"
     t.integer "reorder_point_default"
     t.string "unit"
+    t.decimal "sale_price", precision: 15, scale: 2
+    t.decimal "cost_price", precision: 15, scale: 2
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["family_id"], name: "index_products_on_family_id"
     t.index ["producer_id"], name: "index_products_on_producer_id"

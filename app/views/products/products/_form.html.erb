@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header"><%= header %></div>
 
-    <div class="card-body">
+    <div class="card-body" data-controller="product-form">
       <legend class="form-section">
         <i class="fa fa-archive"></i> <%= t('.section.product') %>
       </legend>
@@ -34,6 +34,26 @@
 
       <div class="form-group row string required">
         <%= f.association :family,  wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }  %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :sale_price, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <%= f.input_field :sale_price, as: :string, value: currency_value(f.object.sale_price), class: 'form-control mask-money', data: { target: 'product-form.salePrice' } %>
+          </div>
+        <% end %>
+
+        <%= f.input :cost_price, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <%= f.input_field :cost_price, as: :string, value: currency_value(f.object.cost_price), class: 'form-control mask-money', data: { target: 'product-form.costPrice' } %>
+          </div>
+        <% end %>
       </div>
 
       <legend class="form-section">

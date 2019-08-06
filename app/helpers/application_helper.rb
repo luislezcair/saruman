@@ -135,4 +135,8 @@ module ApplicationHelper
   def app_website_url
     SystemConfiguration.get('application.website', DEFAULT_APP_WEBSITE)
   end
+
+  def currency_value(value)
+    number_to_currency(value, locale: :en, unit: '')
+  end
 end
